@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="CalcularReactoresVFD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CalculoProteccionMotores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SchematicEditor\ComponentToolBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="SchematicEditor\SchematicEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SchematicViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TransformerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="VFD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PresetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
