@@ -282,6 +282,16 @@ namespace BuckConverterCalculator.SchematicEditor
         }
 
         /// <summary>
+        /// Actualiza las posiciones de los pines del componente.
+        /// Los componentes que tienen pines deben sobrescribir este método.
+        /// </summary>
+        protected virtual void UpdatePinPositions()
+        {
+            // Implementación vacía por defecto
+            // Los componentes con pines sobrescriben este método
+        }
+
+        /// <summary>
         /// Rota el componente 90° en sentido horario
         /// </summary>
         public virtual void RotateClockwise()
@@ -386,7 +396,7 @@ namespace BuckConverterCalculator.SchematicEditor
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 1) return;
             Pins[0].Position = new Point(X, Y);
@@ -506,7 +516,7 @@ namespace BuckConverterCalculator.SchematicEditor
         /// <summary>
         /// Actualiza las posiciones de los pines según orientación
         /// </summary>
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
 
@@ -733,7 +743,7 @@ namespace BuckConverterCalculator.SchematicEditor
         /// <summary>
         /// Actualiza las posiciones de los pines según orientación
         /// </summary>
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
 
@@ -1062,7 +1072,7 @@ namespace BuckConverterCalculator.SchematicEditor
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
 
@@ -1361,10 +1371,23 @@ namespace BuckConverterCalculator.SchematicEditor
             }
         }
 
+        private string _channelType;
+
         [Category("Electrical")]
-        [Description("Channel type")]
-        [ReadOnly(true)]
-        public string ChannelType { get; set; }
+        [Description("Channel type (N-Channel or P-Channel)")]
+        [TypeConverter(typeof(MOSFETChannelTypeConverter))]
+        public string ChannelType
+        {
+            get => _channelType;
+            set
+            {
+                if (_channelType != value)
+                {
+                    _channelType = value;
+                    UpdateBounds();
+                }
+            }
+        }
 
         [Category("Electrical")]
         [Description("Drain-Source voltage")]
@@ -1414,6 +1437,8 @@ namespace BuckConverterCalculator.SchematicEditor
             Size = 60;
             Orientation = ComponentOrientation.Vertical;
             ShowPinNumbers = true;
+            _channelType = "N-Channel";
+
             Pins = new List<ComponentPin>
             {
                 new ComponentPin(1, "G", PinType.Input, Point.Empty),
@@ -1424,6 +1449,67 @@ namespace BuckConverterCalculator.SchematicEditor
         }
 
         public override void DrawInternal(Graphics g, bool isSelected, bool isHovered)
+        {
+            UpdatePinPositions();
+            using (Pen pen = new Pen(isSelected ? Color.Blue : Color.Black, 2))
+            using (Pen wirePen = new Pen(Color.Black, 2))
+            {
+                // Gate vertical
+                g.DrawLine(pen, this.X - 10, this.Y - 15, this.X - 10, this.Y + 15);
+
+                // Channel (línea vertical punteada)
+                using (Pen dashedPen = new Pen(Color.Black, 2))
+                {
+                    dashedPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                    g.DrawLine(dashedPen, this.X, this.Y - 15, this.X, this.Y + 15);
+                }
+
+                // Drain y Source lines
+                g.DrawLine(pen, this.X, this.Y - 15, this.X + 10, this.Y - 15);
+                g.DrawLine(pen, this.X, this.Y + 15, this.X + 10, this.Y + 15);
+
+                // Flecha indicando tipo de canal
+                if (ChannelType == "N-Channel")
+                {
+                    // Flecha apuntando hacia el canal (→)
+                    Point[] arrow = {
+                new Point(this.X - 5, this.Y - 5),
+                new Point(this.X, this.Y),
+                new Point(this.X - 5, this.Y + 5)
+            };
+                    g.DrawLines(pen, arrow);
+                }
+                else // P-Channel
+                {
+                    // Flecha apuntando desde el canal (←)
+                    Point[] arrow = {
+                new Point(this.X - 15, this.Y - 5),
+                new Point(this.X - 10, this.Y),
+                new Point(this.X - 15, this.Y + 5)
+            };
+                    g.DrawLines(pen, arrow);
+                }
+
+                // Wires
+                g.DrawLine(wirePen, this.X - 30, this.Y, this.X - 10, this.Y);        // Gate
+                g.DrawLine(wirePen, this.X + 10, this.Y - 15, this.X + 20, this.Y - 20); // Drain
+                g.DrawLine(wirePen, this.X + 10, this.Y + 15, this.X + 20, this.Y + 20); // Source
+
+                // Label
+                using (Font font = new Font("Arial", 7))
+                {
+                    string label = ChannelType == "N-Channel" ? "N" : "P";
+                    g.DrawString(label, font, Brushes.Black, this.X - 5, this.Y - 25);
+                }
+
+                if (Pins != null)
+                {
+                    foreach (var pin in Pins)
+                        pin.Draw(g, ShowPinNumbers, false);
+                }
+            }
+        }
+        /*public override void DrawInternal(Graphics g, bool isSelected, bool isHovered)
         {
             using (Pen pen = new Pen(isSelected ? Color.Blue : Color.Black, isSelected ? 3 : 2))
             using (Pen thinPen = new Pen(Color.Black, 1))
@@ -1499,7 +1585,7 @@ namespace BuckConverterCalculator.SchematicEditor
                     }
                 }
             }
-        }
+        }*/
 
         public override bool HitTest(Point point)
         {
@@ -1567,10 +1653,23 @@ namespace BuckConverterCalculator.SchematicEditor
             }
         }
 
+        private string _transistorType;
+
         [Category("Electrical")]
-        [Description("Transistor type")]
-        [ReadOnly(true)]
-        public string TransistorType { get; set; }
+        [Description("Transistor type (NPN or PNP)")]
+        [TypeConverter(typeof(BJTTransistorTypeConverter))]
+        public string TransistorType
+        {
+            get => _transistorType;
+            set
+            {
+                if (_transistorType != value)
+                {
+                    _transistorType = value;
+                    UpdateBounds();
+                }
+            }
+        }
 
         [Category("Electrical")]
         [Description("Collector-Emitter voltage")]
@@ -1615,6 +1714,8 @@ namespace BuckConverterCalculator.SchematicEditor
             Size = 60;
             Orientation = ComponentOrientation.Vertical;
             ShowPinNumbers = true;
+            _transistorType = "NPN";
+
             Pins = new List<ComponentPin>
             {
                 new ComponentPin(1, "B", PinType.Input, Point.Empty),
@@ -1624,7 +1725,63 @@ namespace BuckConverterCalculator.SchematicEditor
             UpdateBounds();
         }
 
+
         public override void DrawInternal(Graphics g, bool isSelected, bool isHovered)
+        {
+            UpdatePinPositions();
+            using (Pen pen = new Pen(isSelected ? Color.Blue : Color.Black, 2))
+            using (Pen wirePen = new Pen(Color.Black, 2))
+            {
+                // Base vertical
+                g.DrawLine(pen, this.X - 10, this.Y - 20, this.X - 10, this.Y + 20);
+
+                // Collector y Emitter
+                g.DrawLine(pen, this.X - 10, this.Y - 10, this.X + 10, this.Y - 20);
+                g.DrawLine(pen, this.X - 10, this.Y + 10, this.X + 10, this.Y + 20);
+
+                // Flecha en emitter indicando tipo
+                if (TransistorType == "NPN")
+                {
+                    // Flecha apuntando hacia afuera (↗)
+                    Point[] arrow = {
+                new Point(this.X + 5, this.Y + 15),
+                new Point(this.X + 10, this.Y + 20),
+                new Point(this.X + 5, this.Y + 20)
+            };
+                    g.DrawPolygon(pen, arrow);
+                    g.FillPolygon(Brushes.Black, arrow);
+                }
+                else // PNP
+                {
+                    // Flecha apuntando hacia adentro (↙)
+                    Point[] arrow = {
+                new Point(this.X - 5, this.Y + 10),
+                new Point(this.X - 10, this.Y + 10),
+                new Point(this.X - 5, this.Y + 15)
+            };
+                    g.DrawPolygon(pen, arrow);
+                    g.FillPolygon(Brushes.Black, arrow);
+                }
+
+                // Wires
+                g.DrawLine(wirePen, this.X - 30, this.Y, this.X - 10, this.Y);        // Base
+                g.DrawLine(wirePen, this.X + 10, this.Y - 20, this.X + 20, this.Y - 20); // Collector
+                g.DrawLine(wirePen, this.X + 10, this.Y + 20, this.X + 20, this.Y + 20); // Emitter
+
+                // Label
+                using (Font font = new Font("Arial", 7))
+                {
+                    g.DrawString(TransistorType, font, Brushes.Black, this.X - 8, this.Y - 30);
+                }
+
+                if (Pins != null)
+                {
+                    foreach (var pin in Pins)
+                        pin.Draw(g, ShowPinNumbers, false);
+                }
+            }
+        }
+        /*public override void DrawInternal(Graphics g, bool isSelected, bool isHovered)
         {
             using (Pen pen = new Pen(isSelected ? Color.Blue : Color.Black, isSelected ? 3 : 2))
             using (Pen thinPen = new Pen(Color.Black, 1))
@@ -1734,7 +1891,7 @@ namespace BuckConverterCalculator.SchematicEditor
                     }
                 }
             }
-        }
+        }*/
 
         public override bool HitTest(Point point)
         {
@@ -1943,7 +2100,7 @@ namespace BuckConverterCalculator.SchematicEditor
         /// <summary>
         /// Actualiza las posiciones de los pines
         /// </summary>
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins.Count == 0) return;
 
@@ -2845,7 +3002,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
             Pins[0].Position = new Point(this.X - Size / 2, this.Y + Size);
@@ -2931,7 +3088,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 4) return;
             Pins[0].Position = new Point(this.X - Size, this.Y);
@@ -3020,7 +3177,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
             if (this.Orientation == ComponentOrientation.Horizontal)
@@ -3112,7 +3269,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
             if (this.Orientation == ComponentOrientation.Horizontal)
@@ -3160,9 +3317,22 @@ public class LabelComponent : SchematicComponent
     [Serializable]
     public class LEDComponent : SchematicComponent
     {
+        private string _ledColor;
+
         [Category("Electrical")]
         [Description("LED color")]
-        public string LEDColor { get; set; }
+        [TypeConverter(typeof(LEDColorConverter))]
+        public string LEDColor
+        {
+            get => _ledColor;
+            set
+            {
+                if (_ledColor != value)
+                {
+                    _ledColor = value;
+                }
+            }
+        }
 
         [Category("Electrical")]
         [Description("Forward voltage")]
@@ -3184,7 +3354,7 @@ public class LabelComponent : SchematicComponent
             this.Type = ComponentType.LED;
             this.Name = "LED1";
             this.Orientation = ComponentOrientation.Horizontal;
-            LEDColor = "Red";
+            _ledColor = "Red";
             VF = "2.0V";
             Size = 40;
             ShowPinNumbers = true;
@@ -3196,7 +3366,22 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        private Color GetLEDDrawColor()
+        {
+            switch (LEDColor)
+            {
+                case "Red": return Color.Red;
+                case "Green": return Color.Lime;
+                case "Blue": return Color.Blue;
+                case "Yellow": return Color.Yellow;
+                case "White": return Color.White;
+                case "Orange": return Color.Orange;
+                case "Infrared": return Color.DarkRed;
+                case "UV": return Color.Purple;
+                default: return Color.Red;
+            }
+        }
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
             if (this.Orientation == ComponentOrientation.Horizontal)
@@ -3233,10 +3418,24 @@ public class LabelComponent : SchematicComponent
                     g.DrawPolygon(pen, triangle);
                     g.DrawLine(pen, this.X + Size - 10, this.Y - 12, this.X + Size - 10, this.Y + 12);
 
-                    using (Pen lightPen = new Pen(ledColor, 1))
+                    /*using (Pen lightPen = new Pen(ledColor, 1))
                     {
                         g.DrawLine(lightPen, this.X + Size - 5, this.Y - 15, this.X + Size + 5, this.Y - 20);
                         g.DrawLine(lightPen, this.X + Size - 5, this.Y - 10, this.X + Size + 5, this.Y - 15);
+                    }*/
+
+                    Color ledColor1 = GetLEDDrawColor();
+                    using (Pen ledPen = new Pen(ledColor1, 2))
+                    {
+                        // Dibujar rayos de luz
+                        for (int i = 0; i < 3; i++)
+                        {
+                            int angle = -45 + i * 30;
+                            double rad = angle * Math.PI / 180;
+                            int x2 = this.X + 30 + (int)(15 * Math.Cos(rad));
+                            int y2 = this.Y - 10 + (int)(15 * Math.Sin(rad));
+                            g.DrawLine(ledPen, this.X + 30, this.Y - 10, x2, y2);
+                        }
                     }
 
                     g.DrawLine(wirePen, this.X - 20, this.Y, this.X, this.Y);
@@ -3303,7 +3502,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 3) return;
             Pins[0].Position = new Point(this.X - Size / 2, this.Y + Size);
@@ -3389,7 +3588,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
             Pins[0].Position = new Point(this.X, this.Y - 20);
@@ -3479,7 +3678,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 4) return;
             Pins[0].Position = new Point(this.X - 60, this.Y);
@@ -3577,7 +3776,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 5) return;
             Pins[0].Position = new Point(this.X - 20, this.Y - Size / 4);
@@ -3630,7 +3829,191 @@ public class LabelComponent : SchematicComponent
         public override SchematicComponent Clone() => new OpAmpComponent { Name = this.Name + "_copy", X = this.X + 50, Y = this.Y + 50, PartNumber = this.PartNumber, SupplyVoltage = this.SupplyVoltage };
     }
 
+
     /// <summary>
+    /// Logic Gate (AND, OR, NOT, NAND, NOR, XOR, XNOR) - CON TYPECONVERTER FUNCIONAL
+    /// </summary>
+    [Serializable]
+    public class LogicGateComponent : SchematicComponent
+    {
+        private string _gateType = "AND";
+
+        [Category("Electrical")]
+        [Description("Gate type (AND, OR, NOT, NAND, NOR, XOR, XNOR)")]
+        [TypeConverter(typeof(LogicGateTypeConverter))]
+        public string GateType
+        {
+            get => _gateType;
+            set
+            {
+                if (_gateType != value)
+                {
+                    _gateType = value;
+                    UpdateBounds();
+                }
+            }
+        }
+
+        [Category("Geometry")]
+        [Description("Component size")]
+        public int Size { get; set; }
+
+        [Category("Display")]
+        [Description("Show pin numbers")]
+        public bool ShowPinNumbers { get; set; }
+
+        [Browsable(false)]
+        public List<ComponentPin> Pins { get; set; }
+
+        public LogicGateComponent()
+        {
+            this.Type = ComponentType.LogicGate;
+            this.Name = "U1";
+            _gateType = "AND";
+            Size = 50;
+            ShowPinNumbers = true;
+
+            Pins = new List<ComponentPin>
+            {
+                new ComponentPin(1, "A", PinType.Input, Point.Empty),
+                new ComponentPin(2, "B", PinType.Input, Point.Empty),
+                new ComponentPin(3, "Y", PinType.Output, Point.Empty)
+            };
+
+            UpdateBounds();
+        }
+
+        protected override void UpdatePinPositions()
+        {
+            if (Pins == null || Pins.Count < 3) return;
+
+            if (GateType == "NOT" || GateType == "INVERTER")
+            {
+                // NOT gate solo usa un input
+                Pins[0].Position = new Point(this.X - 20, this.Y);
+                Pins[1].Position = new Point(this.X - 20, this.Y); // Oculto
+                Pins[2].Position = new Point(this.X + Size + 20, this.Y);
+            }
+            else
+            {
+                Pins[0].Position = new Point(this.X - 20, this.Y - Size / 4);
+                Pins[1].Position = new Point(this.X - 20, this.Y + Size / 4);
+
+                int bubbleOffset = (GateType.Contains("N") && GateType != "NOT") ? 10 : 0;
+                Pins[2].Position = new Point(this.X + Size + bubbleOffset + 20, this.Y);
+            }
+        }
+
+        public override void DrawInternal(Graphics g, bool isSelected, bool isHovered)
+        {
+            UpdatePinPositions();
+            using (Pen pen = new Pen(isSelected ? Color.Blue : Color.Black, 2))
+            using (Pen wirePen = new Pen(Color.Black, 2))
+            {
+                if (GateType == "NOT" || GateType == "INVERTER")
+                {
+                    // NOT gate - triángulo con círculo
+                    Point[] triangle = {
+                        new Point(this.X, this.Y - Size/2),
+                        new Point(this.X, this.Y + Size/2),
+                        new Point(this.X + Size, this.Y)
+                    };
+                    g.DrawPolygon(pen, triangle);
+                    g.DrawEllipse(pen, this.X + Size, this.Y - 5, 10, 10);
+
+                    // Wires
+                    g.DrawLine(wirePen, this.X - 20, this.Y, this.X, this.Y);
+                    g.DrawLine(wirePen, this.X + Size + 10, this.Y, this.X + Size + 20, this.Y);
+                }
+                else if (GateType == "AND" || GateType == "NAND")
+                {
+                    // AND gate - rectángulo con semicírculo
+                    g.DrawLine(pen, this.X, this.Y - Size / 2, this.X, this.Y + Size / 2);
+                    g.DrawLine(pen, this.X, this.Y - Size / 2, this.X + Size / 2, this.Y - Size / 2);
+                    g.DrawLine(pen, this.X, this.Y + Size / 2, this.X + Size / 2, this.Y + Size / 2);
+                    g.DrawArc(pen, this.X, this.Y - Size / 2, Size, Size, -90, 180);
+
+                    if (GateType == "NAND")
+                        g.DrawEllipse(pen, this.X + Size, this.Y - 5, 10, 10);
+
+                    // Wires
+                    g.DrawLine(wirePen, this.X - 20, this.Y - Size / 4, this.X, this.Y - Size / 4);
+                    g.DrawLine(wirePen, this.X - 20, this.Y + Size / 4, this.X, this.Y + Size / 4);
+
+                    int bubbleOffset = GateType == "NAND" ? 10 : 0;
+                    g.DrawLine(wirePen, this.X + Size + bubbleOffset, this.Y, this.X + Size + 20, this.Y);
+                }
+                else if (GateType == "OR" || GateType == "NOR")
+                {
+                    // OR gate - forma curva
+                    g.DrawArc(pen, this.X - Size / 4, this.Y - Size / 2, Size / 2, Size, -90, 180);
+                    g.DrawArc(pen, this.X, this.Y - Size / 2, Size, Size, -90, 180);
+
+                    if (GateType == "NOR")
+                        g.DrawEllipse(pen, this.X + Size, this.Y - 5, 10, 10);
+
+                    // Wires
+                    g.DrawLine(wirePen, this.X - 20, this.Y - Size / 4, this.X + 5, this.Y - Size / 4);
+                    g.DrawLine(wirePen, this.X - 20, this.Y + Size / 4, this.X + 5, this.Y + Size / 4);
+
+                    int bubbleOffset = GateType == "NOR" ? 10 : 0;
+                    g.DrawLine(wirePen, this.X + Size + bubbleOffset, this.Y, this.X + Size + 20, this.Y);
+                }
+                else if (GateType == "XOR" || GateType == "XNOR")
+                {
+                    // XOR gate - doble arco de entrada
+                    g.DrawArc(pen, this.X - Size / 3, this.Y - Size / 2, Size / 2, Size, -90, 180);
+                    g.DrawArc(pen, this.X - Size / 4, this.Y - Size / 2, Size / 2, Size, -90, 180);
+                    g.DrawArc(pen, this.X, this.Y - Size / 2, Size, Size, -90, 180);
+
+                    if (GateType == "XNOR")
+                        g.DrawEllipse(pen, this.X + Size, this.Y - 5, 10, 10);
+
+                    // Wires
+                    g.DrawLine(wirePen, this.X - 20, this.Y - Size / 4, this.X + 5, this.Y - Size / 4);
+                    g.DrawLine(wirePen, this.X - 20, this.Y + Size / 4, this.X + 5, this.Y + Size / 4);
+
+                    int bubbleOffset = GateType == "XNOR" ? 10 : 0;
+                    g.DrawLine(wirePen, this.X + Size + bubbleOffset, this.Y, this.X + Size + 20, this.Y);
+                }
+
+                // Etiqueta del tipo de compuerta
+                using (Font font = new Font("Arial", 7, FontStyle.Bold))
+                {
+                    string label = GateType == "INVERTER" ? "NOT" : GateType;
+                    SizeF textSize = g.MeasureString(label, font);
+                    g.DrawString(label, font, Brushes.Black,
+                        this.X + Size / 2 - textSize.Width / 2,
+                        this.Y - textSize.Height / 2);
+                }
+
+                // Nombre del componente
+                using (Font labelFont = new Font("Arial", 7))
+                {
+                    g.DrawString(this.Name, labelFont, Brushes.Black, this.X + Size / 2 - 10, this.Y - Size / 2 - 15);
+                }
+
+                // Dibujar pines
+                if (Pins != null)
+                {
+                    foreach (var pin in Pins)
+                    {
+                        // Solo dibujar pines visibles (NOT gate oculta pin 2)
+                        if (!(GateType == "NOT" || GateType == "INVERTER") || pin.Number != 2)
+                        {
+                            pin.Draw(g, ShowPinNumbers, false);
+                        }
+                    }
+                }
+            }
+        }
+
+        public override bool HitTest(Point point) => this.Bounds.Contains(point);
+        protected override void UpdateBounds() => this.Bounds = new Rectangle(this.X - 30, this.Y - Size / 2 - 20, Size + 60, Size + 40);
+        public override SchematicComponent Clone() => new LogicGateComponent { Name = this.Name + "_copy", X = this.X + 50, Y = this.Y + 50, GateType = this.GateType };
+    }
+
+    /*/// <summary>
     /// Logic Gate (AND, OR, NOT, NAND, NOR, XOR, XNOR)
     /// </summary>
     [Serializable]
@@ -3667,7 +4050,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 3) return;
             Pins[0].Position = new Point(this.X - 20, this.Y - Size / 4);
@@ -3728,9 +4111,174 @@ public class LabelComponent : SchematicComponent
         public override bool HitTest(Point point) => this.Bounds.Contains(point);
         protected override void UpdateBounds() => this.Bounds = new Rectangle(this.X - 30, this.Y - Size / 2 - 10, Size + 60, Size + 20);
         public override SchematicComponent Clone() => new LogicGateComponent { Name = this.Name + "_copy", X = this.X + 50, Y = this.Y + 50, GateType = this.GateType };
-    }
+    }*/
+
 
     /// <summary>
+    /// Flip-Flop (D, JK, SR, T) - CON TYPECONVERTER FUNCIONAL
+    /// </summary>
+    [Serializable]
+    public class FlipFlopComponent : SchematicComponent
+    {
+        private string _ffType = "D";
+
+        [Category("Electrical")]
+        [Description("Flip-Flop type (D, JK, SR, T)")]
+        [TypeConverter(typeof(FlipFlopTypeConverter))]
+        public string FFType
+        {
+            get => _ffType;
+            set
+            {
+                if (_ffType != value)
+                {
+                    _ffType = value;
+                    UpdatePinNames();
+                    UpdateBounds();
+                }
+            }
+        }
+
+        [Category("Geometry")]
+        [Description("Component size")]
+        public int Size { get; set; }
+
+        [Category("Display")]
+        [Description("Show pin numbers")]
+        public bool ShowPinNumbers { get; set; }
+
+        [Browsable(false)]
+        public List<ComponentPin> Pins { get; set; }
+
+        public FlipFlopComponent()
+        {
+            this.Type = ComponentType.FlipFlop;
+            this.Name = "FF1";
+            _ffType = "D";
+            Size = 60;
+            ShowPinNumbers = true;
+
+            Pins = new List<ComponentPin>
+            {
+                new ComponentPin(1, "D", PinType.Input, Point.Empty),
+                new ComponentPin(2, "CLK", PinType.Input, Point.Empty),
+                new ComponentPin(3, "Q", PinType.Output, Point.Empty),
+                new ComponentPin(4, "Q̄", PinType.Output, Point.Empty)
+            };
+
+            UpdateBounds();
+        }
+
+        private void UpdatePinNames()
+        {
+            if (Pins == null || Pins.Count < 4) return;
+
+            switch (FFType)
+            {
+                case "D":
+                    Pins[0].Name = "D";
+                    break;
+                case "JK":
+                    Pins[0].Name = "J";
+                    // En JK el segundo input también cambia
+                    // Pero usamos CLK, así que solo cambiamos el primero
+                    break;
+                case "SR":
+                    Pins[0].Name = "S";
+                    // En SR el segundo sería R, pero usamos CLK
+                    break;
+                case "T":
+                    Pins[0].Name = "T";
+                    break;
+            }
+
+            // CLK siempre es CLK (pin 2)
+            Pins[1].Name = "CLK";
+
+            // Outputs siempre son Q y Q̄ (pins 3 y 4)
+            Pins[2].Name = "Q";
+            Pins[3].Name = "Q̄";
+        }
+
+        protected override void UpdatePinPositions()
+        {
+            if (Pins == null || Pins.Count < 4) return;
+
+            Pins[0].Position = new Point(this.X - 20, this.Y - Size / 4);
+            Pins[1].Position = new Point(this.X - 20, this.Y + Size / 4);
+            Pins[2].Position = new Point(this.X + Size + 20, this.Y - Size / 4);
+            Pins[3].Position = new Point(this.X + Size + 20, this.Y + Size / 4);
+        }
+
+        public override void DrawInternal(Graphics g, bool isSelected, bool isHovered)
+        {
+            UpdatePinPositions();
+            using (Pen pen = new Pen(isSelected ? Color.Blue : Color.Black, 2))
+            using (Pen wirePen = new Pen(Color.Black, 2))
+            {
+                // Rectángulo del flip-flop
+                g.DrawRectangle(pen, this.X, this.Y - Size / 2, Size, Size);
+
+                // Líneas de conexión (wires)
+                g.DrawLine(wirePen, this.X - 20, this.Y - Size / 4, this.X, this.Y - Size / 4);
+                g.DrawLine(wirePen, this.X - 20, this.Y + Size / 4, this.X, this.Y + Size / 4);
+                g.DrawLine(wirePen, this.X + Size, this.Y - Size / 4, this.X + Size + 20, this.Y - Size / 4);
+                g.DrawLine(wirePen, this.X + Size, this.Y + Size / 4, this.X + Size + 20, this.Y + Size / 4);
+
+                // Tipo de FF en el centro
+                using (Font typeFont = new Font("Arial", 10, FontStyle.Bold))
+                {
+                    SizeF textSize = g.MeasureString(FFType, typeFont);
+                    g.DrawString(FFType, typeFont, Brushes.Black,
+                        this.X + Size / 2 - textSize.Width / 2,
+                        this.Y - textSize.Height / 2);
+                }
+
+                // Etiquetas de pines
+                using (Font labelFont = new Font("Arial", 7))
+                {
+                    // Input izquierdo superior
+                    g.DrawString(Pins[0].Name, labelFont, Brushes.Black, this.X + 3, this.Y - Size / 4 - 8);
+
+                    // CLK izquierdo inferior (con triángulo)
+                    g.DrawString("CLK", labelFont, Brushes.Black, this.X + 3, this.Y + Size / 4 - 8);
+
+                    // Triángulo de clock
+                    Point[] clockTriangle = {
+                        new Point(this.X + 2, this.Y + Size/4 - 5),
+                        new Point(this.X + 2, this.Y + Size/4 + 5),
+                        new Point(this.X + 7, this.Y + Size/4)
+                    };
+                    g.DrawPolygon(pen, clockTriangle);
+
+                    // Output Q derecho superior
+                    g.DrawString("Q", labelFont, Brushes.Black, this.X + Size - 15, this.Y - Size / 4 - 8);
+
+                    // Output Q̄ derecho inferior
+                    g.DrawString("Q̄", labelFont, Brushes.Black, this.X + Size - 15, this.Y + Size / 4 - 8);
+                }
+
+                // Nombre del componente
+                using (Font nameFont = new Font("Arial", 7))
+                {
+                    g.DrawString(this.Name, nameFont, Brushes.Black, this.X + Size / 2 - 10, this.Y - Size / 2 - 15);
+                }
+
+                // Dibujar pines
+                if (Pins != null)
+                {
+                    foreach (var pin in Pins)
+                        pin.Draw(g, ShowPinNumbers, false);
+                }
+            }
+        }
+
+        public override bool HitTest(Point point) => this.Bounds.Contains(point);
+        protected override void UpdateBounds() => this.Bounds = new Rectangle(this.X - 30, this.Y - Size / 2 - 20, Size + 60, Size + 40);
+        public override SchematicComponent Clone() => new FlipFlopComponent { Name = this.Name + "_copy", X = this.X + 50, Y = this.Y + 50, FFType = this.FFType };
+    }
+
+    /*/// <summary>
     /// Flip-Flop (D, JK, SR, T)
     /// </summary>
     [Serializable]
@@ -3768,7 +4316,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 4) return;
             Pins[0].Position = new Point(this.X - 20, this.Y - Size / 4);
@@ -3810,7 +4358,7 @@ public class LabelComponent : SchematicComponent
         public override bool HitTest(Point point) => this.Bounds.Contains(point);
         protected override void UpdateBounds() => this.Bounds = new Rectangle(this.X - 30, this.Y - Size / 2 - 10, Size + 60, Size + 20);
         public override SchematicComponent Clone() => new FlipFlopComponent { Name = this.Name + "_copy", X = this.X + 50, Y = this.Y + 50, FFType = this.FFType };
-    }
+    }*/
 
     /// <summary>
     /// Inverter (NOT gate)
@@ -3843,7 +4391,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 2) return;
             Pins[0].Position = new Point(this.X - 20, this.Y);
@@ -3886,9 +4434,22 @@ public class LabelComponent : SchematicComponent
     [Serializable]
     public class LED7SegmentComponent : SchematicComponent
     {
+        private string _commonType;
+
         [Category("Electrical")]
-        [Description("Common type")]
-        public string CommonType { get; set; }
+        [Description("Common type (Common Cathode or Common Anode)")]
+        [TypeConverter(typeof(SevenSegmentCommonTypeConverter))]
+        public string CommonType
+        {
+            get => _commonType;
+            set
+            {
+                if (_commonType != value)
+                {
+                    _commonType = value;
+                }
+            }
+        }
 
         [Category("Geometry")]
         [Description("Component size")]
@@ -3905,7 +4466,7 @@ public class LabelComponent : SchematicComponent
         {
             this.Type = ComponentType.LED7Segment;
             this.Name = "DSP1";
-            CommonType = "Common Cathode";
+            _commonType = "Common Cathode";
             Size = 60;
             ShowPinNumbers = true;
             Pins = new List<ComponentPin>
@@ -3923,7 +4484,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 9) return;
             for (int i = 0; i < 4; i++)
@@ -4013,7 +4574,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 4) return;
             Pins[0].Position = new Point(this.X - 20, this.Y - Size / 4);
@@ -4104,7 +4665,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 3) return;
             Pins[0].Position = new Point(this.X, this.Y - Size - 20);
@@ -4195,7 +4756,7 @@ public class LabelComponent : SchematicComponent
             UpdateBounds();
         }
 
-        private void UpdatePinPositions()
+        protected override void UpdatePinPositions()
         {
             if (Pins == null || Pins.Count < 3) return;
             Pins[0].Position = new Point(this.X, this.Y - Size - 20);

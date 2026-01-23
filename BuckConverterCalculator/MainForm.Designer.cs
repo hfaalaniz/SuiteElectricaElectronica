@@ -72,6 +72,7 @@
             btnCalculateReactor = new Button();
             btnTransformerCalculator = new Button();
             btnCalcProteccionMotores = new Button();
+            btnSchematicUnifilar = new Button();
             groupBoxInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numEfficiency).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numRippleVoltage).BeginInit();
@@ -507,7 +508,7 @@
             // 
             btnCalculateReactor.FlatStyle = FlatStyle.Flat;
             btnCalculateReactor.Font = new Font("Segoe UI", 9F);
-            btnCalculateReactor.Location = new Point(799, 283);
+            btnCalculateReactor.Location = new Point(799, 329);
             btnCalculateReactor.Name = "btnCalculateReactor";
             btnCalculateReactor.Size = new Size(118, 40);
             btnCalculateReactor.TabIndex = 16;
@@ -519,7 +520,7 @@
             // 
             btnTransformerCalculator.FlatStyle = FlatStyle.Flat;
             btnTransformerCalculator.Font = new Font("Segoe UI", 9F);
-            btnTransformerCalculator.Location = new Point(799, 329);
+            btnTransformerCalculator.Location = new Point(799, 375);
             btnTransformerCalculator.Name = "btnTransformerCalculator";
             btnTransformerCalculator.Size = new Size(118, 40);
             btnTransformerCalculator.TabIndex = 16;
@@ -531,13 +532,25 @@
             // 
             btnCalcProteccionMotores.FlatStyle = FlatStyle.Flat;
             btnCalcProteccionMotores.Font = new Font("Segoe UI", 9F);
-            btnCalcProteccionMotores.Location = new Point(799, 378);
+            btnCalcProteccionMotores.Location = new Point(799, 424);
             btnCalcProteccionMotores.Name = "btnCalcProteccionMotores";
             btnCalcProteccionMotores.Size = new Size(118, 40);
             btnCalcProteccionMotores.TabIndex = 16;
             btnCalcProteccionMotores.Text = "Proteccion Motores";
             btnCalcProteccionMotores.UseVisualStyleBackColor = true;
             btnCalcProteccionMotores.Click += btnCalcProteccionMotores_Click;
+            // 
+            // btnSchematicUnifilar
+            // 
+            btnSchematicUnifilar.FlatStyle = FlatStyle.Flat;
+            btnSchematicUnifilar.Font = new Font("Segoe UI", 9F);
+            btnSchematicUnifilar.Location = new Point(799, 283);
+            btnSchematicUnifilar.Name = "btnSchematicUnifilar";
+            btnSchematicUnifilar.Size = new Size(118, 40);
+            btnSchematicUnifilar.TabIndex = 16;
+            btnSchematicUnifilar.Text = "Unifilares";
+            btnSchematicUnifilar.UseVisualStyleBackColor = true;
+            btnSchematicUnifilar.Click += btnSchematicUnifilar_Click;
             // 
             // MainForm
             // 
@@ -549,6 +562,7 @@
             Controls.Add(groupBoxLosses);
             Controls.Add(groupBoxComponents);
             Controls.Add(groupBoxResults);
+            Controls.Add(btnSchematicUnifilar);
             Controls.Add(btnOpenEditor);
             Controls.Add(btnCalcProteccionMotores);
             Controls.Add(btnTransformerCalculator);
@@ -631,5 +645,6 @@
         private Button btnCalculateReactor;
         private Button btnTransformerCalculator;
         private Button btnCalcProteccionMotores;
+        private Button btnSchematicUnifilar;
     }
 }

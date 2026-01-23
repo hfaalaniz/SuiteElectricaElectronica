@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BuckConverterCalculator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+caabafe3359e278f07a1a8f90bec1fb43b49d479")]
 [assembly: System.Reflection.AssemblyProductAttribute("BuckConverterCalculator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BuckConverterCalculator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

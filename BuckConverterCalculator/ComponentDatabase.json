@@ -1,0 +1,18 @@
+﻿[
+  {
+    "Type": "MOSFET",
+    "Manufacturer": "Infineon",
+    "PartNumber": "IPD90N04S4L-05",
+    "Description": "N-Channel MOSFET 40V 90A",
+    "Specifications": {
+      "VDS": "40V",
+      "ID": "90A",
+      "RDSon": "5mΩ",
+      "Package": "TO-252"
+    },
+    "UnitPrice": 1.25,
+    "Stock": 5000,
+    "Supplier": "DigiKey",
+    "DatasheetURL": "https://..."
+  }
+]

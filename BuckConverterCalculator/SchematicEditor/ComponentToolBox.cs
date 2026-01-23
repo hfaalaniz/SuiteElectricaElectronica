@@ -28,7 +28,7 @@ namespace BuckConverterCalculator.SchematicEditor
         private Point originalLocation;
 
         private const int CollapsedWidth = 50;
-        private const int ExpandedWidth = 160;
+        private const int ExpandedWidth = 180;
         private const int ItemHeight = 50;
 
         // Drag & Drop de componentes
@@ -39,7 +39,7 @@ namespace BuckConverterCalculator.SchematicEditor
         public event EventHandler<ComponentDragEventArgs> ComponentDragStart;
         public event EventHandler<ComponentDragEventArgs> ComponentDragging;
         public event EventHandler<ComponentDragEventArgs> ComponentDragDrop;
-        public event EventHandler<EventArgs> ExpandedChanged;  // Nuevo evento
+        public event EventHandler<EventArgs> ExpandedChanged;
 
         private Dictionary<ComponentType, ComponentButton> componentButtons;
 
@@ -55,7 +55,7 @@ namespace BuckConverterCalculator.SchematicEditor
             this.BackColor = Color.FromArgb(240, 240, 240);
             this.BorderStyle = BorderStyle.FixedSingle;
 
-            // Header Panel (sin drag, está acoplado)
+            // Header Panel
             headerPanel = new Panel
             {
                 Dock = DockStyle.Top,
@@ -70,7 +70,7 @@ namespace BuckConverterCalculator.SchematicEditor
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 AutoSize = false,
-                Size = new Size(100, 30),
+                Size = new Size(120, 30),
                 TextAlign = ContentAlignment.MiddleLeft,
                 Location = new Point(5, 0)
             };
@@ -119,33 +119,50 @@ namespace BuckConverterCalculator.SchematicEditor
         {
             componentButtons = new Dictionary<ComponentType, ComponentButton>();
 
-            // Definir componentes con iconos
+            // TODOS LOS COMPONENTES ORGANIZADOS
             var components = new List<ComponentDefinition>
             {
+                // === CONEXIONES ===
                 new ComponentDefinition(ComponentType.Terminal, "Terminal", "📍", Color.FromArgb(220, 20, 60)),
+                new ComponentDefinition(ComponentType.Wire, "Wire", "━", Color.FromArgb(0, 0, 0)),
+                new ComponentDefinition(ComponentType.Node, "Node", "⬤", Color.FromArgb(255, 215, 0)),
+                new ComponentDefinition(ComponentType.Ground, "Ground", "⏚", Color.FromArgb(105, 105, 105)),
+                new ComponentDefinition(ComponentType.VccSupply, "VCC Supply", "⚡", Color.FromArgb(255, 0, 0)),
+                
+                // === PASIVOS ===
                 new ComponentDefinition(ComponentType.Resistor, "Resistor", "⚡", Color.FromArgb(139, 90, 43)),
                 new ComponentDefinition(ComponentType.Capacitor, "Capacitor", "🔋", Color.FromArgb(70, 130, 180)),
                 new ComponentDefinition(ComponentType.Inductor, "Inductor", "🌀", Color.FromArgb(184, 115, 51)),
-                new ComponentDefinition(ComponentType.Diode, "Diode", "🔺", Color.FromArgb(178, 34, 34)),
-                new ComponentDefinition(ComponentType.Mosfet, "MOSFET", "🔲", Color.FromArgb(75, 0, 130)),
-                new ComponentDefinition(ComponentType.Mosfet, "BJT", "🔶", Color.FromArgb(255, 140, 0)),
-                new ComponentDefinition(ComponentType.IC, "IC", "⬛", Color.FromArgb(50, 50, 50)),
+                new ComponentDefinition(ComponentType.Potentiometer, "Potentiometer", "🎚", Color.FromArgb(160, 82, 45)),
                 new ComponentDefinition(ComponentType.Fuse, "Fuse", "⚠", Color.FromArgb(255, 165, 0)),
-                new ComponentDefinition(ComponentType.Ground, "Ground", "⏚", Color.FromArgb(105, 105, 105)),
-                new ComponentDefinition(ComponentType.VccSupply, "Vcc", "⚡", Color.FromArgb(255, 0, 0)),
-                new ComponentDefinition(ComponentType.Wire, "Wire", "━", Color.FromArgb(0, 0, 0)),
-                new ComponentDefinition(ComponentType.Node, "Node", "⬤", Color.FromArgb(255, 215, 0)),
-                new ComponentDefinition(ComponentType.Label, "Label", "📝", Color.FromArgb(0, 100, 0)),
-
-                new ComponentDefinition(ComponentType.OpAmp, "OpAmp", "🔶", Color.FromArgb(255, 140, 0)),
-                new ComponentDefinition(ComponentType.LogicGate, "Logicas", "⬛", Color.FromArgb(50, 50, 50)),
-                new ComponentDefinition(ComponentType.FlipFlop, "FlipFlop", "⚠", Color.FromArgb(255, 165, 0)),
-                new ComponentDefinition(ComponentType.Inverter, "Inversor", "⏚", Color.FromArgb(105, 105, 105)),
-                new ComponentDefinition(ComponentType.LED7Segment, "7Segmentos", "⚡", Color.FromArgb(255, 0, 0)),
-                new ComponentDefinition(ComponentType.Optocoupler, "Optoacoplador", "━", Color.FromArgb(0, 0, 0)),
-                new ComponentDefinition(ComponentType.Triac, "Triac", "⬤", Color.FromArgb(255, 215, 0)),
-                new ComponentDefinition(ComponentType.Thyristor, "tiristor", "📝", Color.FromArgb(0, 100, 0))
-
+                
+                // === SEMICONDUCTORES ===
+                new ComponentDefinition(ComponentType.Diode, "Diode", "🔺", Color.FromArgb(178, 34, 34)),
+                new ComponentDefinition(ComponentType.SchottkyDiode, "Schottky Diode", "◥", Color.FromArgb(220, 20, 60)),
+                new ComponentDefinition(ComponentType.ZenerDiode, "Zener Diode", "◢", Color.FromArgb(255, 69, 0)),
+                new ComponentDefinition(ComponentType.LED, "LED", "💡", Color.FromArgb(255, 215, 0)),
+                new ComponentDefinition(ComponentType.BridgeDiode, "Bridge Rectifier", "◆", Color.FromArgb(139, 0, 0)),
+                new ComponentDefinition(ComponentType.Mosfet, "MOSFET", "🔲", Color.FromArgb(75, 0, 130)),
+                new ComponentDefinition(ComponentType.Mosfet, "BJT Transistor", "🔶", Color.FromArgb(255, 140, 0)),
+                new ComponentDefinition(ComponentType.Triac, "TRIAC", "◬", Color.FromArgb(128, 0, 128)),
+                new ComponentDefinition(ComponentType.Thyristor, "Thyristor (SCR)", "◭", Color.FromArgb(148, 0, 211)),
+                
+                // === ICs Y LÓGICA ===
+                new ComponentDefinition(ComponentType.IC, "IC Generic", "⬛", Color.FromArgb(50, 50, 50)),
+                new ComponentDefinition(ComponentType.OpAmp, "Op-Amp", "△", Color.FromArgb(0, 100, 0)),
+                new ComponentDefinition(ComponentType.LogicGate, "Logic Gate", "∧", Color.FromArgb(0, 0, 139)),
+                new ComponentDefinition(ComponentType.Inverter, "Inverter (NOT)", "¬", Color.FromArgb(25, 25, 112)),
+                new ComponentDefinition(ComponentType.FlipFlop, "Flip-Flop", "⊟", Color.FromArgb(72, 61, 139)),
+                
+                // === DISPLAYS Y SALIDAS ===
+                new ComponentDefinition(ComponentType.LED7Segment, "7-Segment Display", "⓪", Color.FromArgb(255, 0, 0)),
+                new ComponentDefinition(ComponentType.Buzzer, "Buzzer", "🔊", Color.FromArgb(255, 140, 0)),
+                
+                // === OTROS ===
+                new ComponentDefinition(ComponentType.Optocoupler, "Optocoupler", "⇄", Color.FromArgb(128, 128, 0)),
+                new ComponentDefinition(ComponentType.Transformer, "Transformer", "⊗", Color.FromArgb(139, 69, 19)),
+                new ComponentDefinition(ComponentType.Battery, "Battery", "🔋", Color.FromArgb(0, 128, 0)),
+                new ComponentDefinition(ComponentType.Label, "Label", "📝", Color.FromArgb(0, 100, 0))
             };
 
             foreach (var comp in components)
@@ -160,9 +177,17 @@ namespace BuckConverterCalculator.SchematicEditor
                 button.Width = isExpanded ? ExpandedWidth - 20 : CollapsedWidth - 10;
                 componentsPanel.Controls.Add(button);
 
-                if (!componentButtons.ContainsKey(comp.Type))
+                // Usar nombre único para componentes duplicados (BJT)
+                var key = comp.Type;
+                if (comp.Name.Contains("BJT"))
                 {
-                    componentButtons[comp.Type] = button;
+                    // Para BJT usamos un tipo especial o lo manejamos en el evento
+                    button.Tag = "BJT"; // Marcar este botón como BJT
+                }
+
+                if (!componentButtons.ContainsKey(key))
+                {
+                    componentButtons[key] = button;
                 }
 
                 toolTip.SetToolTip(button, comp.Name);
@@ -208,6 +233,12 @@ namespace BuckConverterCalculator.SchematicEditor
             dragData.SetComponentType(button.Definition.Type);
             dragData.SetColor(button.Definition.Color);
 
+            // Marcar si es BJT
+            if (button.Tag != null && button.Tag.ToString() == "BJT")
+            {
+                dragData.IsBJT = true;
+            }
+
             // Evento de inicio de drag
             ComponentDragStart?.Invoke(this, new ComponentDragEventArgs
             {
@@ -245,91 +276,55 @@ namespace BuckConverterCalculator.SchematicEditor
             dragPreviewForm = new Form
             {
                 FormBorderStyle = FormBorderStyle.None,
-                StartPosition = FormStartPosition.Manual,
-                ShowInTaskbar = false,
-                TopMost = true,
                 BackColor = Color.White,
-                TransparencyKey = Color.White,
                 Opacity = 0.8,
-                Size = new Size(80, 80),
-                AllowTransparency = true,
-                Location = new Point(Cursor.Position.X - 40, Cursor.Position.Y - 40)
+                Size = new Size(120, 50),
+                TopMost = true,
+                ShowInTaskbar = false,
+                StartPosition = FormStartPosition.Manual
             };
 
-            var previewPanel = new Panel
+            var label = new Label
             {
+                Text = $"{definition.Icon} {definition.Name}",
                 Dock = DockStyle.Fill,
-                BackColor = Color.Transparent
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                ForeColor = definition.Color,
+                BackColor = Color.White
             };
-            previewPanel.Paint += (s, e) => DrawComponentPreview(e.Graphics, definition);
-            dragPreviewForm.Controls.Add(previewPanel);
+
+            dragPreviewForm.Controls.Add(label);
+            dragPreviewForm.Location = Cursor.Position;
             dragPreviewForm.Show();
 
             // Timer para actualizar posición
-            System.Windows.Forms.Timer positionTimer = new System.Windows.Forms.Timer { Interval = 10 };
-            positionTimer.Tick += (s, e) =>
+            var timer = new System.Windows.Forms.Timer { Interval = 10 };
+            timer.Tick += (s, e) =>
             {
                 if (dragPreviewForm != null && !dragPreviewForm.IsDisposed)
                 {
-                    dragPreviewForm.Location = new Point(Cursor.Position.X - 40, Cursor.Position.Y - 40);
-
-                    // Evento de dragging
-                    ComponentDragging?.Invoke(this, new ComponentDragEventArgs
-                    {
-                        ComponentType = draggedButton?.Definition.Type ?? ComponentType.Resistor,
-                        ComponentName = draggedButton?.Definition.Name ?? "",
-                        ScreenLocation = Cursor.Position
-                    });
+                    dragPreviewForm.Location = new Point(
+                        Cursor.Position.X + 10,
+                        Cursor.Position.Y + 10
+                    );
                 }
                 else
-                {
-                    positionTimer.Stop();
-                }
-            };
-            positionTimer.Start();
-            dragPreviewForm.Tag = positionTimer;
-        }
-
-        private void CleanupDragImage()
-        {
-            if (dragPreviewForm != null && !dragPreviewForm.IsDisposed)
-            {
-                if (dragPreviewForm.Tag is System.Windows.Forms.Timer timer)
                 {
                     timer.Stop();
                     timer.Dispose();
                 }
+            };
+            timer.Start();
+        }
+
+        private void CleanupDragImage()
+        {
+            if (dragPreviewForm != null)
+            {
                 dragPreviewForm.Close();
                 dragPreviewForm.Dispose();
                 dragPreviewForm = null;
-            }
-        }
-
-        private void DrawComponentPreview(Graphics g, ComponentDefinition definition)
-        {
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            g.Clear(Color.White);
-
-            // Dibujar icono grande centrado
-            using (Font iconFont = new Font("Segoe UI", 32))
-            using (Brush iconBrush = new SolidBrush(definition.Color))
-            using (Pen borderPen = new Pen(definition.Color, 2))
-            {
-                // Borde
-                g.DrawRectangle(borderPen, 2, 2, 76, 76);
-
-                // Icono
-                SizeF iconSize = g.MeasureString(definition.Icon, iconFont);
-                g.DrawString(definition.Icon, iconFont, iconBrush,
-                    40 - iconSize.Width / 2, 40 - iconSize.Height / 2);
-
-                // Nombre
-                using (Font nameFont = new Font("Arial", 7, FontStyle.Bold))
-                {
-                    SizeF nameSize = g.MeasureString(definition.Name, nameFont);
-                    g.DrawString(definition.Name, nameFont, Brushes.Black,
-                        40 - nameSize.Width / 2, 65);
-                }
             }
         }
 
@@ -342,90 +337,38 @@ namespace BuckConverterCalculator.SchematicEditor
                 this.Width = ExpandedWidth;
                 expandButton.Text = "◀";
                 expandButton.Location = new Point(ExpandedWidth - 30, 2);
-                titleLabel.Visible = true;
+                foreach (Control ctrl in componentsPanel.Controls)
+                {
+                    if (ctrl is ComponentButton btn)
+                    {
+                        btn.Width = ExpandedWidth - 20;
+                        btn.SetExpanded(true);
+                    }
+                }
             }
             else
             {
                 this.Width = CollapsedWidth;
                 expandButton.Text = "▶";
                 expandButton.Location = new Point(CollapsedWidth - 30, 2);
-                titleLabel.Visible = false;
-            }
-
-            // Actualizar botones de componentes
-            foreach (Control ctrl in componentsPanel.Controls)
-            {
-                if (ctrl is ComponentButton btn)
+                foreach (Control ctrl in componentsPanel.Controls)
                 {
-                    btn.IsExpanded = isExpanded;
-                    btn.Width = isExpanded ? ExpandedWidth - 20 : CollapsedWidth - 10;
+                    if (ctrl is ComponentButton btn)
+                    {
+                        btn.Width = CollapsedWidth - 10;
+                        btn.SetExpanded(false);
+                    }
                 }
             }
 
-            // Notificar cambio de estado
             ExpandedChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        private void PinButton_Click(object sender, EventArgs e)
-        {
-            isPinned = !isPinned;
-
-            if (isPinned)
-            {
-                pinButton.BackColor = Color.FromArgb(62, 120, 180);
-                headerPanel.Cursor = Cursors.Default;
-                this.Cursor = Cursors.Default;
-            }
-            else
-            {
-                pinButton.BackColor = Color.FromArgb(100, 100, 100);
-                headerPanel.Cursor = Cursors.SizeAll;
-                this.Cursor = Cursors.Default;
-            }
-        }
-
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-        }
-
-        private void Header_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (!isPinned && e.Button == MouseButtons.Left)
-            {
-                isDragging = true;
-                dragStartPoint = e.Location;
-                originalLocation = this.Location;
-            }
-        }
-
-        private void Header_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isDragging && !isPinned)
-            {
-                Point newLocation = new Point(
-                    originalLocation.X + (e.X - dragStartPoint.X),
-                    originalLocation.Y + (e.Y - dragStartPoint.Y)
-                );
-
-                this.Location = newLocation;
-            }
-        }
-
-        private void Header_MouseUp(object sender, MouseEventArgs e)
-        {
-            isDragging = false;
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsPinned
         {
             get { return isPinned; }
-            set
-            {
-                isPinned = value;
-                PinButton_Click(this, EventArgs.Empty);
-            }
+            set { isPinned = value; }
         }
 
         public bool IsExpanded
@@ -455,7 +398,6 @@ namespace BuckConverterCalculator.SchematicEditor
             this.Height = parent.Height - topMargin;
             this.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             isPinned = true;
-            pinButton.BackColor = Color.FromArgb(62, 120, 180);
         }
 
         public void DockToRight(Control parent, int topMargin = 0)
@@ -465,7 +407,6 @@ namespace BuckConverterCalculator.SchematicEditor
             this.Height = parent.Height - topMargin;
             this.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
             isPinned = true;
-            pinButton.BackColor = Color.FromArgb(62, 120, 180);
         }
 
         public void Float(Point location)
@@ -473,7 +414,6 @@ namespace BuckConverterCalculator.SchematicEditor
             this.Location = location;
             this.Anchor = AnchorStyles.None;
             isPinned = false;
-            pinButton.BackColor = Color.FromArgb(100, 100, 100);
         }
     }
 
@@ -591,6 +531,7 @@ namespace BuckConverterCalculator.SchematicEditor
         public string ComponentName { get; set; }
         public string Icon { get; set; }
         public int ColorArgb { get; set; }
+        public bool IsBJT { get; set; } = false; // Nuevo campo para distinguir BJT
 
         public ComponentType GetComponentType()
         {
@@ -613,7 +554,6 @@ namespace BuckConverterCalculator.SchematicEditor
         }
     }
 }
-
 
 
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\BuckConverterCalculator.csproj": {}
+    "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\BuckConverterCalculator.csproj": {}
   },
   "projects": {
-    "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\BuckConverterCalculator.csproj": {
+    "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\BuckConverterCalculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\BuckConverterCalculator.csproj",
+        "projectUniqueName": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\BuckConverterCalculator.csproj",
         "projectName": "BuckConverterCalculator",
-        "projectPath": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\BuckConverterCalculator.csproj",
+        "projectPath": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\BuckConverterCalculator.csproj",
         "packagesPath": "C:\\Users\\Fabian\\.nuget\\packages\\",
-        "outputPath": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\obj\\",
+        "outputPath": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -52,9 +52,25 @@
         "net10.0-windows7.0": {
           "targetAlias": "net10.0-windows",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.102.0, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "OxyPlot.WindowsForms": {
+              "target": "Package",
+              "version": "[2.1.2, )"
             }
           },
           "imports": [

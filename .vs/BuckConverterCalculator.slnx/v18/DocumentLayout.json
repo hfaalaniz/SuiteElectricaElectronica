@@ -1,20 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck_1\\buckconvertercalculator\\buckconvertercalculator\\schematiceditor\\schematiceditorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\schematiceditor\\schematiceditorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck_1\\buckconvertercalculator\\buckconvertercalculator\\schematiceditor\\schematiccomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\schematiceditor\\schematiccomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck_1\\buckconvertercalculator\\buckconvertercalculator\\schematiceditor\\componenttoolbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\schematiceditor\\componenttoolbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,45 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ComponentToolBox.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\ComponentToolBox.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\SchematicEditor\\ComponentToolBox.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\ComponentToolBox.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\SchematicEditor\\ComponentToolBox.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAAAIkAAABnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:13:32.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SchematicComponent.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicComponent.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\SchematicEditor\\SchematicComponent.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicComponent.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\SchematicEditor\\SchematicComponent.cs",
-              "ViewState": "AgIAAH8QAAAAAAAAAAAmwIwQAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T00:14:15.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SchematicEditorForm.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicEditorForm.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\SchematicEditor\\SchematicEditorForm.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK_1\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicEditorForm.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\SchematicEditor\\SchematicEditorForm.cs",
-              "ViewState": "AgIAAIUDAAAAAAAAAADwvyAFAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T00:06:55.673Z",
-              "EditorCaption": ""
             }
           ]
         },

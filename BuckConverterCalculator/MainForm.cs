@@ -583,5 +583,11 @@ namespace BuckConverterCalculator
             CalculoProteccionMotores calcProt = new CalculoProteccionMotores();
             calcProt.Show();
         }
+
+        private void btnSchematicUnifilar_Click(object sender, EventArgs e)
+        {
+            SchematicUnifilar schematicUnifilar = new SchematicUnifilar();
+            schematicUnifilar.Show();
+        }
     }
 }
