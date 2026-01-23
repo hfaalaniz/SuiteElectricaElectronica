@@ -703,7 +703,7 @@ Crear un [Issue](https://github.com/hfaalaniz/SuiteElectricaElectronica/issues) 
 
 Este proyecto es parte de **SuiteElectricaElectronica**.
 
-**Licencia:** [Especificar licencia - MIT/Apache 2.0/GPL]
+**Licencia:** [MIT/Apache 2.0/GPL]
 
 ---
 
@@ -711,7 +711,7 @@ Este proyecto es parte de **SuiteElectricaElectronica**.
 
 **Héctor Fabián Alaniz**
 - GitHub: [@hfaalaniz](https://github.com/hfaalaniz)
-- Email: [especificar email]
+- Email: [hfaalaniz@gmail.com]
 
 ---
 
