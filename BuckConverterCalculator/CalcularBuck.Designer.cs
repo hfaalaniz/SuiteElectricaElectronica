@@ -1,6 +1,6 @@
 ﻿namespace BuckConverterCalculator
 {
-    partial class MainForm
+    partial class CalcularBuck
     {
         /// <summary>
         /// Required designer variable.
@@ -73,6 +73,7 @@
             btnTransformerCalculator = new Button();
             btnCalcProteccionMotores = new Button();
             btnSchematicUnifilar = new Button();
+            btnDatabaseComp = new Button();
             groupBoxInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numEfficiency).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numRippleVoltage).BeginInit();
@@ -552,7 +553,19 @@
             btnSchematicUnifilar.UseVisualStyleBackColor = true;
             btnSchematicUnifilar.Click += btnSchematicUnifilar_Click;
             // 
-            // MainForm
+            // btnDatabaseComp
+            // 
+            btnDatabaseComp.FlatStyle = FlatStyle.Flat;
+            btnDatabaseComp.Font = new Font("Segoe UI", 9F);
+            btnDatabaseComp.Location = new Point(799, 470);
+            btnDatabaseComp.Name = "btnDatabaseComp";
+            btnDatabaseComp.Size = new Size(118, 40);
+            btnDatabaseComp.TabIndex = 16;
+            btnDatabaseComp.Text = "Database Componentes";
+            btnDatabaseComp.UseVisualStyleBackColor = true;
+            btnDatabaseComp.Click += btnDatabaseComp_Click;
+            // 
+            // CalcularBuck
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -564,6 +577,7 @@
             Controls.Add(groupBoxResults);
             Controls.Add(btnSchematicUnifilar);
             Controls.Add(btnOpenEditor);
+            Controls.Add(btnDatabaseComp);
             Controls.Add(btnCalcProteccionMotores);
             Controls.Add(btnTransformerCalculator);
             Controls.Add(btnCalculateReactor);
@@ -576,7 +590,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip;
             MaximizeBox = false;
-            Name = "MainForm";
+            Name = "CalcularBuck";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Calculadora Buck Converter - Diseño de Fuentes Switching";
             groupBoxInput.ResumeLayout(false);
@@ -646,5 +660,6 @@
         private Button btnTransformerCalculator;
         private Button btnCalcProteccionMotores;
         private Button btnSchematicUnifilar;
+        private Button btnDatabaseComp;
     }
 }

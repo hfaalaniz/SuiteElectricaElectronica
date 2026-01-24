@@ -69,11 +69,21 @@ namespace BuckConverterCalculator.Analysis
         /// </summary>
         public double RMSInductorCurrent { get; set; }
 
+        // AGREGAR ESTA PROPIEDAD SI NO EXISTE:
+        public double RMSCurrent
+        {
+            get { return RMSInductorCurrent; }
+            set { RMSInductorCurrent = value; }
+        }
+
         public override string ToString()
         {
             return $"Mode: {Mode}, D1={DutyCycle:F3}, D2={DischargeDuty:F3}, D3={DeadTime:F3}, Ipeak={PeakInductorCurrent:F3}A";
         }
     }
+
+    /*
+    */
 
     /// <summary>
     /// Recomendación de inductor para evitar o permitir DCM
@@ -141,4 +151,6 @@ namespace BuckConverterCalculator.Analysis
                    SwitchingFrequency > 0;
         }
     }
+
+    
 }

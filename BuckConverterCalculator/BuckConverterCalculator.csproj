@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Database\ComponentScraper.cs" />
+    <Compile Remove="SchematicEditor\DesignParameters.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	  <!-- Para análisis matemático -->
 	  <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
@@ -19,6 +24,12 @@
 	  <!-- Para gráficas (opcional, si no usas custom) -->
 	  <PackageReference Include="OxyPlot.WindowsForms" Version="2.1.2" />
 	  <!-- Para exportar a PDF (opcional) -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ComponentDatabase.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

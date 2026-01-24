@@ -1,0 +1,637 @@
+﻿[
+  {
+    "PartNumber": "18F2550",
+    "Aliases": [ "PIC18F2550", "18F2550" ],
+    "Type": "Microcontroller",
+    "Manufacturer": "Microchip",
+    "PinCount": 28,
+    "Description": "8-bit PIC Microcontroller with USB",
+    "Pinout": [
+      {
+        "Pin": 1,
+        "Name": "MCLR/VPP/RE3",
+        "Type": "Input"
+      },
+      {
+        "Pin": 2,
+        "Name": "RA0/AN0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 3,
+        "Name": "RA1/AN1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 4,
+        "Name": "RA2/AN2/VREF-",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 5,
+        "Name": "RA3/AN3/VREF+",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 6,
+        "Name": "RA4/T0CKI",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 7,
+        "Name": "RA5/AN4/LVDIN",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 8,
+        "Name": "VSS",
+        "Type": "Ground"
+      },
+      {
+        "Pin": 9,
+        "Name": "OSC1/CLKI",
+        "Type": "Input"
+      },
+      {
+        "Pin": 10,
+        "Name": "OSC2/CLKO/RA6",
+        "Type": "Output"
+      },
+      {
+        "Pin": 11,
+        "Name": "RC0/T1OSO/T13CKI",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 12,
+        "Name": "RC1/T1OSI",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 13,
+        "Name": "RC2/CCP1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 14,
+        "Name": "RC4/D-/VM",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 15,
+        "Name": "RC5/D+/VP",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 16,
+        "Name": "RC6/TX/CK",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 17,
+        "Name": "RC7/RX/DT",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 18,
+        "Name": "RB7/KBI3/PGD",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 19,
+        "Name": "RB6/KBI2/PGC",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 20,
+        "Name": "RB5/KBI1/PGM",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 21,
+        "Name": "RB4/AN11/KBI0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 22,
+        "Name": "RB3/AN9/CCP2",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 23,
+        "Name": "RB2/AN8/INT2",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 24,
+        "Name": "RB1/AN10/INT1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 25,
+        "Name": "RB0/AN12/INT0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 26,
+        "Name": "VDD",
+        "Type": "Power"
+      },
+      {
+        "Pin": 27,
+        "Name": "VSS",
+        "Type": "Ground"
+      },
+      {
+        "Pin": 28,
+        "Name": "VDD",
+        "Type": "Power"
+      }
+    ]
+  },
+  {
+    "PartNumber": "18F4550",
+    "Aliases": [ "PIC18F4550", "18F4550" ],
+    "Type": "Microcontroller",
+    "Manufacturer": "Microchip",
+    "PinCount": 40,
+    "Description": "8-bit PIC Microcontroller with USB",
+    "Pinout": [
+      {
+        "Pin": 1,
+        "Name": "MCLR/VPP/RE3",
+        "Type": "Input"
+      },
+      {
+        "Pin": 2,
+        "Name": "RA0/AN0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 3,
+        "Name": "RA1/AN1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 4,
+        "Name": "RA2/AN2/VREF-",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 5,
+        "Name": "RA3/AN3/VREF+",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 6,
+        "Name": "RA4/T0CKI/C1OUT",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 7,
+        "Name": "RA5/AN4/LVDIN",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 8,
+        "Name": "RE0/AN5",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 9,
+        "Name": "RE1/AN6",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 10,
+        "Name": "RE2/AN7",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 11,
+        "Name": "VDD",
+        "Type": "Power"
+      },
+      {
+        "Pin": 12,
+        "Name": "VSS",
+        "Type": "Ground"
+      },
+      {
+        "Pin": 13,
+        "Name": "OSC1/CLKI",
+        "Type": "Input"
+      },
+      {
+        "Pin": 14,
+        "Name": "OSC2/CLKO/RA6",
+        "Type": "Output"
+      },
+      {
+        "Pin": 15,
+        "Name": "RC0/T1OSO/T13CKI",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 16,
+        "Name": "RC1/T1OSI/CCP2",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 17,
+        "Name": "RC2/CCP1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 18,
+        "Name": "RC3/SCK/SCL",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 19,
+        "Name": "RD0/SPP0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 20,
+        "Name": "RD1/SPP1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 21,
+        "Name": "RD2/SPP2",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 22,
+        "Name": "RD3/SPP3",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 23,
+        "Name": "RC4/D-/VM",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 24,
+        "Name": "RC5/D+/VP",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 25,
+        "Name": "RC6/TX/CK",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 26,
+        "Name": "RC7/RX/DT",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 27,
+        "Name": "RD4/SPP4",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 28,
+        "Name": "RD5/SPP5",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 29,
+        "Name": "RD6/SPP6",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 30,
+        "Name": "RD7/SPP7",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 31,
+        "Name": "VSS",
+        "Type": "Ground"
+      },
+      {
+        "Pin": 32,
+        "Name": "VDD",
+        "Type": "Power"
+      },
+      {
+        "Pin": 33,
+        "Name": "RB0/AN12/INT0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 34,
+        "Name": "RB1/AN10/INT1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 35,
+        "Name": "RB2/AN8/INT2",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 36,
+        "Name": "RB3/AN9/CCP2",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 37,
+        "Name": "RB4/AN11/KBI0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 38,
+        "Name": "RB5/KBI1/PGM",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 39,
+        "Name": "RB6/KBI2/PGC",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 40,
+        "Name": "RB7/KBI3/PGD",
+        "Type": "Bidirectional"
+      }
+    ]
+  },
+  {
+    "PartNumber": "ATMEGA328P",
+    "Aliases": [ "ATmega328P", "ATMEGA328P-PU" ],
+    "Type": "Microcontroller",
+    "Manufacturer": "Microchip",
+    "PinCount": 28,
+    "Description": "8-bit AVR Microcontroller",
+    "Pinout": [
+      {
+        "Pin": 1,
+        "Name": "PC6/RESET",
+        "Type": "Input"
+      },
+      {
+        "Pin": 2,
+        "Name": "PD0/RXD",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 3,
+        "Name": "PD1/TXD",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 4,
+        "Name": "PD2/INT0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 5,
+        "Name": "PD3/INT1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 6,
+        "Name": "PD4/T0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 7,
+        "Name": "VCC",
+        "Type": "Power"
+      },
+      {
+        "Pin": 8,
+        "Name": "GND",
+        "Type": "Ground"
+      },
+      {
+        "Pin": 9,
+        "Name": "PB6/XTAL1",
+        "Type": "Input"
+      },
+      {
+        "Pin": 10,
+        "Name": "PB7/XTAL2",
+        "Type": "Output"
+      },
+      {
+        "Pin": 11,
+        "Name": "PD5/T1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 12,
+        "Name": "PD6/AIN0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 13,
+        "Name": "PD7/AIN1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 14,
+        "Name": "PB0/ICP1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 15,
+        "Name": "PB1/OC1A",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 16,
+        "Name": "PB2/SS",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 17,
+        "Name": "PB3/MOSI",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 18,
+        "Name": "PB4/MISO",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 19,
+        "Name": "PB5/SCK",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 20,
+        "Name": "AVCC",
+        "Type": "Power"
+      },
+      {
+        "Pin": 21,
+        "Name": "AREF",
+        "Type": "Input"
+      },
+      {
+        "Pin": 22,
+        "Name": "GND",
+        "Type": "Ground"
+      },
+      {
+        "Pin": 23,
+        "Name": "PC0/ADC0",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 24,
+        "Name": "PC1/ADC1",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 25,
+        "Name": "PC2/ADC2",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 26,
+        "Name": "PC3/ADC3",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 27,
+        "Name": "PC4/ADC4",
+        "Type": "Bidirectional"
+      },
+      {
+        "Pin": 28,
+        "Name": "PC5/ADC5",
+        "Type": "Bidirectional"
+      }
+    ]
+  },
+  {
+    "PartNumber": "TL072",
+    "Aliases": [ "TL072CP", "TL072CN", "TL072CD" ],
+    "Type": "OpAmp",
+    "Manufacturer": "Texas Instruments",
+    "PinCount": 8,
+    "Description": "Dual JFET Op-Amp",
+    "Pinout": [
+      {
+        "Pin": 1,
+        "Name": "OUT A",
+        "Type": "Output"
+      },
+      {
+        "Pin": 2,
+        "Name": "IN- A",
+        "Type": "Input"
+      },
+      {
+        "Pin": 3,
+        "Name": "IN+ A",
+        "Type": "Input"
+      },
+      {
+        "Pin": 4,
+        "Name": "V-",
+        "Type": "Power"
+      },
+      {
+        "Pin": 5,
+        "Name": "IN+ B",
+        "Type": "Input"
+      },
+      {
+        "Pin": 6,
+        "Name": "IN- B",
+        "Type": "Input"
+      },
+      {
+        "Pin": 7,
+        "Name": "OUT B",
+        "Type": "Output"
+      },
+      {
+        "Pin": 8,
+        "Name": "V+",
+        "Type": "Power"
+      }
+    ]
+  },
+  {
+    "PartNumber": "LM358",
+    "Aliases": [ "LM358N", "LM358P" ],
+    "Type": "OpAmp",
+    "Manufacturer": "Texas Instruments",
+    "PinCount": 8,
+    "Description": "Dual Op-Amp",
+    "Pinout": [
+      {
+        "Pin": 1,
+        "Name": "OUT1",
+        "Type": "Output"
+      },
+      {
+        "Pin": 2,
+        "Name": "IN1-",
+        "Type": "Input"
+      },
+      {
+        "Pin": 3,
+        "Name": "IN1+",
+        "Type": "Input"
+      },
+      {
+        "Pin": 4,
+        "Name": "GND",
+        "Type": "Ground"
+      },
+      {
+        "Pin": 5,
+        "Name": "IN2+",
+        "Type": "Input"
+      },
+      {
+        "Pin": 6,
+        "Name": "IN2-",
+        "Type": "Input"
+      },
+      {
+        "Pin": 7,
+        "Name": "OUT2",
+        "Type": "Output"
+      },
+      {
+        "Pin": 8,
+        "Name": "VCC",
+        "Type": "Power"
+      }
+    ]
+  },
+  {
+    "PartNumber": "7805",
+    "Aliases": [ "LM7805", "L7805", "MC7805" ],
+    "Type": "Regulator",
+    "Manufacturer": "Various",
+    "PinCount": 3,
+    "Description": "5V Linear Regulator",
+    "Pinout": [
+      {
+        "Pin": 1,
+        "Name": "IN",
+        "Type": "Power"
+      },
+      {
+        "Pin": 2,
+        "Name": "GND",
+        "Type": "Ground"
+      },
+      {
+        "Pin": 3,
+        "Name": "OUT",
+        "Type": "Output"
+      }
+    ]
+  }
+]

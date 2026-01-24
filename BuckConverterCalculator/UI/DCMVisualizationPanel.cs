@@ -1,29 +1,27 @@
-﻿using BuckConverterCalculator.Analysis;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using BuckConverterCalculator.Analysis;
 
 namespace BuckConverterCalculator.UI
 {
+    /// <summary>
+    /// Panel personalizado para visualizar forma de onda en DCM
+    /// </summary>
     public class DCMVisualizationPanel : Panel
     {
         private DCMParameters parameters;
 
-        
         public DCMVisualizationPanel()
         {
-            this.AutoScroll = true;
+            this.DoubleBuffered = true;
             this.BackColor = Color.White;
-        }
-        public void SetParameters(DCMParameters paramsDCM)
-        {
-            this.parameters = paramsDCM;
-            this.Invalidate();
+            this.BorderStyle = BorderStyle.FixedSingle;
         }
 
-        // Analizar codigo comentado si se desea agregar más visualizaciones
-        public void UpdateVisualization(DCMParameters paramsDCM)
+        public void SetParameters(DCMParameters dcmParams)
         {
-            this.parameters = paramsDCM;
+            this.parameters = dcmParams;
             this.Invalidate();
         }
 
@@ -31,86 +29,176 @@ namespace BuckConverterCalculator.UI
         {
             base.OnPaint(e);
 
-            if (parameters == null) return;
+            if (parameters == null)
+            {
+                // CORREGIDO: Método renombrado correctamente
+                DrawEmptyState(e.Graphics);
+                return;
+            }
 
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Dibujar forma de onda del inductor en DCM
             DrawInductorCurrent(g);
-            // Analizar codigo comentado si se desea agregar más visualizaciones
-            //DrawOutputVoltage(g);
             DrawModeIndicator(g);
+        }
+
+        // CORREGIDO: Nombre del método
+        private void DrawEmptyState(Graphics g)
+        {
+            using (Font font = new Font("Arial", 10))
+            using (Brush brush = new SolidBrush(Color.Gray))
+            {
+                string message = "No DCM analysis data to display.\nRun DCM analysis to see waveform.";
+                SizeF size = g.MeasureString(message, font);
+                g.DrawString(message, font, brush,
+                    (this.Width - size.Width) / 2,
+                    (this.Height - size.Height) / 2);
+            }
         }
 
         private void DrawInductorCurrent(Graphics g)
         {
-            int width = this.Width - 40;
-            int height = 150;
-            int startX = 20;
-            int startY = 30;
+            int margin = 40;
+            int width = this.Width - 2 * margin;
+            int height = this.Height - 2 * margin - 60; // Espacio para indicador
 
-            // Ejes
-            using (Pen axisPen = new Pen(Color.Black, 1))
+            // Título
+            using (Font titleFont = new Font("Arial", 11, FontStyle.Bold))
             {
-                g.DrawLine(axisPen, startX, startY + height, startX + width, startY + height);
-                g.DrawLine(axisPen, startX, startY, startX, startY + height);
+                g.DrawString("Inductor Current Waveform", titleFont, Brushes.Black, margin, 10);
             }
 
-            // Forma de onda DCM
-            using (Pen wavePen = new Pen(Color.Blue, 2))
+            // Ejes
+            using (Pen axisPen = new Pen(Color.Black, 2))
             {
-                int d1Width = (int)(width * parameters.DutyCycle);
-                int d2Width = (int)(width * parameters.DischargeDuty);
-                int d3Width = width - d1Width - d2Width;
+                g.DrawLine(axisPen, margin, margin + height, margin + width, margin + height);
+                g.DrawLine(axisPen, margin, margin, margin, margin + height);
+            }
 
-                // D1: Rampa ascendente
-                g.DrawLine(wavePen,
-                    startX, startY + height,
-                    startX + d1Width, startY);
+            // Grid
+            using (Pen gridPen = new Pen(Color.LightGray, 1))
+            {
+                gridPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
 
-                // D2: Rampa descendente
-                g.DrawLine(wavePen,
-                    startX + d1Width, startY,
-                    startX + d1Width + d2Width, startY + height);
-
-                // D3: Cero (tiempo muerto)
-                g.DrawLine(wavePen,
-                    startX + d1Width + d2Width, startY + height,
-                    startX + width, startY + height);
-
-                // Etiquetas
-                using (Font font = new Font("Arial", 8))
+                for (int i = 0; i <= 4; i++)
                 {
-                    g.DrawString($"D1={parameters.DutyCycle:F3}", font, Brushes.Black,
-                        startX + d1Width / 2 - 20, startY + height + 5);
-                    g.DrawString($"D2={parameters.DischargeDuty:F3}", font, Brushes.Black,
-                        startX + d1Width + d2Width / 2 - 20, startY + height + 5);
-                    g.DrawString($"D3={parameters.DeadTime:F3}", font, Brushes.Black,
-                        startX + d1Width + d2Width + d3Width / 2 - 20, startY + height + 5);
+                    int y = margin + (height * i / 4);
+                    g.DrawLine(gridPen, margin, y, margin + width, y);
+                }
+
+                for (int i = 0; i <= 4; i++)
+                {
+                    int x = margin + (width * i / 4);
+                    g.DrawLine(gridPen, x, margin, x, margin + height);
                 }
             }
 
-            // Etiqueta de título
-            using (Font titleFont = new Font("Arial", 10, FontStyle.Bold))
+            // Forma de onda triangular
+            using (Pen wavePen = new Pen(Color.Blue, 3))
             {
-                g.DrawString("Inductor Current (DCM)", titleFont, Brushes.Black, startX, startY - 20);
+                double d1 = parameters.DutyCycle;
+                double d2 = parameters.DischargeDuty;
+                double d3 = parameters.DeadTime;
+                double iPeak = parameters.PeakInductorCurrent;
+
+                int x0 = margin;
+                int y0 = margin + height;
+
+                int x1 = margin + (int)(width * d1);
+                int y1 = margin + (int)(height * (1 - iPeak / (iPeak * 1.2)));
+
+                int x2 = margin + (int)(width * (d1 + d2));
+                int y2 = y0;
+
+                int x3 = margin + width;
+                int y3 = y0;
+
+                // D1: Subida
+                g.DrawLine(wavePen, x0, y0, x1, y1);
+
+                // D2: Bajada
+                g.DrawLine(wavePen, x1, y1, x2, y2);
+
+                // D3: Cero
+                g.DrawLine(wavePen, x2, y2, x3, y3);
+
+                // Etiquetas de tiempos
+                using (Font font = new Font("Arial", 9))
+                {
+                    g.DrawString($"D1={d1:F3}", font, Brushes.Blue, x0 + (x1 - x0) / 2 - 25, y0 + 10);
+                    g.DrawString($"D2={d2:F3}", font, Brushes.Blue, x1 + (x2 - x1) / 2 - 25, y0 + 10);
+                    g.DrawString($"D3={d3:F3}", font, Brushes.Gray, x2 + (x3 - x2) / 2 - 25, y0 + 10);
+                }
+            }
+
+            // Etiquetas de corriente
+            using (Font font = new Font("Arial", 8))
+            {
+                double iPeak = parameters.PeakInductorCurrent;
+
+                for (int i = 0; i <= 4; i++)
+                {
+                    double current = iPeak * 1.2 * (4 - i) / 4;
+                    int y = margin + (height * i / 4);
+                    string label = $"{current:F2}A";
+                    SizeF size = g.MeasureString(label, font);
+                    g.DrawString(label, font, Brushes.Black, margin - size.Width - 5, y - 8);
+                }
+            }
+
+            // Eje de tiempo
+            using (Font font = new Font("Arial", 8))
+            {
+                g.DrawString("Time (one switching period)", font, Brushes.Black, margin + width / 2 - 80, margin + height + 25);
             }
         }
 
         private void DrawModeIndicator(Graphics g)
         {
-            string modeText = parameters.Mode == OperatingMode.DCM ?
-                "DCM - Discontinuous Conduction Mode" :
-                "CCM - Continuous Conduction Mode";
+            int y = this.Height - 50;
+            int x = 40;
 
-            Color modeColor = parameters.Mode == OperatingMode.DCM ?
-                Color.Orange : Color.Green;
+            Color modeColor;
+            string modeText;
 
-            using (Font font = new Font("Arial", 12, FontStyle.Bold))
-            using (Brush brush = new SolidBrush(modeColor))
+            switch (parameters.Mode)
             {
-                g.DrawString(modeText, font, brush, 20, this.Height - 40);
+                case OperatingMode.DCM:
+                    modeColor = Color.Orange;
+                    modeText = "DCM (Discontinuous)";
+                    break;
+                case OperatingMode.CCM:
+                    modeColor = Color.Green;
+                    modeText = "CCM (Continuous)";
+                    break;
+                case OperatingMode.BCM:
+                    modeColor = Color.Yellow;
+                    modeText = "BCM (Boundary)";
+                    break;
+                default:
+                    modeColor = Color.Gray;
+                    modeText = "Unknown";
+                    break;
+            }
+
+            using (Font font = new Font("Arial", 10, FontStyle.Bold))
+            using (Brush brush = new SolidBrush(modeColor))
+            using (Pen pen = new Pen(Color.Black, 2))
+            {
+                g.FillEllipse(brush, x, y, 30, 30);
+                g.DrawEllipse(pen, x, y, 30, 30);
+
+                g.DrawString(modeText, font, Brushes.Black, x + 40, y + 5);
+            }
+
+            // Métricas adicionales
+            using (Font font = new Font("Arial", 9))
+            {
+                string metrics = $"Peak Current: {parameters.PeakInductorCurrent:F3}A  |  " +
+                               $"Avg Current: {parameters.AverageInductorCurrent:F3}A  |  " +
+                               $"Ripple: {parameters.OutputRipple * 1000:F2}mV";
+                g.DrawString(metrics, font, Brushes.DarkBlue, x + 250, y + 8);
             }
         }
     }

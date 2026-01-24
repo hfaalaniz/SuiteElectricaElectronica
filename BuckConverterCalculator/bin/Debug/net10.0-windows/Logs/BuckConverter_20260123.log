@@ -1,0 +1,764 @@
+[2026-01-23 23:29:00.233] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:29:00.233] [INFO] [SchematicEditor] === OnSearchComponent CALLED ===
+[2026-01-23 23:29:00.234] [INFO] [SchematicEditor] Creating ComponentSearchDialog...
+[2026-01-23 23:29:00.235] [INFO] [SearchDialog] Initializing ComponentSearchDialog
+[2026-01-23 23:29:00.254] [INFO] [SearchDialog] ComponentSearchDialog initialized successfully
+[2026-01-23 23:29:00.255] [INFO] [SchematicEditor] Showing ComponentSearchDialog...
+[2026-01-23 23:29:09.560] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:29:09.561] [INFO] [SearchDialog] === SEARCH BUTTON CLICKED ===
+[2026-01-23 23:29:09.569] [DEBUG] [SearchDialog] Criteria.PartNumber = 2n2222
+[2026-01-23 23:29:09.570] [INFO] [SearchDialog] Search criteria built. Source: DigiKey API
+[2026-01-23 23:29:09.573] [INFO] [SearchDialog] Starting search with source: DigiKey API
+[2026-01-23 23:29:09.574] [INFO] [SearchDialog] Searching DigiKey API...
+[2026-01-23 23:29:09.577] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:29:09.577] [INFO] [ScraperService] Starting DigiKey search
+[2026-01-23 23:29:09.578] [DEBUG] [ScraperService] Search criteria: Type=, Manufacturer=, PartNumber=2n2222
+[2026-01-23 23:29:09.578] [INFO] [ScraperService] Ensuring valid access token...
+[2026-01-23 23:29:09.618] [INFO] [ScraperService] Token expired or not available, requesting new token...
+[2026-01-23 23:29:09.626] [INFO] [ScraperService] Requesting token from: https://api.digikey.com/v1/oauth2/token
+[2026-01-23 23:29:09.626] [DEBUG] [ScraperService] Client ID: qNkQG5VYcA...
+[2026-01-23 23:29:10.729] [DEBUG] [ScraperService] Token response status: OK
+[2026-01-23 23:29:10.787] [INFO] [ScraperService] Token obtained successfully. Expires at: 2026-01-23 23:34:09
+[2026-01-23 23:29:10.788] [DEBUG] [ScraperService] Token preview: 9WfeDo63aWACWjEoT7nq...
+[2026-01-23 23:29:10.789] [DEBUG] [ScraperService] Added PartNumber to keywords: 2n2222
+[2026-01-23 23:29:10.790] [INFO] [ScraperService] Final search keywords: '2n2222'
+[2026-01-23 23:29:10.790] [INFO] [ScraperService] Search keywords: '2n2222'
+[2026-01-23 23:29:10.794] [INFO] [ScraperService] Searching DigiKey API: '2n2222', Limit: 50
+[2026-01-23 23:29:10.795] [DEBUG] [ScraperService] Headers configured for DigiKey API request
+[2026-01-23 23:29:10.811] [DEBUG] [ScraperService] Request JSON: {"Keywords":"2n2222","Limit":50,"Offset":0,"FilterOptionsRequest":{}}
+[2026-01-23 23:29:10.812] [INFO] [ScraperService] Sending POST request to: https://api.digikey.com/products/v4/search/keyword
+[2026-01-23 23:29:12.404] [INFO] [ScraperService] Response status: OK
+[2026-01-23 23:29:12.405] [DEBUG] [ScraperService] Response length: 325629 characters
+[2026-01-23 23:29:12.433] [INFO] [ScraperService] Found 50 products in response
+[2026-01-23 23:29:12.433] [DEBUG] [ScraperService] === FIRST PRODUCT RAW DATA ===
+[2026-01-23 23:29:12.434] [DEBUG] [ScraperService] ManufacturerProductNumber: '2N2222 PBFREE'
+[2026-01-23 23:29:12.434] [DEBUG] [ScraperService] Description.ProductDescription: 'TRANS NPN 30V 0.8A TO-18'
+[2026-01-23 23:29:12.435] [DEBUG] [ScraperService] Description.DetailedDescription: 'Bipolar (BJT) Transistor NPN 30 V 800 mA 250MHz 500 mW Through Hole TO-18'
+[2026-01-23 23:29:12.435] [DEBUG] [ScraperService] Manufacturer.Name: 'Central Semiconductor Corp'
+[2026-01-23 23:29:12.436] [DEBUG] [ScraperService] UnitPrice: 3,18
+[2026-01-23 23:29:12.437] [DEBUG] [ScraperService] QuantityAvailable: 3570
+[2026-01-23 23:29:12.437] [DEBUG] [ScraperService] DatasheetUrl: 'https://my.centralsemi.com/datasheets/2N2221.PDF'
+[2026-01-23 23:29:12.437] [DEBUG] [ScraperService] Parameters count: 12
+[2026-01-23 23:29:12.438] [DEBUG] [ScraperService] === END FIRST PRODUCT ===
+[2026-01-23 23:29:12.440] [INFO] [ScraperService] Successfully converted 50 DigiKey components
+[2026-01-23 23:29:12.440] [DEBUG] [ScraperService] Result 1: Central Semiconductor Corp 2N2222 PBFREE - $3,18
+[2026-01-23 23:29:12.441] [DEBUG] [ScraperService]   Description: TRANS NPN 30V 0.8A TO-18
+[2026-01-23 23:29:12.441] [DEBUG] [ScraperService]   Stock: 3570
+[2026-01-23 23:29:12.442] [DEBUG] [ScraperService] Result 2: Central Semiconductor Corp 2N2222A PBFREE - $3,29
+[2026-01-23 23:29:12.442] [DEBUG] [ScraperService]   Description: TRANS NPN 40V 0.8A TO-18
+[2026-01-23 23:29:12.442] [DEBUG] [ScraperService]   Stock: 10977
+[2026-01-23 23:29:12.443] [DEBUG] [ScraperService] Result 3: TT Electronics/Optek Technology 2N2222AUB - $34,76
+[2026-01-23 23:29:12.443] [DEBUG] [ScraperService]   Description: TRANS NPN 50V 0.8A CERAMIC SMD
+[2026-01-23 23:29:12.443] [DEBUG] [ScraperService]   Stock: 1214
+[2026-01-23 23:29:12.443] [INFO] [ScraperService] DigiKey returned 50 results
+[2026-01-23 23:29:12.445] [INFO] [ScraperService] Converted to 50 ElectronicComponent objects
+[2026-01-23 23:29:12.446] [DEBUG] [ScraperService] Result 1: Central Semiconductor Corp 2N2222 PBFREE - $3,18
+[2026-01-23 23:29:12.446] [DEBUG] [ScraperService] Result 2: Central Semiconductor Corp 2N2222A PBFREE - $3,29
+[2026-01-23 23:29:12.446] [DEBUG] [ScraperService] Result 3: TT Electronics/Optek Technology 2N2222AUB - $34,76
+[2026-01-23 23:29:12.447] [INFO] [SearchDialog] DigiKey API returned 50 results
+[2026-01-23 23:29:12.447] [INFO] [SearchDialog] Total results before deduplication: 50
+[2026-01-23 23:29:12.449] [INFO] [SearchDialog] Results after deduplication: 41
+[2026-01-23 23:29:12.450] [DEBUG] [SearchDialog] Results sorted by price
+[2026-01-23 23:29:12.451] [INFO] [SearchDialog] Search completed. Total results: 41
+[2026-01-23 23:29:12.452] [INFO] [SearchDialog] Displaying 41 results in grid
+[2026-01-23 23:29:12.471] [INFO] [SearchDialog] Results displayed successfully in grid
+[2026-01-23 23:29:15.513] [WARNING] [SearchDialog] DataBoundItem not available, creating component from cells
+[2026-01-23 23:29:15.516] [DEBUG] [SearchDialog] Column 'Supplier' not found in grid
+[2026-01-23 23:29:15.517] [DEBUG] [SearchDialog] Column 'Datasheet' not found in grid
+[2026-01-23 23:29:15.517] [DEBUG] [SearchDialog] Column 'Specifications' not found in grid
+[2026-01-23 23:29:15.518] [INFO] [SearchDialog] Component created from grid cells: onsemi 2N2222
+[2026-01-23 23:29:15.518] [INFO] [SearchDialog]   Type: IC
+[2026-01-23 23:29:15.518] [INFO] [SearchDialog]   Price: $0,36
+[2026-01-23 23:29:15.518] [INFO] [SearchDialog]   Stock: 0
+[2026-01-23 23:29:15.550] [INFO] [SchematicEditor] Dialog closed with result: OK
+[2026-01-23 23:29:15.551] [INFO] [SchematicEditor] Component selected: 2N2222
+[2026-01-23 23:29:15.551] [INFO] [SchematicEditor]   Type: IC
+[2026-01-23 23:29:15.551] [INFO] [SchematicEditor]   Manufacturer: onsemi
+[2026-01-23 23:29:15.552] [INFO] [SchematicEditor]   Description: TRANS NPN 30V 0.8A TO-18
+[2026-01-23 23:29:15.552] [INFO] [SchematicEditor]   Specifications count: 0
+[2026-01-23 23:29:15.555] [INFO] [SchematicEditor] Calling AddComponentFromDatabase...
+[2026-01-23 23:29:15.557] [INFO] [SchematicEditor] === AddComponentFromDatabase CALLED ===
+[2026-01-23 23:29:15.558] [INFO] [SchematicEditor] Component received: Type=IC, PartNumber=2N2222
+[2026-01-23 23:29:15.559] [INFO] [SchematicEditor] Calling CreateSchematicComponentFromDatabase...
+[2026-01-23 23:29:15.566] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:29:15.567] [INFO] [SchematicEditor] === COMPONENT DIAGNOSTIC ===
+[2026-01-23 23:29:15.567] [INFO] [SchematicEditor] PartNumber: '2N2222'
+[2026-01-23 23:29:15.567] [INFO] [SchematicEditor] Type (RAW): 'IC'
+[2026-01-23 23:29:15.567] [INFO] [SchematicEditor] Manufacturer: 'onsemi'
+[2026-01-23 23:29:15.568] [INFO] [SchematicEditor] Description: 'TRANS NPN 30V 0.8A TO-18'
+[2026-01-23 23:29:15.568] [INFO] [SchematicEditor] Specifications count: 0
+[2026-01-23 23:29:15.568] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:29:15.569] [INFO] [SchematicEditor] Normalized type: 'TRANSISTOR'
+[2026-01-23 23:29:15.579] [INFO] [SchematicEditor] === Advanced Pin Detection Started ===
+[2026-01-23 23:29:15.580] [DEBUG] [SchematicEditor] Analyzing Description: 'TRANS NPN 30V 0.8A TO-18'
+[2026-01-23 23:29:15.596] [WARNING] [SchematicEditor] ⚠️ Could not detect pin count, using default: 8
+[2026-01-23 23:29:15.597] [INFO] [SchematicEditor] ✅ Creating BJTComponent...
+[2026-01-23 23:29:15.604] [INFO] [SchematicEditor] ✅ Component created: BJTComponent
+[2026-01-23 23:29:15.604] [INFO] [SchematicEditor] Schematic component created: BJTComponent
+[2026-01-23 23:29:15.605] [INFO] [SchematicEditor] Getting position...
+[2026-01-23 23:29:15.605] [INFO] [SchematicEditor] Position obtained: (100, 100)
+[2026-01-23 23:29:15.606] [INFO] [SchematicEditor] Generating unique designator...
+[2026-01-23 23:29:15.607] [INFO] [SchematicEditor] Designator generated: Q1
+[2026-01-23 23:29:15.607] [INFO] [SchematicEditor] Updating bounds...
+[2026-01-23 23:29:15.608] [INFO] [SchematicEditor] Bounds updated: {X=65,Y=75,Width=90,Height=110}
+[2026-01-23 23:29:15.609] [INFO] [SchematicEditor] Components count BEFORE add: 10
+[2026-01-23 23:29:15.609] [INFO] [SchematicEditor] Adding component to document...
+[2026-01-23 23:29:15.610] [INFO] [SchematicEditor] Components count AFTER add: 11
+[2026-01-23 23:29:15.611] [INFO] [SchematicEditor] Refreshing canvas...
+[2026-01-23 23:29:15.612] [INFO] [SchematicEditor] Calling canvas.Invalidate()...
+[2026-01-23 23:29:15.612] [INFO] [SchematicEditor] canvas.Invalidate() completed
+[2026-01-23 23:29:15.612] [INFO] [SchematicEditor] Calling canvasPanel.Invalidate()...
+[2026-01-23 23:29:15.613] [INFO] [SchematicEditor] canvasPanel.Invalidate() completed
+[2026-01-23 23:29:15.613] [INFO] [SchematicEditor] Calling this.Refresh()...
+[2026-01-23 23:29:15.715] [INFO] [SchematicEditor] this.Refresh() completed
+[2026-01-23 23:29:15.715] [INFO] [SchematicEditor] Clearing selection...
+[2026-01-23 23:29:15.716] [INFO] [SchematicEditor] Selecting new component...
+[2026-01-23 23:29:15.716] [INFO] [SchematicEditor] Updating PropertyGrid...
+[2026-01-23 23:29:15.736] [INFO] [SchematicEditor] Component successfully added: Q1
+[2026-01-23 23:29:15.736] [INFO] [SchematicEditor] Showing success message...
+[2026-01-23 23:29:17.256] [INFO] [SchematicEditor] === AddComponentFromDatabase COMPLETED SUCCESSFULLY ===
+[2026-01-23 23:29:17.256] [INFO] [SchematicEditor] AddComponentFromDatabase returned
+[2026-01-23 23:29:17.256] [INFO] [SchematicEditor] === OnSearchComponent COMPLETED ===
+[2026-01-23 23:29:41.198] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:29:41.198] [INFO] [SchematicEditor] === OnSearchComponent CALLED ===
+[2026-01-23 23:29:41.199] [INFO] [SchematicEditor] Creating ComponentSearchDialog...
+[2026-01-23 23:29:41.199] [INFO] [SearchDialog] Initializing ComponentSearchDialog
+[2026-01-23 23:29:41.202] [INFO] [SearchDialog] ComponentSearchDialog initialized successfully
+[2026-01-23 23:29:41.203] [INFO] [SchematicEditor] Showing ComponentSearchDialog...
+[2026-01-23 23:29:52.223] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:29:52.224] [INFO] [SearchDialog] === SEARCH BUTTON CLICKED ===
+[2026-01-23 23:29:52.230] [DEBUG] [SearchDialog] Criteria.PartNumber = 18F2550
+[2026-01-23 23:29:52.230] [INFO] [SearchDialog] Search criteria built. Source: DigiKey API
+[2026-01-23 23:29:52.231] [INFO] [SearchDialog] Starting search with source: DigiKey API
+[2026-01-23 23:29:52.231] [INFO] [SearchDialog] Searching DigiKey API...
+[2026-01-23 23:29:52.231] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:29:52.232] [INFO] [ScraperService] Starting DigiKey search
+[2026-01-23 23:29:52.232] [DEBUG] [ScraperService] Search criteria: Type=, Manufacturer=, PartNumber=18F2550
+[2026-01-23 23:29:52.232] [INFO] [ScraperService] Ensuring valid access token...
+[2026-01-23 23:29:52.232] [DEBUG] [ScraperService] Using cached token (expires: 2026-01-23 23:34:09)
+[2026-01-23 23:29:52.233] [DEBUG] [ScraperService] Added PartNumber to keywords: 18F2550
+[2026-01-23 23:29:52.233] [INFO] [ScraperService] Final search keywords: '18F2550'
+[2026-01-23 23:29:52.233] [INFO] [ScraperService] Search keywords: '18F2550'
+[2026-01-23 23:29:52.234] [INFO] [ScraperService] Searching DigiKey API: '18F2550', Limit: 50
+[2026-01-23 23:29:52.234] [DEBUG] [ScraperService] Headers configured for DigiKey API request
+[2026-01-23 23:29:52.235] [DEBUG] [ScraperService] Request JSON: {"Keywords":"18F2550","Limit":50,"Offset":0,"FilterOptionsRequest":{}}
+[2026-01-23 23:29:52.235] [INFO] [ScraperService] Sending POST request to: https://api.digikey.com/products/v4/search/keyword
+[2026-01-23 23:29:52.992] [INFO] [ScraperService] Response status: OK
+[2026-01-23 23:29:52.992] [DEBUG] [ScraperService] Response length: 29876 characters
+[2026-01-23 23:29:52.997] [INFO] [ScraperService] Found 5 products in response
+[2026-01-23 23:29:52.998] [DEBUG] [ScraperService] === FIRST PRODUCT RAW DATA ===
+[2026-01-23 23:29:52.998] [DEBUG] [ScraperService] ManufacturerProductNumber: 'PIC18F2550-I/SO'
+[2026-01-23 23:29:52.998] [DEBUG] [ScraperService] Description.ProductDescription: 'IC MCU 8BIT 32KB FLASH 28SOIC'
+[2026-01-23 23:29:52.999] [DEBUG] [ScraperService] Description.DetailedDescription: 'PIC PIC® 18F Microcontroller IC 8-Bit 48MHz 32KB (16K x 16) FLASH 28-SOIC'
+[2026-01-23 23:29:52.999] [DEBUG] [ScraperService] Manufacturer.Name: 'Microchip Technology'
+[2026-01-23 23:29:52.999] [DEBUG] [ScraperService] UnitPrice: 6,46
+[2026-01-23 23:29:53.000] [DEBUG] [ScraperService] QuantityAvailable: 2570
+[2026-01-23 23:29:53.000] [DEBUG] [ScraperService] DatasheetUrl: 'https://ww1.microchip.com/downloads/en/DeviceDoc/39632e.pdf'
+[2026-01-23 23:29:53.000] [DEBUG] [ScraperService] Parameters count: 18
+[2026-01-23 23:29:53.001] [DEBUG] [ScraperService] === END FIRST PRODUCT ===
+[2026-01-23 23:29:53.001] [INFO] [ScraperService] Successfully converted 5 DigiKey components
+[2026-01-23 23:29:53.001] [DEBUG] [ScraperService] Result 1: Microchip Technology PIC18F2550-I/SO - $6,46
+[2026-01-23 23:29:53.002] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 28SOIC
+[2026-01-23 23:29:53.002] [DEBUG] [ScraperService]   Stock: 2570
+[2026-01-23 23:29:53.002] [DEBUG] [ScraperService] Result 2: Microchip Technology PIC18F2550T-I/SO - $6,54
+[2026-01-23 23:29:53.003] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 28SOIC
+[2026-01-23 23:29:53.003] [DEBUG] [ScraperService]   Stock: 1659
+[2026-01-23 23:29:53.003] [DEBUG] [ScraperService] Result 3: Microchip Technology PIC18F2550-I/SP - $7,04
+[2026-01-23 23:29:53.003] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 28SPDIP
+[2026-01-23 23:29:53.004] [DEBUG] [ScraperService]   Stock: 574
+[2026-01-23 23:29:53.004] [INFO] [ScraperService] DigiKey returned 5 results
+[2026-01-23 23:29:53.004] [INFO] [ScraperService] Converted to 5 ElectronicComponent objects
+[2026-01-23 23:29:53.005] [DEBUG] [ScraperService] Result 1: Microchip Technology PIC18F2550-I/SO - $6,46
+[2026-01-23 23:29:53.005] [DEBUG] [ScraperService] Result 2: Microchip Technology PIC18F2550T-I/SO - $6,54
+[2026-01-23 23:29:53.005] [DEBUG] [ScraperService] Result 3: Microchip Technology PIC18F2550-I/SP - $7,04
+[2026-01-23 23:29:53.006] [INFO] [SearchDialog] DigiKey API returned 5 results
+[2026-01-23 23:29:53.006] [INFO] [SearchDialog] Total results before deduplication: 5
+[2026-01-23 23:29:53.006] [INFO] [SearchDialog] Results after deduplication: 5
+[2026-01-23 23:29:53.007] [DEBUG] [SearchDialog] Results sorted by price
+[2026-01-23 23:29:53.007] [INFO] [SearchDialog] Search completed. Total results: 5
+[2026-01-23 23:29:53.007] [INFO] [SearchDialog] Displaying 5 results in grid
+[2026-01-23 23:29:53.012] [INFO] [SearchDialog] Results displayed successfully in grid
+[2026-01-23 23:29:58.552] [WARNING] [SearchDialog] DataBoundItem not available, creating component from cells
+[2026-01-23 23:29:58.552] [DEBUG] [SearchDialog] Column 'Supplier' not found in grid
+[2026-01-23 23:29:58.552] [DEBUG] [SearchDialog] Column 'Datasheet' not found in grid
+[2026-01-23 23:29:58.553] [DEBUG] [SearchDialog] Column 'Specifications' not found in grid
+[2026-01-23 23:29:58.553] [INFO] [SearchDialog] Component created from grid cells: Microchip Technology PIC18F2550-I/SO
+[2026-01-23 23:29:58.553] [INFO] [SearchDialog]   Type: IC
+[2026-01-23 23:29:58.554] [INFO] [SearchDialog]   Price: $6,46
+[2026-01-23 23:29:58.554] [INFO] [SearchDialog]   Stock: 2570
+[2026-01-23 23:29:58.566] [INFO] [SchematicEditor] Dialog closed with result: OK
+[2026-01-23 23:29:58.567] [INFO] [SchematicEditor] Component selected: PIC18F2550-I/SO
+[2026-01-23 23:29:58.568] [INFO] [SchematicEditor]   Type: IC
+[2026-01-23 23:29:58.568] [INFO] [SchematicEditor]   Manufacturer: Microchip Technology
+[2026-01-23 23:29:58.568] [INFO] [SchematicEditor]   Description: IC MCU 8BIT 32KB FLASH 28SOIC
+[2026-01-23 23:29:58.568] [INFO] [SchematicEditor]   Specifications count: 0
+[2026-01-23 23:29:58.569] [INFO] [SchematicEditor] Calling AddComponentFromDatabase...
+[2026-01-23 23:29:58.569] [INFO] [SchematicEditor] === AddComponentFromDatabase CALLED ===
+[2026-01-23 23:29:58.569] [INFO] [SchematicEditor] Component received: Type=IC, PartNumber=PIC18F2550-I/SO
+[2026-01-23 23:29:58.570] [INFO] [SchematicEditor] Calling CreateSchematicComponentFromDatabase...
+[2026-01-23 23:29:58.570] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:29:58.571] [INFO] [SchematicEditor] === COMPONENT DIAGNOSTIC ===
+[2026-01-23 23:29:58.571] [INFO] [SchematicEditor] PartNumber: 'PIC18F2550-I/SO'
+[2026-01-23 23:29:58.571] [INFO] [SchematicEditor] Type (RAW): 'IC'
+[2026-01-23 23:29:58.571] [INFO] [SchematicEditor] Manufacturer: 'Microchip Technology'
+[2026-01-23 23:29:58.572] [INFO] [SchematicEditor] Description: 'IC MCU 8BIT 32KB FLASH 28SOIC'
+[2026-01-23 23:29:58.572] [INFO] [SchematicEditor] Specifications count: 0
+[2026-01-23 23:29:58.572] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:29:58.572] [INFO] [SchematicEditor] Normalized type: 'IC'
+[2026-01-23 23:29:58.573] [INFO] [SchematicEditor] === Advanced Pin Detection Started ===
+[2026-01-23 23:29:58.573] [DEBUG] [SchematicEditor] Analyzing Description: 'IC MCU 8BIT 32KB FLASH 28SOIC'
+[2026-01-23 23:29:58.574] [INFO] [SchematicEditor] ✅ Pin count from Description: 28
+[2026-01-23 23:29:58.575] [INFO] [SchematicEditor] ✅ Creating ICComponent (Generic IC) with 28 pins...
+[2026-01-23 23:29:58.586] [INFO] [SchematicEditor] ✅ Component created: ICComponent
+[2026-01-23 23:29:58.586] [INFO] [SchematicEditor]    IC with 28 pins configured
+[2026-01-23 23:29:58.587] [INFO] [SchematicEditor] Schematic component created: ICComponent
+[2026-01-23 23:29:58.587] [INFO] [SchematicEditor] Getting position...
+[2026-01-23 23:29:58.587] [INFO] [SchematicEditor] Position obtained: (200, 100)
+[2026-01-23 23:29:58.587] [INFO] [SchematicEditor] Generating unique designator...
+[2026-01-23 23:29:58.588] [INFO] [SchematicEditor] Designator generated: U1
+[2026-01-23 23:29:58.588] [INFO] [SchematicEditor] Updating bounds...
+[2026-01-23 23:29:58.588] [INFO] [SchematicEditor] Bounds updated: {X=190,Y=90,Width=140,Height=100}
+[2026-01-23 23:29:58.589] [INFO] [SchematicEditor] Components count BEFORE add: 11
+[2026-01-23 23:29:58.597] [INFO] [SchematicEditor] Adding component to document...
+[2026-01-23 23:29:58.598] [INFO] [SchematicEditor] Components count AFTER add: 12
+[2026-01-23 23:29:58.598] [INFO] [SchematicEditor] Refreshing canvas...
+[2026-01-23 23:29:58.598] [INFO] [SchematicEditor] Calling canvas.Invalidate()...
+[2026-01-23 23:29:58.598] [INFO] [SchematicEditor] canvas.Invalidate() completed
+[2026-01-23 23:29:58.599] [INFO] [SchematicEditor] Calling canvasPanel.Invalidate()...
+[2026-01-23 23:29:58.599] [INFO] [SchematicEditor] canvasPanel.Invalidate() completed
+[2026-01-23 23:29:58.599] [INFO] [SchematicEditor] Calling this.Refresh()...
+[2026-01-23 23:29:58.744] [INFO] [SchematicEditor] this.Refresh() completed
+[2026-01-23 23:29:58.745] [INFO] [SchematicEditor] Clearing selection...
+[2026-01-23 23:29:58.745] [INFO] [SchematicEditor] Selecting new component...
+[2026-01-23 23:29:58.746] [INFO] [SchematicEditor] Updating PropertyGrid...
+[2026-01-23 23:29:58.755] [INFO] [SchematicEditor] Component successfully added: U1
+[2026-01-23 23:29:58.755] [INFO] [SchematicEditor] Showing success message...
+[2026-01-23 23:30:00.522] [INFO] [SchematicEditor] === AddComponentFromDatabase COMPLETED SUCCESSFULLY ===
+[2026-01-23 23:30:00.523] [INFO] [SchematicEditor] AddComponentFromDatabase returned
+[2026-01-23 23:30:00.523] [INFO] [SchematicEditor] === OnSearchComponent COMPLETED ===
+[2026-01-23 23:30:18.394] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:30:18.394] [INFO] [SchematicEditor] === OnSearchComponent CALLED ===
+[2026-01-23 23:30:18.395] [INFO] [SchematicEditor] Creating ComponentSearchDialog...
+[2026-01-23 23:30:18.397] [INFO] [SearchDialog] Initializing ComponentSearchDialog
+[2026-01-23 23:30:18.404] [INFO] [SearchDialog] ComponentSearchDialog initialized successfully
+[2026-01-23 23:30:18.405] [INFO] [SchematicEditor] Showing ComponentSearchDialog...
+[2026-01-23 23:30:25.031] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:30:25.032] [INFO] [SearchDialog] === SEARCH BUTTON CLICKED ===
+[2026-01-23 23:30:25.037] [DEBUG] [SearchDialog] Criteria.PartNumber = 18F4550
+[2026-01-23 23:30:25.038] [INFO] [SearchDialog] Search criteria built. Source: DigiKey API
+[2026-01-23 23:30:25.038] [INFO] [SearchDialog] Starting search with source: DigiKey API
+[2026-01-23 23:30:25.038] [INFO] [SearchDialog] Searching DigiKey API...
+[2026-01-23 23:30:25.039] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:30:25.039] [INFO] [ScraperService] Starting DigiKey search
+[2026-01-23 23:30:25.039] [DEBUG] [ScraperService] Search criteria: Type=, Manufacturer=, PartNumber=18F4550
+[2026-01-23 23:30:25.040] [INFO] [ScraperService] Ensuring valid access token...
+[2026-01-23 23:30:25.040] [DEBUG] [ScraperService] Using cached token (expires: 2026-01-23 23:34:09)
+[2026-01-23 23:30:25.041] [DEBUG] [ScraperService] Added PartNumber to keywords: 18F4550
+[2026-01-23 23:30:25.041] [INFO] [ScraperService] Final search keywords: '18F4550'
+[2026-01-23 23:30:25.041] [INFO] [ScraperService] Search keywords: '18F4550'
+[2026-01-23 23:30:25.042] [INFO] [ScraperService] Searching DigiKey API: '18F4550', Limit: 50
+[2026-01-23 23:30:25.042] [DEBUG] [ScraperService] Headers configured for DigiKey API request
+[2026-01-23 23:30:25.043] [DEBUG] [ScraperService] Request JSON: {"Keywords":"18F4550","Limit":50,"Offset":0,"FilterOptionsRequest":{}}
+[2026-01-23 23:30:25.043] [INFO] [ScraperService] Sending POST request to: https://api.digikey.com/products/v4/search/keyword
+[2026-01-23 23:30:25.383] [INFO] [ScraperService] Response status: OK
+[2026-01-23 23:30:25.383] [DEBUG] [ScraperService] Response length: 64979 characters
+[2026-01-23 23:30:25.396] [INFO] [ScraperService] Found 12 products in response
+[2026-01-23 23:30:25.397] [DEBUG] [ScraperService] === FIRST PRODUCT RAW DATA ===
+[2026-01-23 23:30:25.397] [DEBUG] [ScraperService] ManufacturerProductNumber: 'PIC18F4550-I/PT'
+[2026-01-23 23:30:25.398] [DEBUG] [ScraperService] Description.ProductDescription: 'IC MCU 8BIT 32KB FLASH 44TQFP'
+[2026-01-23 23:30:25.398] [DEBUG] [ScraperService] Description.DetailedDescription: 'PIC PIC® 18F Microcontroller IC 8-Bit 48MHz 32KB (16K x 16) FLASH 44-TQFP (10x10)'
+[2026-01-23 23:30:25.399] [DEBUG] [ScraperService] Manufacturer.Name: 'Microchip Technology'
+[2026-01-23 23:30:25.399] [DEBUG] [ScraperService] UnitPrice: 6,86
+[2026-01-23 23:30:25.400] [DEBUG] [ScraperService] QuantityAvailable: 2924
+[2026-01-23 23:30:25.400] [DEBUG] [ScraperService] DatasheetUrl: 'https://ww1.microchip.com/downloads/en/DeviceDoc/39632e.pdf'
+[2026-01-23 23:30:25.401] [DEBUG] [ScraperService] Parameters count: 18
+[2026-01-23 23:30:25.402] [DEBUG] [ScraperService] === END FIRST PRODUCT ===
+[2026-01-23 23:30:25.402] [INFO] [ScraperService] Successfully converted 12 DigiKey components
+[2026-01-23 23:30:25.403] [DEBUG] [ScraperService] Result 1: Microchip Technology PIC18F4550-I/PT - $6,86
+[2026-01-23 23:30:25.403] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 44TQFP
+[2026-01-23 23:30:25.404] [DEBUG] [ScraperService]   Stock: 2924
+[2026-01-23 23:30:25.405] [DEBUG] [ScraperService] Result 2: Microchip Technology PIC18F4550T-I/PT - $6,91
+[2026-01-23 23:30:25.405] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 44TQFP
+[2026-01-23 23:30:25.406] [DEBUG] [ScraperService]   Stock: 990
+[2026-01-23 23:30:25.406] [DEBUG] [ScraperService] Result 3: Microchip Technology PIC18F4550-I/P - $7,31
+[2026-01-23 23:30:25.407] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 40DIP
+[2026-01-23 23:30:25.407] [DEBUG] [ScraperService]   Stock: 1122
+[2026-01-23 23:30:25.408] [INFO] [ScraperService] DigiKey returned 12 results
+[2026-01-23 23:30:25.408] [INFO] [ScraperService] Converted to 12 ElectronicComponent objects
+[2026-01-23 23:30:25.409] [DEBUG] [ScraperService] Result 1: Microchip Technology PIC18F4550-I/PT - $6,86
+[2026-01-23 23:30:25.409] [DEBUG] [ScraperService] Result 2: Microchip Technology PIC18F4550T-I/PT - $6,91
+[2026-01-23 23:30:25.410] [DEBUG] [ScraperService] Result 3: Microchip Technology PIC18F4550-I/P - $7,31
+[2026-01-23 23:30:25.410] [INFO] [SearchDialog] DigiKey API returned 12 results
+[2026-01-23 23:30:25.411] [INFO] [SearchDialog] Total results before deduplication: 12
+[2026-01-23 23:30:25.411] [INFO] [SearchDialog] Results after deduplication: 12
+[2026-01-23 23:30:25.411] [DEBUG] [SearchDialog] Results sorted by price
+[2026-01-23 23:30:25.412] [INFO] [SearchDialog] Search completed. Total results: 12
+[2026-01-23 23:30:25.412] [INFO] [SearchDialog] Displaying 12 results in grid
+[2026-01-23 23:30:25.421] [INFO] [SearchDialog] Results displayed successfully in grid
+[2026-01-23 23:30:32.135] [WARNING] [SearchDialog] DataBoundItem not available, creating component from cells
+[2026-01-23 23:30:32.136] [DEBUG] [SearchDialog] Column 'Supplier' not found in grid
+[2026-01-23 23:30:32.136] [DEBUG] [SearchDialog] Column 'Datasheet' not found in grid
+[2026-01-23 23:30:32.136] [DEBUG] [SearchDialog] Column 'Specifications' not found in grid
+[2026-01-23 23:30:32.137] [INFO] [SearchDialog] Component created from grid cells: Microchip Technology PIC18F4550-I/PT
+[2026-01-23 23:30:32.137] [INFO] [SearchDialog]   Type: IC
+[2026-01-23 23:30:32.137] [INFO] [SearchDialog]   Price: $6,86
+[2026-01-23 23:30:32.138] [INFO] [SearchDialog]   Stock: 2924
+[2026-01-23 23:30:32.154] [INFO] [SchematicEditor] Dialog closed with result: OK
+[2026-01-23 23:30:32.155] [INFO] [SchematicEditor] Component selected: PIC18F4550-I/PT
+[2026-01-23 23:30:32.155] [INFO] [SchematicEditor]   Type: IC
+[2026-01-23 23:30:32.155] [INFO] [SchematicEditor]   Manufacturer: Microchip Technology
+[2026-01-23 23:30:32.156] [INFO] [SchematicEditor]   Description: IC MCU 8BIT 32KB FLASH 44TQFP
+[2026-01-23 23:30:32.156] [INFO] [SchematicEditor]   Specifications count: 0
+[2026-01-23 23:30:32.156] [INFO] [SchematicEditor] Calling AddComponentFromDatabase...
+[2026-01-23 23:30:32.157] [INFO] [SchematicEditor] === AddComponentFromDatabase CALLED ===
+[2026-01-23 23:30:32.157] [INFO] [SchematicEditor] Component received: Type=IC, PartNumber=PIC18F4550-I/PT
+[2026-01-23 23:30:32.158] [INFO] [SchematicEditor] Calling CreateSchematicComponentFromDatabase...
+[2026-01-23 23:30:32.158] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:30:32.158] [INFO] [SchematicEditor] === COMPONENT DIAGNOSTIC ===
+[2026-01-23 23:30:32.158] [INFO] [SchematicEditor] PartNumber: 'PIC18F4550-I/PT'
+[2026-01-23 23:30:32.159] [INFO] [SchematicEditor] Type (RAW): 'IC'
+[2026-01-23 23:30:32.159] [INFO] [SchematicEditor] Manufacturer: 'Microchip Technology'
+[2026-01-23 23:30:32.159] [INFO] [SchematicEditor] Description: 'IC MCU 8BIT 32KB FLASH 44TQFP'
+[2026-01-23 23:30:32.160] [INFO] [SchematicEditor] Specifications count: 0
+[2026-01-23 23:30:32.160] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:30:32.160] [INFO] [SchematicEditor] Normalized type: 'IC'
+[2026-01-23 23:30:32.160] [INFO] [SchematicEditor] === Advanced Pin Detection Started ===
+[2026-01-23 23:30:32.161] [DEBUG] [SchematicEditor] Analyzing Description: 'IC MCU 8BIT 32KB FLASH 44TQFP'
+[2026-01-23 23:30:32.161] [INFO] [SchematicEditor] ✅ Pin count from Description: 44
+[2026-01-23 23:30:32.161] [INFO] [SchematicEditor] ✅ Creating ICComponent (Generic IC) with 44 pins...
+[2026-01-23 23:30:32.162] [INFO] [SchematicEditor] ✅ Component created: ICComponent
+[2026-01-23 23:30:32.162] [INFO] [SchematicEditor]    IC with 44 pins configured
+[2026-01-23 23:30:32.162] [INFO] [SchematicEditor] Schematic component created: ICComponent
+[2026-01-23 23:30:32.163] [INFO] [SchematicEditor] Getting position...
+[2026-01-23 23:30:32.163] [INFO] [SchematicEditor] Position obtained: (300, 100)
+[2026-01-23 23:30:32.163] [INFO] [SchematicEditor] Generating unique designator...
+[2026-01-23 23:30:32.164] [INFO] [SchematicEditor] Designator generated: U2
+[2026-01-23 23:30:32.164] [INFO] [SchematicEditor] Updating bounds...
+[2026-01-23 23:30:32.165] [INFO] [SchematicEditor] Bounds updated: {X=290,Y=90,Width=140,Height=100}
+[2026-01-23 23:30:32.165] [INFO] [SchematicEditor] Components count BEFORE add: 12
+[2026-01-23 23:30:32.166] [INFO] [SchematicEditor] Adding component to document...
+[2026-01-23 23:30:32.167] [INFO] [SchematicEditor] Components count AFTER add: 13
+[2026-01-23 23:30:32.167] [INFO] [SchematicEditor] Refreshing canvas...
+[2026-01-23 23:30:32.167] [INFO] [SchematicEditor] Calling canvas.Invalidate()...
+[2026-01-23 23:30:32.168] [INFO] [SchematicEditor] canvas.Invalidate() completed
+[2026-01-23 23:30:32.168] [INFO] [SchematicEditor] Calling canvasPanel.Invalidate()...
+[2026-01-23 23:30:32.168] [INFO] [SchematicEditor] canvasPanel.Invalidate() completed
+[2026-01-23 23:30:32.168] [INFO] [SchematicEditor] Calling this.Refresh()...
+[2026-01-23 23:30:32.274] [INFO] [SchematicEditor] this.Refresh() completed
+[2026-01-23 23:30:32.275] [INFO] [SchematicEditor] Clearing selection...
+[2026-01-23 23:30:32.275] [INFO] [SchematicEditor] Selecting new component...
+[2026-01-23 23:30:32.276] [INFO] [SchematicEditor] Updating PropertyGrid...
+[2026-01-23 23:30:32.280] [INFO] [SchematicEditor] Component successfully added: U2
+[2026-01-23 23:30:32.280] [INFO] [SchematicEditor] Showing success message...
+[2026-01-23 23:30:33.621] [INFO] [SchematicEditor] === AddComponentFromDatabase COMPLETED SUCCESSFULLY ===
+[2026-01-23 23:30:33.622] [INFO] [SchematicEditor] AddComponentFromDatabase returned
+[2026-01-23 23:30:33.622] [INFO] [SchematicEditor] === OnSearchComponent COMPLETED ===
+[2026-01-23 23:46:20.202] [INFO] === Logger Service Initialized ===
+[2026-01-23 23:46:20.236] [INFO] Log file: C:\HFA-DC-BUCK\BuckConverterCalculator\BuckConverterCalculator\bin\Debug\net10.0-windows\Logs\BuckConverter_20260123.log
+[2026-01-23 23:46:20.237] [INFO] [SchematicEditor] Search Components menu item created and event connected
+[2026-01-23 23:46:20.238] [INFO] [SchematicEditor] Components menu created successfully
+[2026-01-23 23:46:29.275] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:46:29.276] [INFO] [SchematicEditor] === OnSearchComponent CALLED ===
+[2026-01-23 23:46:29.276] [INFO] [SchematicEditor] Creating ComponentSearchDialog...
+[2026-01-23 23:46:29.277] [INFO] [SearchDialog] Initializing ComponentSearchDialog
+[2026-01-23 23:46:29.294] [INFO] [SearchDialog] ComponentSearchDialog initialized successfully
+[2026-01-23 23:46:29.295] [INFO] [SchematicEditor] Showing ComponentSearchDialog...
+[2026-01-23 23:46:46.865] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:46:46.866] [INFO] [SearchDialog] === SEARCH BUTTON CLICKED ===
+[2026-01-23 23:46:46.872] [DEBUG] [SearchDialog] Criteria.PartNumber = 18F2550
+[2026-01-23 23:46:46.873] [INFO] [SearchDialog] Search criteria built. Source: DigiKey API
+[2026-01-23 23:46:46.875] [INFO] [SearchDialog] Starting search with source: DigiKey API
+[2026-01-23 23:46:46.875] [INFO] [SearchDialog] Searching DigiKey API...
+[2026-01-23 23:46:46.877] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:46:46.878] [INFO] [ScraperService] Starting DigiKey search
+[2026-01-23 23:46:46.879] [DEBUG] [ScraperService] Search criteria: Type=, Manufacturer=, PartNumber=18F2550
+[2026-01-23 23:46:46.880] [INFO] [ScraperService] Ensuring valid access token...
+[2026-01-23 23:46:46.916] [INFO] [ScraperService] Token expired or not available, requesting new token...
+[2026-01-23 23:46:46.923] [INFO] [ScraperService] Requesting token from: https://api.digikey.com/v1/oauth2/token
+[2026-01-23 23:46:46.924] [DEBUG] [ScraperService] Client ID: qNkQG5VYcA...
+[2026-01-23 23:46:47.924] [DEBUG] [ScraperService] Token response status: OK
+[2026-01-23 23:46:47.959] [INFO] [ScraperService] Token obtained successfully. Expires at: 2026-01-23 23:51:46
+[2026-01-23 23:46:47.960] [DEBUG] [ScraperService] Token preview: apzGTnruxttnIIZEJGsc...
+[2026-01-23 23:46:47.961] [DEBUG] [ScraperService] Added PartNumber to keywords: 18F2550
+[2026-01-23 23:46:47.961] [INFO] [ScraperService] Final search keywords: '18F2550'
+[2026-01-23 23:46:47.962] [INFO] [ScraperService] Search keywords: '18F2550'
+[2026-01-23 23:46:47.966] [INFO] [ScraperService] Searching DigiKey API: '18F2550', Limit: 50
+[2026-01-23 23:46:47.967] [DEBUG] [ScraperService] Headers configured for DigiKey API request
+[2026-01-23 23:46:47.982] [DEBUG] [ScraperService] Request JSON: {"Keywords":"18F2550","Limit":50,"Offset":0,"FilterOptionsRequest":{}}
+[2026-01-23 23:46:47.983] [INFO] [ScraperService] Sending POST request to: https://api.digikey.com/products/v4/search/keyword
+[2026-01-23 23:46:48.625] [INFO] [ScraperService] Response status: OK
+[2026-01-23 23:46:48.626] [DEBUG] [ScraperService] Response length: 29876 characters
+[2026-01-23 23:46:48.663] [INFO] [ScraperService] Found 5 products in response
+[2026-01-23 23:46:48.664] [DEBUG] [ScraperService] === FIRST PRODUCT RAW DATA ===
+[2026-01-23 23:46:48.664] [DEBUG] [ScraperService] ManufacturerProductNumber: 'PIC18F2550-I/SO'
+[2026-01-23 23:46:48.665] [DEBUG] [ScraperService] Description.ProductDescription: 'IC MCU 8BIT 32KB FLASH 28SOIC'
+[2026-01-23 23:46:48.665] [DEBUG] [ScraperService] Description.DetailedDescription: 'PIC PIC® 18F Microcontroller IC 8-Bit 48MHz 32KB (16K x 16) FLASH 28-SOIC'
+[2026-01-23 23:46:48.666] [DEBUG] [ScraperService] Manufacturer.Name: 'Microchip Technology'
+[2026-01-23 23:46:48.666] [DEBUG] [ScraperService] UnitPrice: 6,46
+[2026-01-23 23:46:48.667] [DEBUG] [ScraperService] QuantityAvailable: 2570
+[2026-01-23 23:46:48.667] [DEBUG] [ScraperService] DatasheetUrl: 'https://ww1.microchip.com/downloads/en/DeviceDoc/39632e.pdf'
+[2026-01-23 23:46:48.668] [DEBUG] [ScraperService] Parameters count: 18
+[2026-01-23 23:46:48.668] [DEBUG] [ScraperService] === END FIRST PRODUCT ===
+[2026-01-23 23:46:48.671] [INFO] [ScraperService] Successfully converted 5 DigiKey components
+[2026-01-23 23:46:48.671] [DEBUG] [ScraperService] Result 1: Microchip Technology PIC18F2550-I/SO - $6,46
+[2026-01-23 23:46:48.672] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 28SOIC
+[2026-01-23 23:46:48.672] [DEBUG] [ScraperService]   Stock: 2570
+[2026-01-23 23:46:48.672] [DEBUG] [ScraperService] Result 2: Microchip Technology PIC18F2550T-I/SO - $6,54
+[2026-01-23 23:46:48.673] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 28SOIC
+[2026-01-23 23:46:48.673] [DEBUG] [ScraperService]   Stock: 1659
+[2026-01-23 23:46:48.673] [DEBUG] [ScraperService] Result 3: Microchip Technology PIC18F2550-I/SP - $7,04
+[2026-01-23 23:46:48.674] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 28SPDIP
+[2026-01-23 23:46:48.674] [DEBUG] [ScraperService]   Stock: 574
+[2026-01-23 23:46:48.674] [INFO] [ScraperService] DigiKey returned 5 results
+[2026-01-23 23:46:48.676] [INFO] [ScraperService] Converted to 5 ElectronicComponent objects
+[2026-01-23 23:46:48.677] [DEBUG] [ScraperService] Result 1: Microchip Technology PIC18F2550-I/SO - $6,46
+[2026-01-23 23:46:48.677] [DEBUG] [ScraperService] Result 2: Microchip Technology PIC18F2550T-I/SO - $6,54
+[2026-01-23 23:46:48.677] [DEBUG] [ScraperService] Result 3: Microchip Technology PIC18F2550-I/SP - $7,04
+[2026-01-23 23:46:48.678] [INFO] [SearchDialog] DigiKey API returned 5 results
+[2026-01-23 23:46:48.678] [INFO] [SearchDialog] Total results before deduplication: 5
+[2026-01-23 23:46:48.679] [INFO] [SearchDialog] Results after deduplication: 5
+[2026-01-23 23:46:48.681] [DEBUG] [SearchDialog] Results sorted by price
+[2026-01-23 23:46:48.682] [INFO] [SearchDialog] Search completed. Total results: 5
+[2026-01-23 23:46:48.683] [INFO] [SearchDialog] Displaying 5 results in grid
+[2026-01-23 23:46:48.696] [INFO] [SearchDialog] Results displayed successfully in grid
+[2026-01-23 23:46:52.456] [WARNING] [SearchDialog] DataBoundItem not available, creating component from cells
+[2026-01-23 23:46:52.462] [DEBUG] [SearchDialog] Column 'Supplier' not found in grid
+[2026-01-23 23:46:52.462] [DEBUG] [SearchDialog] Column 'Datasheet' not found in grid
+[2026-01-23 23:46:52.463] [DEBUG] [SearchDialog] Column 'Specifications' not found in grid
+[2026-01-23 23:46:52.463] [INFO] [SearchDialog] Component created from grid cells: Microchip Technology PIC18F2550-I/SO
+[2026-01-23 23:46:52.464] [INFO] [SearchDialog]   Type: IC
+[2026-01-23 23:46:52.464] [INFO] [SearchDialog]   Price: $6,46
+[2026-01-23 23:46:52.464] [INFO] [SearchDialog]   Stock: 2570
+[2026-01-23 23:46:52.479] [INFO] [SchematicEditor] Dialog closed with result: OK
+[2026-01-23 23:46:52.480] [INFO] [SchematicEditor] Component selected: PIC18F2550-I/SO
+[2026-01-23 23:46:52.481] [INFO] [SchematicEditor]   Type: IC
+[2026-01-23 23:46:52.481] [INFO] [SchematicEditor]   Manufacturer: Microchip Technology
+[2026-01-23 23:46:52.481] [INFO] [SchematicEditor]   Description: IC MCU 8BIT 32KB FLASH 28SOIC
+[2026-01-23 23:46:52.482] [INFO] [SchematicEditor]   Specifications count: 0
+[2026-01-23 23:46:52.487] [INFO] [SchematicEditor] Calling AddComponentFromDatabase...
+[2026-01-23 23:46:52.491] [INFO] [SchematicEditor] ╔════════════════════════════════════════════════════════════════╗
+[2026-01-23 23:46:52.491] [INFO] [SchematicEditor] ║          COMPONENT DATA FROM DIGIKEY - FULL DIAGNOSTIC         ║
+[2026-01-23 23:46:52.492] [INFO] [SchematicEditor] ╚════════════════════════════════════════════════════════════════╝
+[2026-01-23 23:46:52.492] [INFO] [SchematicEditor] PartNumber:    'PIC18F2550-I/SO'
+[2026-01-23 23:46:52.492] [INFO] [SchematicEditor] Type:          'IC'
+[2026-01-23 23:46:52.493] [INFO] [SchematicEditor] Manufacturer:  'Microchip Technology'
+[2026-01-23 23:46:52.493] [INFO] [SchematicEditor] Description:   'IC MCU 8BIT 32KB FLASH 28SOIC'
+[2026-01-23 23:46:52.493] [INFO] [SchematicEditor] Supplier:      ''
+[2026-01-23 23:46:52.493] [INFO] [SchematicEditor] Price:         $6,46
+[2026-01-23 23:46:52.494] [INFO] [SchematicEditor] Stock:         2570
+[2026-01-23 23:46:52.494] [INFO] [SchematicEditor] 
+[2026-01-23 23:46:52.494] [INFO] [SchematicEditor] --- SPECIFICATIONS ---
+[2026-01-23 23:46:52.495] [WARNING] [SchematicEditor] ⚠️ NO SPECIFICATIONS AVAILABLE!
+[2026-01-23 23:46:52.495] [INFO] [SchematicEditor] ════════════════════════════════════════════════════════════════
+[2026-01-23 23:46:52.495] [INFO] [SchematicEditor] Component received: Type=IC, PartNumber=PIC18F2550-I/SO
+[2026-01-23 23:46:52.496] [INFO] [SchematicEditor] Calling CreateSchematicComponentFromDatabase...
+[2026-01-23 23:46:52.504] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:46:52.505] [INFO] [SchematicEditor] === COMPONENT DIAGNOSTIC ===
+[2026-01-23 23:46:52.505] [INFO] [SchematicEditor] PartNumber: 'PIC18F2550-I/SO'
+[2026-01-23 23:46:52.505] [INFO] [SchematicEditor] Type (RAW): 'IC'
+[2026-01-23 23:46:52.506] [INFO] [SchematicEditor] Manufacturer: 'Microchip Technology'
+[2026-01-23 23:46:52.506] [INFO] [SchematicEditor] Description: 'IC MCU 8BIT 32KB FLASH 28SOIC'
+[2026-01-23 23:46:52.506] [INFO] [SchematicEditor] Specifications count: 0
+[2026-01-23 23:46:52.507] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:46:52.507] [INFO] [SchematicEditor] Normalized type: 'IC'
+[2026-01-23 23:46:52.520] [INFO] [PinDetection] ╔══════════════════════════════════════════════════════════╗
+[2026-01-23 23:46:52.520] [INFO] [PinDetection] ║        ADVANCED PIN DETECTION - INTELLIGENT SEARCH       ║
+[2026-01-23 23:46:52.521] [INFO] [PinDetection] ╚══════════════════════════════════════════════════════════╝
+[2026-01-23 23:46:52.521] [DEBUG] [PinDetection] Analyzing Description: 'IC MCU 8BIT 32KB FLASH 28SOIC'
+[2026-01-23 23:46:52.533] [INFO] [PinDetection] ✅ PIN COUNT FOUND in Description: 28 pins (pattern: (\d+)[-\s]*(TSSOP|SOIC|DIP|PDIP|MSOP|QFN|LQFP|PLCC|SOP|SO|SSOP|TQFP|VQFN|QFP|DFN|SON|WSON|VSON|MLF|BGA|WLCSP))
+[2026-01-23 23:46:52.534] [INFO] [SchematicEditor] ✅ Creating ICComponent (Generic IC) with 28 pins...
+[2026-01-23 23:46:52.557] [INFO] [SchematicEditor] ✅ Component created: ICComponent
+[2026-01-23 23:46:52.558] [INFO] [SchematicEditor]    IC with 28 pins configured
+[2026-01-23 23:46:52.558] [INFO] [SchematicEditor] Schematic component created: ICComponent
+[2026-01-23 23:46:52.559] [INFO] [SchematicEditor] Getting position...
+[2026-01-23 23:46:52.560] [INFO] [SchematicEditor] Position obtained: (100, 100)
+[2026-01-23 23:46:52.560] [INFO] [SchematicEditor] Generating unique designator...
+[2026-01-23 23:46:52.561] [INFO] [SchematicEditor] Designator generated: U1
+[2026-01-23 23:46:52.562] [INFO] [SchematicEditor] Updating bounds...
+[2026-01-23 23:46:52.563] [INFO] [SchematicEditor] Bounds updated: {X=90,Y=90,Width=140,Height=100}
+[2026-01-23 23:46:52.563] [INFO] [SchematicEditor] Components count BEFORE add: 10
+[2026-01-23 23:46:52.563] [INFO] [SchematicEditor] Adding component to document...
+[2026-01-23 23:46:52.564] [INFO] [SchematicEditor] Components count AFTER add: 11
+[2026-01-23 23:46:52.565] [INFO] [SchematicEditor] Refreshing canvas...
+[2026-01-23 23:46:52.565] [INFO] [SchematicEditor] Calling canvas.Invalidate()...
+[2026-01-23 23:46:52.566] [INFO] [SchematicEditor] canvas.Invalidate() completed
+[2026-01-23 23:46:52.566] [INFO] [SchematicEditor] Calling canvasPanel.Invalidate()...
+[2026-01-23 23:46:52.566] [INFO] [SchematicEditor] canvasPanel.Invalidate() completed
+[2026-01-23 23:46:52.567] [INFO] [SchematicEditor] Calling this.Refresh()...
+[2026-01-23 23:46:52.661] [INFO] [SchematicEditor] this.Refresh() completed
+[2026-01-23 23:46:52.662] [INFO] [SchematicEditor] Clearing selection...
+[2026-01-23 23:46:52.662] [INFO] [SchematicEditor] Selecting new component...
+[2026-01-23 23:46:52.663] [INFO] [SchematicEditor] Updating PropertyGrid...
+[2026-01-23 23:46:52.687] [INFO] [SchematicEditor] Component successfully added: U1
+[2026-01-23 23:46:52.688] [INFO] [SchematicEditor] Showing success message...
+[2026-01-23 23:46:54.193] [INFO] [SchematicEditor] === AddComponentFromDatabase COMPLETED SUCCESSFULLY ===
+[2026-01-23 23:46:54.193] [INFO] [SchematicEditor] AddComponentFromDatabase returned
+[2026-01-23 23:46:54.194] [INFO] [SchematicEditor] === OnSearchComponent COMPLETED ===
+[2026-01-23 23:47:03.191] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:47:03.192] [INFO] [SchematicEditor] === OnSearchComponent CALLED ===
+[2026-01-23 23:47:03.192] [INFO] [SchematicEditor] Creating ComponentSearchDialog...
+[2026-01-23 23:47:03.193] [INFO] [SearchDialog] Initializing ComponentSearchDialog
+[2026-01-23 23:47:03.196] [INFO] [SearchDialog] ComponentSearchDialog initialized successfully
+[2026-01-23 23:47:03.197] [INFO] [SchematicEditor] Showing ComponentSearchDialog...
+[2026-01-23 23:47:10.823] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:47:10.824] [INFO] [SearchDialog] === SEARCH BUTTON CLICKED ===
+[2026-01-23 23:47:10.828] [DEBUG] [SearchDialog] Criteria.PartNumber = 18F4550
+[2026-01-23 23:47:10.828] [INFO] [SearchDialog] Search criteria built. Source: DigiKey API
+[2026-01-23 23:47:10.829] [INFO] [SearchDialog] Starting search with source: DigiKey API
+[2026-01-23 23:47:10.829] [INFO] [SearchDialog] Searching DigiKey API...
+[2026-01-23 23:47:10.829] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:47:10.830] [INFO] [ScraperService] Starting DigiKey search
+[2026-01-23 23:47:10.830] [DEBUG] [ScraperService] Search criteria: Type=, Manufacturer=, PartNumber=18F4550
+[2026-01-23 23:47:10.830] [INFO] [ScraperService] Ensuring valid access token...
+[2026-01-23 23:47:10.831] [DEBUG] [ScraperService] Using cached token (expires: 2026-01-23 23:51:46)
+[2026-01-23 23:47:10.831] [DEBUG] [ScraperService] Added PartNumber to keywords: 18F4550
+[2026-01-23 23:47:10.831] [INFO] [ScraperService] Final search keywords: '18F4550'
+[2026-01-23 23:47:10.831] [INFO] [ScraperService] Search keywords: '18F4550'
+[2026-01-23 23:47:10.832] [INFO] [ScraperService] Searching DigiKey API: '18F4550', Limit: 50
+[2026-01-23 23:47:10.832] [DEBUG] [ScraperService] Headers configured for DigiKey API request
+[2026-01-23 23:47:10.832] [DEBUG] [ScraperService] Request JSON: {"Keywords":"18F4550","Limit":50,"Offset":0,"FilterOptionsRequest":{}}
+[2026-01-23 23:47:10.832] [INFO] [ScraperService] Sending POST request to: https://api.digikey.com/products/v4/search/keyword
+[2026-01-23 23:47:11.383] [INFO] [ScraperService] Response status: OK
+[2026-01-23 23:47:11.384] [DEBUG] [ScraperService] Response length: 64979 characters
+[2026-01-23 23:47:11.388] [INFO] [ScraperService] Found 12 products in response
+[2026-01-23 23:47:11.389] [DEBUG] [ScraperService] === FIRST PRODUCT RAW DATA ===
+[2026-01-23 23:47:11.390] [DEBUG] [ScraperService] ManufacturerProductNumber: 'PIC18F4550-I/PT'
+[2026-01-23 23:47:11.391] [DEBUG] [ScraperService] Description.ProductDescription: 'IC MCU 8BIT 32KB FLASH 44TQFP'
+[2026-01-23 23:47:11.392] [DEBUG] [ScraperService] Description.DetailedDescription: 'PIC PIC® 18F Microcontroller IC 8-Bit 48MHz 32KB (16K x 16) FLASH 44-TQFP (10x10)'
+[2026-01-23 23:47:11.393] [DEBUG] [ScraperService] Manufacturer.Name: 'Microchip Technology'
+[2026-01-23 23:47:11.394] [DEBUG] [ScraperService] UnitPrice: 6,86
+[2026-01-23 23:47:11.395] [DEBUG] [ScraperService] QuantityAvailable: 2924
+[2026-01-23 23:47:11.397] [DEBUG] [ScraperService] DatasheetUrl: 'https://ww1.microchip.com/downloads/en/DeviceDoc/39632e.pdf'
+[2026-01-23 23:47:11.398] [DEBUG] [ScraperService] Parameters count: 18
+[2026-01-23 23:47:11.399] [DEBUG] [ScraperService] === END FIRST PRODUCT ===
+[2026-01-23 23:47:11.400] [INFO] [ScraperService] Successfully converted 12 DigiKey components
+[2026-01-23 23:47:11.401] [DEBUG] [ScraperService] Result 1: Microchip Technology PIC18F4550-I/PT - $6,86
+[2026-01-23 23:47:11.402] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 44TQFP
+[2026-01-23 23:47:11.403] [DEBUG] [ScraperService]   Stock: 2924
+[2026-01-23 23:47:11.405] [DEBUG] [ScraperService] Result 2: Microchip Technology PIC18F4550T-I/PT - $6,91
+[2026-01-23 23:47:11.406] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 44TQFP
+[2026-01-23 23:47:11.407] [DEBUG] [ScraperService]   Stock: 990
+[2026-01-23 23:47:11.408] [DEBUG] [ScraperService] Result 3: Microchip Technology PIC18F4550-I/P - $7,31
+[2026-01-23 23:47:11.409] [DEBUG] [ScraperService]   Description: IC MCU 8BIT 32KB FLASH 40DIP
+[2026-01-23 23:47:11.410] [DEBUG] [ScraperService]   Stock: 1122
+[2026-01-23 23:47:11.411] [INFO] [ScraperService] DigiKey returned 12 results
+[2026-01-23 23:47:11.412] [INFO] [ScraperService] Converted to 12 ElectronicComponent objects
+[2026-01-23 23:47:11.413] [DEBUG] [ScraperService] Result 1: Microchip Technology PIC18F4550-I/PT - $6,86
+[2026-01-23 23:47:11.414] [DEBUG] [ScraperService] Result 2: Microchip Technology PIC18F4550T-I/PT - $6,91
+[2026-01-23 23:47:11.414] [DEBUG] [ScraperService] Result 3: Microchip Technology PIC18F4550-I/P - $7,31
+[2026-01-23 23:47:11.415] [INFO] [SearchDialog] DigiKey API returned 12 results
+[2026-01-23 23:47:11.416] [INFO] [SearchDialog] Total results before deduplication: 12
+[2026-01-23 23:47:11.416] [INFO] [SearchDialog] Results after deduplication: 12
+[2026-01-23 23:47:11.417] [DEBUG] [SearchDialog] Results sorted by price
+[2026-01-23 23:47:11.417] [INFO] [SearchDialog] Search completed. Total results: 12
+[2026-01-23 23:47:11.418] [INFO] [SearchDialog] Displaying 12 results in grid
+[2026-01-23 23:47:11.430] [INFO] [SearchDialog] Results displayed successfully in grid
+[2026-01-23 23:47:15.119] [WARNING] [SearchDialog] DataBoundItem not available, creating component from cells
+[2026-01-23 23:47:15.119] [DEBUG] [SearchDialog] Column 'Supplier' not found in grid
+[2026-01-23 23:47:15.120] [DEBUG] [SearchDialog] Column 'Datasheet' not found in grid
+[2026-01-23 23:47:15.120] [DEBUG] [SearchDialog] Column 'Specifications' not found in grid
+[2026-01-23 23:47:15.120] [INFO] [SearchDialog] Component created from grid cells: Microchip Technology PIC18F4550-I/PT
+[2026-01-23 23:47:15.121] [INFO] [SearchDialog]   Type: IC
+[2026-01-23 23:47:15.121] [INFO] [SearchDialog]   Price: $6,86
+[2026-01-23 23:47:15.121] [INFO] [SearchDialog]   Stock: 2924
+[2026-01-23 23:47:15.137] [INFO] [SchematicEditor] Dialog closed with result: OK
+[2026-01-23 23:47:15.138] [INFO] [SchematicEditor] Component selected: PIC18F4550-I/PT
+[2026-01-23 23:47:15.139] [INFO] [SchematicEditor]   Type: IC
+[2026-01-23 23:47:15.139] [INFO] [SchematicEditor]   Manufacturer: Microchip Technology
+[2026-01-23 23:47:15.139] [INFO] [SchematicEditor]   Description: IC MCU 8BIT 32KB FLASH 44TQFP
+[2026-01-23 23:47:15.140] [INFO] [SchematicEditor]   Specifications count: 0
+[2026-01-23 23:47:15.140] [INFO] [SchematicEditor] Calling AddComponentFromDatabase...
+[2026-01-23 23:47:15.140] [INFO] [SchematicEditor] ╔════════════════════════════════════════════════════════════════╗
+[2026-01-23 23:47:15.140] [INFO] [SchematicEditor] ║          COMPONENT DATA FROM DIGIKEY - FULL DIAGNOSTIC         ║
+[2026-01-23 23:47:15.141] [INFO] [SchematicEditor] ╚════════════════════════════════════════════════════════════════╝
+[2026-01-23 23:47:15.141] [INFO] [SchematicEditor] PartNumber:    'PIC18F4550-I/PT'
+[2026-01-23 23:47:15.141] [INFO] [SchematicEditor] Type:          'IC'
+[2026-01-23 23:47:15.142] [INFO] [SchematicEditor] Manufacturer:  'Microchip Technology'
+[2026-01-23 23:47:15.142] [INFO] [SchematicEditor] Description:   'IC MCU 8BIT 32KB FLASH 44TQFP'
+[2026-01-23 23:47:15.142] [INFO] [SchematicEditor] Supplier:      ''
+[2026-01-23 23:47:15.142] [INFO] [SchematicEditor] Price:         $6,86
+[2026-01-23 23:47:15.143] [INFO] [SchematicEditor] Stock:         2924
+[2026-01-23 23:47:15.143] [INFO] [SchematicEditor] 
+[2026-01-23 23:47:15.143] [INFO] [SchematicEditor] --- SPECIFICATIONS ---
+[2026-01-23 23:47:15.143] [WARNING] [SchematicEditor] ⚠️ NO SPECIFICATIONS AVAILABLE!
+[2026-01-23 23:47:15.144] [INFO] [SchematicEditor] ════════════════════════════════════════════════════════════════
+[2026-01-23 23:47:15.144] [INFO] [SchematicEditor] Component received: Type=IC, PartNumber=PIC18F4550-I/PT
+[2026-01-23 23:47:15.145] [INFO] [SchematicEditor] Calling CreateSchematicComponentFromDatabase...
+[2026-01-23 23:47:15.145] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:47:15.146] [INFO] [SchematicEditor] === COMPONENT DIAGNOSTIC ===
+[2026-01-23 23:47:15.146] [INFO] [SchematicEditor] PartNumber: 'PIC18F4550-I/PT'
+[2026-01-23 23:47:15.146] [INFO] [SchematicEditor] Type (RAW): 'IC'
+[2026-01-23 23:47:15.147] [INFO] [SchematicEditor] Manufacturer: 'Microchip Technology'
+[2026-01-23 23:47:15.147] [INFO] [SchematicEditor] Description: 'IC MCU 8BIT 32KB FLASH 44TQFP'
+[2026-01-23 23:47:15.147] [INFO] [SchematicEditor] Specifications count: 0
+[2026-01-23 23:47:15.148] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:47:15.148] [INFO] [SchematicEditor] Normalized type: 'IC'
+[2026-01-23 23:47:15.148] [INFO] [PinDetection] ╔══════════════════════════════════════════════════════════╗
+[2026-01-23 23:47:15.148] [INFO] [PinDetection] ║        ADVANCED PIN DETECTION - INTELLIGENT SEARCH       ║
+[2026-01-23 23:47:15.149] [INFO] [PinDetection] ╚══════════════════════════════════════════════════════════╝
+[2026-01-23 23:47:15.149] [DEBUG] [PinDetection] Analyzing Description: 'IC MCU 8BIT 32KB FLASH 44TQFP'
+[2026-01-23 23:47:15.150] [INFO] [PinDetection] ✅ PIN COUNT FOUND in Description: 44 pins (pattern: (\d+)[-\s]*(TSSOP|SOIC|DIP|PDIP|MSOP|QFN|LQFP|PLCC|SOP|SO|SSOP|TQFP|VQFN|QFP|DFN|SON|WSON|VSON|MLF|BGA|WLCSP))
+[2026-01-23 23:47:15.150] [INFO] [SchematicEditor] ✅ Creating ICComponent (Generic IC) with 44 pins...
+[2026-01-23 23:47:15.151] [INFO] [SchematicEditor] ✅ Component created: ICComponent
+[2026-01-23 23:47:15.151] [INFO] [SchematicEditor]    IC with 44 pins configured
+[2026-01-23 23:47:15.151] [INFO] [SchematicEditor] Schematic component created: ICComponent
+[2026-01-23 23:47:15.151] [INFO] [SchematicEditor] Getting position...
+[2026-01-23 23:47:15.152] [INFO] [SchematicEditor] Position obtained: (200, 100)
+[2026-01-23 23:47:15.152] [INFO] [SchematicEditor] Generating unique designator...
+[2026-01-23 23:47:15.152] [INFO] [SchematicEditor] Designator generated: U2
+[2026-01-23 23:47:15.152] [INFO] [SchematicEditor] Updating bounds...
+[2026-01-23 23:47:15.152] [INFO] [SchematicEditor] Bounds updated: {X=190,Y=90,Width=140,Height=100}
+[2026-01-23 23:47:15.153] [INFO] [SchematicEditor] Components count BEFORE add: 11
+[2026-01-23 23:47:15.153] [INFO] [SchematicEditor] Adding component to document...
+[2026-01-23 23:47:15.153] [INFO] [SchematicEditor] Components count AFTER add: 12
+[2026-01-23 23:47:15.154] [INFO] [SchematicEditor] Refreshing canvas...
+[2026-01-23 23:47:15.154] [INFO] [SchematicEditor] Calling canvas.Invalidate()...
+[2026-01-23 23:47:15.154] [INFO] [SchematicEditor] canvas.Invalidate() completed
+[2026-01-23 23:47:15.154] [INFO] [SchematicEditor] Calling canvasPanel.Invalidate()...
+[2026-01-23 23:47:15.155] [INFO] [SchematicEditor] canvasPanel.Invalidate() completed
+[2026-01-23 23:47:15.155] [INFO] [SchematicEditor] Calling this.Refresh()...
+[2026-01-23 23:47:15.261] [INFO] [SchematicEditor] this.Refresh() completed
+[2026-01-23 23:47:15.261] [INFO] [SchematicEditor] Clearing selection...
+[2026-01-23 23:47:15.262] [INFO] [SchematicEditor] Selecting new component...
+[2026-01-23 23:47:15.262] [INFO] [SchematicEditor] Updating PropertyGrid...
+[2026-01-23 23:47:15.264] [INFO] [SchematicEditor] Component successfully added: U2
+[2026-01-23 23:47:15.264] [INFO] [SchematicEditor] Showing success message...
+[2026-01-23 23:47:17.743] [INFO] [SchematicEditor] === AddComponentFromDatabase COMPLETED SUCCESSFULLY ===
+[2026-01-23 23:47:17.744] [INFO] [SchematicEditor] AddComponentFromDatabase returned
+[2026-01-23 23:47:17.744] [INFO] [SchematicEditor] === OnSearchComponent COMPLETED ===
+[2026-01-23 23:47:23.216] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:47:23.216] [INFO] [SchematicEditor] === OnSearchComponent CALLED ===
+[2026-01-23 23:47:23.217] [INFO] [SchematicEditor] Creating ComponentSearchDialog...
+[2026-01-23 23:47:23.218] [INFO] [SearchDialog] Initializing ComponentSearchDialog
+[2026-01-23 23:47:23.221] [INFO] [SearchDialog] ComponentSearchDialog initialized successfully
+[2026-01-23 23:47:23.221] [INFO] [SchematicEditor] Showing ComponentSearchDialog...
+[2026-01-23 23:47:28.799] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:47:28.800] [INFO] [SearchDialog] === SEARCH BUTTON CLICKED ===
+[2026-01-23 23:47:28.806] [DEBUG] [SearchDialog] Criteria.PartNumber = 7805
+[2026-01-23 23:47:28.806] [INFO] [SearchDialog] Search criteria built. Source: DigiKey API
+[2026-01-23 23:47:28.807] [INFO] [SearchDialog] Starting search with source: DigiKey API
+[2026-01-23 23:47:28.807] [INFO] [SearchDialog] Searching DigiKey API...
+[2026-01-23 23:47:28.807] [INFO] --------------------------------------------------------------------------------
+[2026-01-23 23:47:28.808] [INFO] [ScraperService] Starting DigiKey search
+[2026-01-23 23:47:28.808] [DEBUG] [ScraperService] Search criteria: Type=, Manufacturer=, PartNumber=7805
+[2026-01-23 23:47:28.808] [INFO] [ScraperService] Ensuring valid access token...
+[2026-01-23 23:47:28.809] [DEBUG] [ScraperService] Using cached token (expires: 2026-01-23 23:51:46)
+[2026-01-23 23:47:28.809] [DEBUG] [ScraperService] Added PartNumber to keywords: 7805
+[2026-01-23 23:47:28.809] [INFO] [ScraperService] Final search keywords: '7805'
+[2026-01-23 23:47:28.810] [INFO] [ScraperService] Search keywords: '7805'
+[2026-01-23 23:47:28.810] [INFO] [ScraperService] Searching DigiKey API: '7805', Limit: 50
+[2026-01-23 23:47:28.811] [DEBUG] [ScraperService] Headers configured for DigiKey API request
+[2026-01-23 23:47:28.811] [DEBUG] [ScraperService] Request JSON: {"Keywords":"7805","Limit":50,"Offset":0,"FilterOptionsRequest":{}}
+[2026-01-23 23:47:28.811] [INFO] [ScraperService] Sending POST request to: https://api.digikey.com/products/v4/search/keyword
+[2026-01-23 23:47:31.870] [INFO] [ScraperService] Response status: OK
+[2026-01-23 23:47:31.872] [DEBUG] [ScraperService] Response length: 374266 characters
+[2026-01-23 23:47:31.882] [INFO] [ScraperService] Found 50 products in response
+[2026-01-23 23:47:31.884] [DEBUG] [ScraperService] === FIRST PRODUCT RAW DATA ===
+[2026-01-23 23:47:31.885] [DEBUG] [ScraperService] ManufacturerProductNumber: '2-520193-2'
+[2026-01-23 23:47:31.886] [DEBUG] [ScraperService] Description.ProductDescription: 'CONN QC RCPT 18-22AWG 0.187'
+[2026-01-23 23:47:31.887] [DEBUG] [ScraperService] Description.DetailedDescription: '0.187" (4.75mm) Quick Connect Female 18-22 AWG Crimp Connector Fully Insulated'
+[2026-01-23 23:47:31.888] [DEBUG] [ScraperService] Manufacturer.Name: 'TE Connectivity AMP Connectors'
+[2026-01-23 23:47:31.889] [DEBUG] [ScraperService] UnitPrice: 0,27
+[2026-01-23 23:47:31.891] [DEBUG] [ScraperService] QuantityAvailable: 135618
+[2026-01-23 23:47:31.892] [DEBUG] [ScraperService] DatasheetUrl: 'https://www.te.com/usa-en/product-2-520193-2.datasheet.pdf'
+[2026-01-23 23:47:31.893] [DEBUG] [ScraperService] Parameters count: 14
+[2026-01-23 23:47:31.894] [DEBUG] [ScraperService] === END FIRST PRODUCT ===
+[2026-01-23 23:47:31.895] [INFO] [ScraperService] Successfully converted 50 DigiKey components
+[2026-01-23 23:47:31.896] [DEBUG] [ScraperService] Result 1: TE Connectivity AMP Connectors 2-520193-2 - $0,27
+[2026-01-23 23:47:31.896] [DEBUG] [ScraperService]   Description: CONN QC RCPT 18-22AWG 0.187
+[2026-01-23 23:47:31.897] [DEBUG] [ScraperService]   Stock: 135618
+[2026-01-23 23:47:31.897] [DEBUG] [ScraperService] Result 2: onsemi MC7805BDTG - $0,28
+[2026-01-23 23:47:31.898] [DEBUG] [ScraperService]   Description: IC REG LINEAR 5V 1A DPAK
+[2026-01-23 23:47:31.899] [DEBUG] [ScraperService]   Stock: 25125
+[2026-01-23 23:47:31.899] [DEBUG] [ScraperService] Result 3: Nexperia USA Inc. 74LVC1T45GS,132 - $0,33
+[2026-01-23 23:47:31.900] [DEBUG] [ScraperService]   Description: IC XLTR VL BIDIR 6-XSON/SOT1202
+[2026-01-23 23:47:31.900] [DEBUG] [ScraperService]   Stock: 6454
+[2026-01-23 23:47:31.901] [INFO] [ScraperService] DigiKey returned 50 results
+[2026-01-23 23:47:31.908] [INFO] [ScraperService] Converted to 50 ElectronicComponent objects
+[2026-01-23 23:47:31.908] [DEBUG] [ScraperService] Result 1: TE Connectivity AMP Connectors 2-520193-2 - $0,27
+[2026-01-23 23:47:31.909] [DEBUG] [ScraperService] Result 2: onsemi MC7805BDTG - $0,27627
+[2026-01-23 23:47:31.910] [DEBUG] [ScraperService] Result 3: Nexperia USA Inc. 74LVC1T45GS,132 - $0,33
+[2026-01-23 23:47:31.910] [INFO] [SearchDialog] DigiKey API returned 50 results
+[2026-01-23 23:47:31.911] [INFO] [SearchDialog] Total results before deduplication: 50
+[2026-01-23 23:47:31.912] [INFO] [SearchDialog] Results after deduplication: 50
+[2026-01-23 23:47:31.912] [DEBUG] [SearchDialog] Results sorted by price
+[2026-01-23 23:47:31.913] [INFO] [SearchDialog] Search completed. Total results: 50
+[2026-01-23 23:47:31.914] [INFO] [SearchDialog] Displaying 50 results in grid
+[2026-01-23 23:47:31.948] [INFO] [SearchDialog] Results displayed successfully in grid
+[2026-01-23 23:47:40.311] [WARNING] [SearchDialog] DataBoundItem not available, creating component from cells
+[2026-01-23 23:47:40.311] [DEBUG] [SearchDialog] Column 'Supplier' not found in grid
+[2026-01-23 23:47:40.312] [DEBUG] [SearchDialog] Column 'Datasheet' not found in grid
+[2026-01-23 23:47:40.312] [DEBUG] [SearchDialog] Column 'Specifications' not found in grid
+[2026-01-23 23:47:40.313] [INFO] [SearchDialog] Component created from grid cells: onsemi MC7805BTG
+[2026-01-23 23:47:40.313] [INFO] [SearchDialog]   Type: IC
+[2026-01-23 23:47:40.313] [INFO] [SearchDialog]   Price: $0,58
+[2026-01-23 23:47:40.314] [INFO] [SearchDialog]   Stock: 5673
+[2026-01-23 23:47:40.329] [INFO] [SchematicEditor] Dialog closed with result: OK
+[2026-01-23 23:47:40.330] [INFO] [SchematicEditor] Component selected: MC7805BTG
+[2026-01-23 23:47:40.331] [INFO] [SchematicEditor]   Type: IC
+[2026-01-23 23:47:40.331] [INFO] [SchematicEditor]   Manufacturer: onsemi
+[2026-01-23 23:47:40.331] [INFO] [SchematicEditor]   Description: IC REG LINEAR 5V 1A TO220
+[2026-01-23 23:47:40.332] [INFO] [SchematicEditor]   Specifications count: 0
+[2026-01-23 23:47:40.332] [INFO] [SchematicEditor] Calling AddComponentFromDatabase...
+[2026-01-23 23:47:40.333] [INFO] [SchematicEditor] ╔════════════════════════════════════════════════════════════════╗
+[2026-01-23 23:47:40.333] [INFO] [SchematicEditor] ║          COMPONENT DATA FROM DIGIKEY - FULL DIAGNOSTIC         ║
+[2026-01-23 23:47:40.334] [INFO] [SchematicEditor] ╚════════════════════════════════════════════════════════════════╝
+[2026-01-23 23:47:40.334] [INFO] [SchematicEditor] PartNumber:    'MC7805BTG'
+[2026-01-23 23:47:40.334] [INFO] [SchematicEditor] Type:          'IC'
+[2026-01-23 23:47:40.335] [INFO] [SchematicEditor] Manufacturer:  'onsemi'
+[2026-01-23 23:47:40.335] [INFO] [SchematicEditor] Description:   'IC REG LINEAR 5V 1A TO220'
+[2026-01-23 23:47:40.336] [INFO] [SchematicEditor] Supplier:      ''
+[2026-01-23 23:47:40.336] [INFO] [SchematicEditor] Price:         $0,58
+[2026-01-23 23:47:40.337] [INFO] [SchematicEditor] Stock:         5673
+[2026-01-23 23:47:40.338] [INFO] [SchematicEditor] 
+[2026-01-23 23:47:40.339] [INFO] [SchematicEditor] --- SPECIFICATIONS ---
+[2026-01-23 23:47:40.339] [WARNING] [SchematicEditor] ⚠️ NO SPECIFICATIONS AVAILABLE!
+[2026-01-23 23:47:40.339] [INFO] [SchematicEditor] ════════════════════════════════════════════════════════════════
+[2026-01-23 23:47:40.340] [INFO] [SchematicEditor] Component received: Type=IC, PartNumber=MC7805BTG
+[2026-01-23 23:47:40.341] [INFO] [SchematicEditor] Calling CreateSchematicComponentFromDatabase...
+[2026-01-23 23:47:40.341] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:47:40.341] [INFO] [SchematicEditor] === COMPONENT DIAGNOSTIC ===
+[2026-01-23 23:47:40.342] [INFO] [SchematicEditor] PartNumber: 'MC7805BTG'
+[2026-01-23 23:47:40.342] [INFO] [SchematicEditor] Type (RAW): 'IC'
+[2026-01-23 23:47:40.342] [INFO] [SchematicEditor] Manufacturer: 'onsemi'
+[2026-01-23 23:47:40.343] [INFO] [SchematicEditor] Description: 'IC REG LINEAR 5V 1A TO220'
+[2026-01-23 23:47:40.343] [INFO] [SchematicEditor] Specifications count: 0
+[2026-01-23 23:47:40.344] [INFO] [SchematicEditor] ========================================
+[2026-01-23 23:47:40.344] [INFO] [SchematicEditor] Normalized type: 'REGULATOR'
+[2026-01-23 23:47:40.344] [INFO] [PinDetection] ╔══════════════════════════════════════════════════════════╗
+[2026-01-23 23:47:40.345] [INFO] [PinDetection] ║        ADVANCED PIN DETECTION - INTELLIGENT SEARCH       ║
+[2026-01-23 23:47:40.345] [INFO] [PinDetection] ╚══════════════════════════════════════════════════════════╝
+[2026-01-23 23:47:40.345] [DEBUG] [PinDetection] Analyzing Description: 'IC REG LINEAR 5V 1A TO220'
+[2026-01-23 23:47:40.367] [DEBUG] [PinDetection] Analyzing PartNumber: 'MC7805BTG'
+[2026-01-23 23:47:40.373] [ERROR] [PinDetection] ❌ COULD NOT DETECT PIN COUNT - Using fallback: 8 pins
+[2026-01-23 23:47:40.374] [ERROR] [PinDetection]    Component: MC7805BTG
+[2026-01-23 23:47:40.374] [ERROR] [PinDetection]    Type: IC
+[2026-01-23 23:47:40.374] [ERROR] [PinDetection]    Description: IC REG LINEAR 5V 1A TO220
+[2026-01-23 23:47:40.375] [INFO] [SchematicEditor] ✅ Creating ICComponent (Regulator) with 8 pins...
+[2026-01-23 23:47:40.375] [INFO] [SchematicEditor] ✅ Component created: ICComponent
+[2026-01-23 23:47:40.375] [INFO] [SchematicEditor]    IC with 8 pins configured
+[2026-01-23 23:47:40.375] [INFO] [SchematicEditor] Schematic component created: ICComponent
+[2026-01-23 23:47:40.376] [INFO] [SchematicEditor] Getting position...
+[2026-01-23 23:47:40.376] [INFO] [SchematicEditor] Position obtained: (300, 100)
+[2026-01-23 23:47:40.376] [INFO] [SchematicEditor] Generating unique designator...
+[2026-01-23 23:47:40.377] [INFO] [SchematicEditor] Designator generated: U3
+[2026-01-23 23:47:40.377] [INFO] [SchematicEditor] Updating bounds...
+[2026-01-23 23:47:40.377] [INFO] [SchematicEditor] Bounds updated: {X=290,Y=90,Width=140,Height=100}
+[2026-01-23 23:47:40.377] [INFO] [SchematicEditor] Components count BEFORE add: 12
+[2026-01-23 23:47:40.378] [INFO] [SchematicEditor] Adding component to document...
+[2026-01-23 23:47:40.378] [INFO] [SchematicEditor] Components count AFTER add: 13
+[2026-01-23 23:47:40.378] [INFO] [SchematicEditor] Refreshing canvas...
+[2026-01-23 23:47:40.379] [INFO] [SchematicEditor] Calling canvas.Invalidate()...
+[2026-01-23 23:47:40.379] [INFO] [SchematicEditor] canvas.Invalidate() completed
+[2026-01-23 23:47:40.379] [INFO] [SchematicEditor] Calling canvasPanel.Invalidate()...
+[2026-01-23 23:47:40.380] [INFO] [SchematicEditor] canvasPanel.Invalidate() completed
+[2026-01-23 23:47:40.380] [INFO] [SchematicEditor] Calling this.Refresh()...
+[2026-01-23 23:47:40.483] [INFO] [SchematicEditor] this.Refresh() completed
+[2026-01-23 23:47:40.483] [INFO] [SchematicEditor] Clearing selection...
+[2026-01-23 23:47:40.483] [INFO] [SchematicEditor] Selecting new component...
+[2026-01-23 23:47:40.483] [INFO] [SchematicEditor] Updating PropertyGrid...
+[2026-01-23 23:47:40.485] [INFO] [SchematicEditor] Component successfully added: U3
+[2026-01-23 23:47:40.485] [INFO] [SchematicEditor] Showing success message...
+[2026-01-23 23:47:42.415] [INFO] [SchematicEditor] === AddComponentFromDatabase COMPLETED SUCCESSFULLY ===
+[2026-01-23 23:47:42.416] [INFO] [SchematicEditor] AddComponentFromDatabase returned
+[2026-01-23 23:47:42.416] [INFO] [SchematicEditor] === OnSearchComponent COMPLETED ===

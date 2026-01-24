@@ -106,7 +106,7 @@ namespace BuckConverterCalculator.Analysis
         /// <summary>
         /// Calcula parámetros en modo CCM para comparación
         /// </summary>
-        private DCMParameters CalculateCCMParameters()
+        public DCMParameters CalculateCCMParameters()   // ✅
         {
             double dutyCycle = OutputVoltage / InputVoltage;
 
@@ -185,10 +185,10 @@ namespace BuckConverterCalculator.Analysis
 
             // DCR máximo (causar máximo 1% de pérdida de eficiencia)
             // Analizar codigo comentado si se desea implementar esta característica
-            /*if (parameters.RMSCurrent > 0)
+            if (parameters.RMSCurrent > 0)
             {
                 recommendation.MaxDCR = (OutputVoltage * 0.01) / Math.Pow(parameters.RMSCurrent, 2);
-            }*/
+            }
 
             return recommendation;
         }

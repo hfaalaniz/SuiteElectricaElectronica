@@ -16,6 +16,9 @@
     <Compile Update="FormaParaPruebas.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="MainMDIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SchematicEditor\ComponentToolBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -31,8 +34,14 @@
     <Compile Update="TransformerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UI\BodePlotControl.cs">
+    <Compile Update="UI\Dialogs\ComponentDatabaseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\BodePlotControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UI\Dialogs\BodePlotDialog.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="UI\DCMAnalysisDialog.cs">
       <SubType>Form</SubType>
@@ -40,13 +49,25 @@
     <Compile Update="UI\DCMVisualizationPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="UI\Dialogs\ComponentSearchDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Dialogs\WaveformSimulationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\PCBViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UI\Dialogs\PCBLayoutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UI\WaveformViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="VFD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="MainForm.cs">
+    <Compile Update="CalcularBuck.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="PresetForm.cs">

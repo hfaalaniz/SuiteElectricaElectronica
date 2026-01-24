@@ -5,10 +5,12 @@ using System.IO;
 using BuckConverterCalculator.Core;
 using BuckConverterCalculator.Components;
 using BuckConverterCalculator.SchematicEditor;
+using BuckConverterCalculator.UI.Dialogs;
+using BuckConverterCalculator.Database;
 
 namespace BuckConverterCalculator
 {
-    public partial class MainForm : Form
+    public partial class CalcularBuck : Form
     {
         private BuckCalculator calculator;
         private ComponentSelector componentSelector;
@@ -16,7 +18,7 @@ namespace BuckConverterCalculator
         private DesignParameters lastCalculatedParameters;
         private CalculationResults lastCalculatedResults;
 
-        public MainForm()
+        public CalcularBuck()
         {
             InitializeComponent();
 
@@ -588,6 +590,18 @@ namespace BuckConverterCalculator
         {
             SchematicUnifilar schematicUnifilar = new SchematicUnifilar();
             schematicUnifilar.Show();
+        }
+
+        private ComponentDatabaseDialog databaseDialog;
+        private ComponentDatabase componentDatabase;
+        private void btnDatabaseComp_Click(object sender, EventArgs e)
+        {
+            if (databaseDialog == null || databaseDialog.IsDisposed)
+            {
+                databaseDialog = new ComponentDatabaseDialog(componentDatabase);
+            }
+
+            databaseDialog.Show();
         }
     }
 }

@@ -1929,8 +1929,13 @@ namespace BuckConverterCalculator.SchematicEditor
         }
     }
 
+    // ============================================================================
+    // SOLUCIÓN COMPLETA - ICComponent con pines ilimitados y pinout específico
+    // Reemplazar la clase ICComponent completa en SchematicComponent.cs
+    // ============================================================================
+
     /// <summary>
-    /// Integrated Circuit (IC)
+    /// Integrated Circuit (IC) - VERSIÓN MEJORADA
     /// </summary>
     [Serializable]
     public class ICComponent : SchematicComponent
@@ -2012,6 +2017,7 @@ namespace BuckConverterCalculator.SchematicEditor
             ShowPinNumbers = true;
             ShowPinTypes = true;
             Pins = new List<ComponentPin>();
+            PinCount = 8; // Default
             PartNumber = "TL494"; // Trigger auto-update
             UpdateBounds();
         }
@@ -2023,7 +2029,7 @@ namespace BuckConverterCalculator.SchematicEditor
         {
             Pins.Clear();
 
-            // Pines por defecto basados en pinout común
+            // Intentar obtener pinout específico
             var pinDefinitions = GetPinDefinitions(PartNumber);
 
             if (pinDefinitions != null)
@@ -2041,6 +2047,44 @@ namespace BuckConverterCalculator.SchematicEditor
                     Pins.Add(new ComponentPin(i, $"Pin{i}", PinType.Bidirectional, Point.Empty));
                 }
             }
+
+            // Ajustar dimensiones según número de pines
+            AdjustDimensions();
+        }
+
+        /// <summary>
+        /// Ajusta las dimensiones del IC según el número de pines
+        /// </summary>
+        private void AdjustDimensions()
+        {
+            int pinsPerSide = (int)Math.Ceiling(PinCount / 2.0);
+
+            if (pinsPerSide <= 8)
+            {
+                Width = 120;
+                Height = 80;
+            }
+            else if (pinsPerSide <= 14)
+            {
+                Width = 140;
+                Height = 120;
+            }
+            else if (pinsPerSide <= 20)
+            {
+                Width = 160;
+                Height = pinsPerSide * 10;
+            }
+            else if (pinsPerSide <= 28)
+            {
+                Width = 180;
+                Height = pinsPerSide * 9;
+            }
+            else
+            {
+                // Para ICs muy grandes (40+ pines)
+                Width = 200;
+                Height = Math.Max(200, pinsPerSide * 8);
+            }
         }
 
         /// <summary>
@@ -2048,77 +2092,192 @@ namespace BuckConverterCalculator.SchematicEditor
         /// </summary>
         private List<(int Number, string Name, PinType Type)> GetPinDefinitions(string partNum)
         {
+            if (string.IsNullOrEmpty(partNum)) return null;
+
             var defs = new List<(int, string, PinType)>();
 
-            switch (partNum)
+            // Normalizar part number
+            string normalized = partNum.ToUpper().Replace("-", "").Replace(" ", "");
+
+            // TL072, LM358 - Dual OpAmp 8 pines
+            if (normalized.Contains("TL072") || normalized.Contains("TL071"))
             {
-                case "TL494":
-                    defs.Add((1, "1IN+", PinType.Input));
-                    defs.Add((2, "1IN-", PinType.Input));
-                    defs.Add((3, "FB", PinType.Input));
-                    defs.Add((4, "DTC", PinType.Input));
-                    defs.Add((5, "CT", PinType.Input));
-                    defs.Add((6, "RT", PinType.Input));
-                    defs.Add((7, "GND", PinType.Ground));
-                    defs.Add((8, "C1", PinType.Output));
-                    defs.Add((9, "E1", PinType.Output));
-                    defs.Add((10, "E2", PinType.Output));
-                    defs.Add((11, "C2", PinType.Output));
-                    defs.Add((12, "VCC", PinType.Power));
-                    defs.Add((13, "OUT", PinType.Output));
-                    defs.Add((14, "REF", PinType.Output));
-                    defs.Add((15, "2IN-", PinType.Input));
-                    defs.Add((16, "2IN+", PinType.Input));
-                    break;
-
-                case "LM2596":
-                    defs.Add((1, "VIN", PinType.Power));
-                    defs.Add((2, "OUT", PinType.Output));
-                    defs.Add((3, "GND", PinType.Ground));
-                    defs.Add((4, "FB", PinType.Input));
-                    defs.Add((5, "ON/OFF", PinType.Input));
-                    break;
-
-                case "UC3842":
-                    defs.Add((1, "COMP", PinType.Output));
-                    defs.Add((2, "VFB", PinType.Input));
-                    defs.Add((3, "ISENSE", PinType.Input));
-                    defs.Add((4, "RT/CT", PinType.Input));
-                    defs.Add((5, "GND", PinType.Ground));
-                    defs.Add((6, "OUT", PinType.Output));
-                    defs.Add((7, "VCC", PinType.Power));
-                    defs.Add((8, "VREF", PinType.Output));
-                    break;
-
-                default:
-                    return null; // No hay definición específica
+                defs.Add((1, "OUT A", PinType.Output));
+                defs.Add((2, "IN- A", PinType.Input));
+                defs.Add((3, "IN+ A", PinType.Input));
+                defs.Add((4, "V-", PinType.Power));
+                defs.Add((5, "IN+ B", PinType.Input));
+                defs.Add((6, "IN- B", PinType.Input));
+                defs.Add((7, "OUT B", PinType.Output));
+                defs.Add((8, "V+", PinType.Power));
+            }
+            else if (normalized.Contains("LM358") || normalized.Contains("LM324"))
+            {
+                defs.Add((1, "OUT1", PinType.Output));
+                defs.Add((2, "IN1-", PinType.Input));
+                defs.Add((3, "IN1+", PinType.Input));
+                defs.Add((4, "GND", PinType.Ground));
+                defs.Add((5, "IN2+", PinType.Input));
+                defs.Add((6, "IN2-", PinType.Input));
+                defs.Add((7, "OUT2", PinType.Output));
+                defs.Add((8, "VCC", PinType.Power));
+            }
+            // TL494 - PWM Controller 16 pines
+            else if (normalized.Contains("TL494"))
+            {
+                defs.Add((1, "1IN+", PinType.Input));
+                defs.Add((2, "1IN-", PinType.Input));
+                defs.Add((3, "FB", PinType.Input));
+                defs.Add((4, "DTC", PinType.Input));
+                defs.Add((5, "CT", PinType.Input));
+                defs.Add((6, "RT", PinType.Input));
+                defs.Add((7, "GND", PinType.Ground));
+                defs.Add((8, "C1", PinType.Output));
+                defs.Add((9, "E1", PinType.Output));
+                defs.Add((10, "E2", PinType.Output));
+                defs.Add((11, "C2", PinType.Output));
+                defs.Add((12, "VCC", PinType.Power));
+                defs.Add((13, "OUT", PinType.Output));
+                defs.Add((14, "REF", PinType.Output));
+                defs.Add((15, "2IN-", PinType.Input));
+                defs.Add((16, "2IN+", PinType.Input));
+            }
+            // LM2596 - Buck Converter 5 pines
+            else if (normalized.Contains("LM2596"))
+            {
+                defs.Add((1, "VIN", PinType.Power));
+                defs.Add((2, "OUT", PinType.Output));
+                defs.Add((3, "GND", PinType.Ground));
+                defs.Add((4, "FB", PinType.Input));
+                defs.Add((5, "ON/OFF", PinType.Input));
+            }
+            // UC3842 - PWM Controller 8 pines
+            else if (normalized.Contains("UC3842") || normalized.Contains("UC3843"))
+            {
+                defs.Add((1, "COMP", PinType.Output));
+                defs.Add((2, "VFB", PinType.Input));
+                defs.Add((3, "ISENSE", PinType.Input));
+                defs.Add((4, "RT/CT", PinType.Input));
+                defs.Add((5, "GND", PinType.Ground));
+                defs.Add((6, "OUT", PinType.Output));
+                defs.Add((7, "VCC", PinType.Power));
+                defs.Add((8, "VREF", PinType.Output));
+            }
+            // 7805, L7805 - Regulador 3 pines
+            else if (normalized.Contains("7805") || normalized.Contains("L7805"))
+            {
+                defs.Add((1, "IN", PinType.Power));
+                defs.Add((2, "GND", PinType.Ground));
+                defs.Add((3, "OUT", PinType.Output));
+            }
+            // ATMEGA328P - 28 pines
+            else if (normalized.Contains("ATMEGA328"))
+            {
+                defs.Add((1, "PC6/RESET", PinType.Input));
+                defs.Add((2, "PD0/RXD", PinType.Bidirectional));
+                defs.Add((3, "PD1/TXD", PinType.Bidirectional));
+                defs.Add((4, "PD2/INT0", PinType.Bidirectional));
+                defs.Add((5, "PD3/INT1", PinType.Bidirectional));
+                defs.Add((6, "PD4/T0", PinType.Bidirectional));
+                defs.Add((7, "VCC", PinType.Power));
+                defs.Add((8, "GND", PinType.Ground));
+                defs.Add((9, "PB6/XTAL1", PinType.Input));
+                defs.Add((10, "PB7/XTAL2", PinType.Output));
+                defs.Add((11, "PD5/T1", PinType.Bidirectional));
+                defs.Add((12, "PD6/AIN0", PinType.Bidirectional));
+                defs.Add((13, "PD7/AIN1", PinType.Bidirectional));
+                defs.Add((14, "PB0/ICP1", PinType.Bidirectional));
+                defs.Add((15, "PB1/OC1A", PinType.Bidirectional));
+                defs.Add((16, "PB2/SS", PinType.Bidirectional));
+                defs.Add((17, "PB3/MOSI", PinType.Bidirectional));
+                defs.Add((18, "PB4/MISO", PinType.Bidirectional));
+                defs.Add((19, "PB5/SCK", PinType.Bidirectional));
+                defs.Add((20, "AVCC", PinType.Power));
+                defs.Add((21, "AREF", PinType.Input));
+                defs.Add((22, "GND", PinType.Ground));
+                defs.Add((23, "PC0/ADC0", PinType.Bidirectional));
+                defs.Add((24, "PC1/ADC1", PinType.Bidirectional));
+                defs.Add((25, "PC2/ADC2", PinType.Bidirectional));
+                defs.Add((26, "PC3/ADC3", PinType.Bidirectional));
+                defs.Add((27, "PC4/ADC4", PinType.Bidirectional));
+                defs.Add((28, "PC5/ADC5", PinType.Bidirectional));
+            }
+            // 18F4550 - 40 pines
+            else if (normalized.Contains("18F4550") || normalized.Contains("PIC18F4550"))
+            {
+                defs.Add((1, "MCLR/VPP/RE3", PinType.Input));
+                defs.Add((2, "RA0/AN0", PinType.Bidirectional));
+                defs.Add((3, "RA1/AN1", PinType.Bidirectional));
+                defs.Add((4, "RA2/AN2/VREF-", PinType.Bidirectional));
+                defs.Add((5, "RA3/AN3/VREF+", PinType.Bidirectional));
+                defs.Add((6, "RA4/T0CKI/C1OUT", PinType.Bidirectional));
+                defs.Add((7, "RA5/AN4/LVDIN", PinType.Bidirectional));
+                defs.Add((8, "RE0/AN5", PinType.Bidirectional));
+                defs.Add((9, "RE1/AN6", PinType.Bidirectional));
+                defs.Add((10, "RE2/AN7", PinType.Bidirectional));
+                defs.Add((11, "VDD", PinType.Power));
+                defs.Add((12, "VSS", PinType.Ground));
+                defs.Add((13, "OSC1/CLKI", PinType.Input));
+                defs.Add((14, "OSC2/CLKO/RA6", PinType.Output));
+                defs.Add((15, "RC0/T1OSO/T13CKI", PinType.Bidirectional));
+                defs.Add((16, "RC1/T1OSI/CCP2", PinType.Bidirectional));
+                defs.Add((17, "RC2/CCP1", PinType.Bidirectional));
+                defs.Add((18, "RC3/SCK/SCL", PinType.Bidirectional));
+                defs.Add((19, "RD0/SPP0", PinType.Bidirectional));
+                defs.Add((20, "RD1/SPP1", PinType.Bidirectional));
+                defs.Add((21, "RD2/SPP2", PinType.Bidirectional));
+                defs.Add((22, "RD3/SPP3", PinType.Bidirectional));
+                defs.Add((23, "RC4/D-/VM", PinType.Bidirectional));
+                defs.Add((24, "RC5/D+/VP", PinType.Bidirectional));
+                defs.Add((25, "RC6/TX/CK", PinType.Bidirectional));
+                defs.Add((26, "RC7/RX/DT", PinType.Bidirectional));
+                defs.Add((27, "RD4/SPP4", PinType.Bidirectional));
+                defs.Add((28, "RD5/SPP5", PinType.Bidirectional));
+                defs.Add((29, "RD6/SPP6", PinType.Bidirectional));
+                defs.Add((30, "RD7/SPP7", PinType.Bidirectional));
+                defs.Add((31, "VSS", PinType.Ground));
+                defs.Add((32, "VDD", PinType.Power));
+                defs.Add((33, "RB0/AN12/INT0", PinType.Bidirectional));
+                defs.Add((34, "RB1/AN10/INT1", PinType.Bidirectional));
+                defs.Add((35, "RB2/AN8/INT2", PinType.Bidirectional));
+                defs.Add((36, "RB3/AN9/CCP2", PinType.Bidirectional));
+                defs.Add((37, "RB4/AN11/KBI0", PinType.Bidirectional));
+                defs.Add((38, "RB5/KBI1/PGM", PinType.Bidirectional));
+                defs.Add((39, "RB6/KBI2/PGC", PinType.Bidirectional));
+                defs.Add((40, "RB7/KBI3/PGD", PinType.Bidirectional));
             }
 
-            return defs;
+            return defs.Count > 0 ? defs : null;
         }
 
         /// <summary>
-        /// Actualiza las posiciones de los pines
+        /// Actualiza las posiciones de los pines - VERSIÓN MEJORADA SIN LÍMITES
         /// </summary>
         protected override void UpdatePinPositions()
         {
             if (Pins.Count == 0) return;
 
-            int pinsPerSide = (PinCount + 1) / 2;
-            int pinSpacing = Height / (pinsPerSide + 1);
+            // ✅ SIN LÍMITE - Usar todos los pines
+            int totalPins = Pins.Count;
+            int leftPins = (int)Math.Ceiling(totalPins / 2.0);
+            int rightPins = totalPins - leftPins;
+
+            // Calcular espaciado dinámicamente
+            int leftSpacing = leftPins > 1 ? Height / (leftPins + 1) : Height / 2;
+            int rightSpacing = rightPins > 1 ? Height / (rightPins + 1) : Height / 2;
 
             // Pines lado izquierdo (numeración ascendente desde arriba)
-            for (int i = 0; i < pinsPerSide && i < Pins.Count; i++)
+            for (int i = 0; i < leftPins && i < Pins.Count; i++)
             {
-                int py = Y + pinSpacing * (i + 1);
+                int py = Y + leftSpacing * (i + 1);
                 Pins[i].Position = new Point(X - 10, py);
             }
 
-            // Pines lado derecho (numeración descendente desde abajo)
-            for (int i = 0; i < pinsPerSide && (pinsPerSide + i) < Pins.Count; i++)
+            // Pines lado derecho (numeración continua descendente desde abajo)
+            for (int i = 0; i < rightPins && (leftPins + i) < Pins.Count; i++)
             {
-                int py = Y + Height - pinSpacing * (i + 1);
-                Pins[pinsPerSide + i].Position = new Point(X + Width + 10, py);
+                int py = Y + Height - rightSpacing * (i + 1);
+                Pins[leftPins + i].Position = new Point(X + Width + 10, py);
             }
         }
 
@@ -2136,46 +2295,89 @@ namespace BuckConverterCalculator.SchematicEditor
                 // Muesca de orientación (esquina superior izquierda)
                 g.FillEllipse(Brushes.White, X + 5, Y + 5, 8, 8);
 
-                // Actualizar y dibujar pines
+                // Actualizar posiciones de pines
                 UpdatePinPositions();
 
-                int pinsPerSide = (PinCount + 1) / 2;
-                int pinSpacing = Height / (pinsPerSide + 1);
-
                 using (Pen pinPen = new Pen(Color.Silver, 2))
+                using (Font pinFont = new Font("Arial", 6, FontStyle.Bold))
+                using (Font nameFont = new Font("Arial", 5))
+                using (Brush pinTextBrush = new SolidBrush(Color.Black))
+                using (Brush nameTextBrush = new SolidBrush(Color.Yellow))
                 {
-                    // Pines izquierda
-                    for (int i = 0; i < pinsPerSide && i < Pins.Count; i++)
+                    int totalPins = Pins.Count;
+                    int leftPins = (int)Math.Ceiling(totalPins / 2.0);
+
+                    // ✅ DIBUJAR TODOS LOS PINES SIN LÍMITE
+                    foreach (var pin in Pins)
                     {
-                        int py = Y + pinSpacing * (i + 1);
-                        g.DrawLine(pinPen, X - 10, py, X, py);
+                        bool isLeftSide = pin.Number <= leftPins;
 
-                        // Dibujar pin
-                        Pins[i].Draw(g, ShowPinNumbers, ShowPinTypes);
-                    }
+                        // Línea del pin
+                        if (isLeftSide)
+                        {
+                            g.DrawLine(pinPen, X - 10, pin.Position.Y, X, pin.Position.Y);
+                        }
+                        else
+                        {
+                            g.DrawLine(pinPen, X + Width, pin.Position.Y, X + Width + 10, pin.Position.Y);
+                        }
 
-                    // Pines derecha
-                    for (int i = 0; i < pinsPerSide && (pinsPerSide + i) < Pins.Count; i++)
-                    {
-                        int py = Y + Height - pinSpacing * (i + 1);
-                        g.DrawLine(pinPen, X + Width, py, X + Width + 10, py);
+                        // Círculo del pin
+                        g.FillEllipse(Brushes.Red, pin.Position.X - 3, pin.Position.Y - 3, 6, 6);
 
-                        // Dibujar pin
-                        Pins[pinsPerSide + i].Draw(g, ShowPinNumbers, ShowPinTypes);
+                        if (ShowPinNumbers)
+                        {
+                            if (isLeftSide)
+                            {
+                                // Número a la izquierda del pin
+                                string numText = pin.Number.ToString();
+                                SizeF numSize = g.MeasureString(numText, pinFont);
+                                g.DrawString(numText, pinFont, pinTextBrush,
+                                    pin.Position.X - 20, pin.Position.Y - numSize.Height / 2);
+                            }
+                            else
+                            {
+                                // Número a la derecha del pin
+                                string numText = pin.Number.ToString();
+                                g.DrawString(numText, pinFont, pinTextBrush,
+                                    pin.Position.X + 8, pin.Position.Y - 6);
+                            }
+                        }
+
+                        if (ShowPinTypes && !string.IsNullOrEmpty(pin.Name) && pin.Name != $"Pin{pin.Number}")
+                        {
+                            if (isLeftSide)
+                            {
+                                // Nombre dentro del IC a la derecha del pin
+                                g.DrawString(pin.Name, nameFont, nameTextBrush,
+                                    pin.Position.X + 5, pin.Position.Y - 6);
+                            }
+                            else
+                            {
+                                // Nombre dentro del IC a la izquierda del pin
+                                SizeF nameSize = g.MeasureString(pin.Name, nameFont);
+                                g.DrawString(pin.Name, nameFont, nameTextBrush,
+                                    pin.Position.X - nameSize.Width - 5, pin.Position.Y - 6);
+                            }
+                        }
                     }
                 }
 
-                // Texto central
+                // Texto central (PartNumber y Function)
                 using (Font labelFont = new Font("Arial", 9, FontStyle.Bold))
                 using (Font valueFont = new Font("Arial", 7))
                 {
-                    SizeF partSize = g.MeasureString(PartNumber, labelFont);
-                    SizeF funcSize = g.MeasureString(Function, valueFont);
-
-                    g.DrawString(PartNumber, labelFont, textBrush,
+                    string displayPart = !string.IsNullOrEmpty(PartNumber) ? PartNumber : "IC";
+                    SizeF partSize = g.MeasureString(displayPart, labelFont);
+                    g.DrawString(displayPart, labelFont, textBrush,
                         X + Width / 2 - partSize.Width / 2, Y + Height / 2 - 15);
-                    g.DrawString(Function, valueFont, textBrush,
-                        X + Width / 2 - funcSize.Width / 2, Y + Height / 2 + 5);
+
+                    if (!string.IsNullOrEmpty(Function) && Function.Length < 30)
+                    {
+                        SizeF funcSize = g.MeasureString(Function, valueFont);
+                        g.DrawString(Function, valueFont, textBrush,
+                            X + Width / 2 - funcSize.Width / 2, Y + Height / 2 + 5);
+                    }
                 }
 
                 if (isHovered)

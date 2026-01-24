@@ -224,6 +224,13 @@ namespace BuckConverterCalculator.Database
         public string Supplier { get; set; } = "DigiKey";
         public DateTime LastUpdated { get; set; } = DateTime.Now;
 
+
+        public ElectronicComponent()
+        {
+            Specifications = new Dictionary<string, string>();
+            LastUpdated = DateTime.Now;
+        }
+
         public string GetSpec(string key)
         {
             if (Specifications != null && Specifications.ContainsKey(key))

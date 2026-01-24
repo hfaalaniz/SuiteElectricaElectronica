@@ -1,12 +1,14 @@
-﻿using BuckConverterCalculator.Database;
-using BuckConverterCalculator.SchematicEditor;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using BuckConverterCalculator.Database;
+using BuckConverterCalculator.SchematicEditor;
 
 namespace BuckConverterCalculator.BOM
 {
+    /// <summary>
+    /// Generador de Bill of Materials desde el esquemático
+    /// </summary>
     public class BOMGenerator
     {
         private SchematicDocument document;
@@ -22,15 +24,16 @@ namespace BuckConverterCalculator.BOM
         {
             var bom = new BillOfMaterials
             {
-                // Analizar codigo comentado si se desea incluir nombre del proyecto
-                //ProjectName = document.ProjectName,
+                ProjectName = document.ProjectName ?? "Buck Converter Design",
                 GeneratedDate = DateTime.Now,
                 Items = new List<BOMItem>()
             };
 
             // Agrupar componentes por tipo y valor
             var componentGroups = document.Components
-                .Where(c => !(c is WireComponent) && !(c is NodeComponent) && !(c is LabelComponent))
+                .Where(c => !(c.GetType().Name.Contains("Wire")) &&
+                           !(c.GetType().Name.Contains("Node")) &&
+                           !(c.GetType().Name.Contains("Label")))
                 .GroupBy(c => GetComponentKey(c))
                 .Select(g => new
                 {
@@ -84,18 +87,22 @@ namespace BuckConverterCalculator.BOM
             // Clave única basada en tipo y valor principal
             string key = component.Type.ToString();
 
-            if (component is ResistorComponent r)
-                key += "_" + r.Value + "_" + r.Power;
-            else if (component is CapacitorComponent c)
-                key += "_" + c.Capacitance + "_" + c.VoltageRating;
-            else if (component is InductorComponent l)
-                key += "_" + l.Value + "_" + l.Isat;
-            else if (component is DiodeComponent d)
-                key += "_" + d.PartNumber;
-            else if (component is MosfetComponent m)
-                key += "_" + m.PartNumber;
-            else if (component is ICComponent ic)
-                key += "_" + ic.PartNumber;
+            // Usar reflection para obtener propiedades comunes
+            var valueProperty = component.GetType().GetProperty("Value");
+            if (valueProperty != null)
+            {
+                var value = valueProperty.GetValue(component);
+                if (value != null)
+                    key += "_" + value.ToString();
+            }
+
+            var partNumberProperty = component.GetType().GetProperty("PartNumber");
+            if (partNumberProperty != null)
+            {
+                var partNumber = partNumberProperty.GetValue(component);
+                if (partNumber != null)
+                    key += "_" + partNumber.ToString();
+            }
 
             return key;
         }
@@ -109,151 +116,43 @@ namespace BuckConverterCalculator.BOM
                 Type = component.Type.ToString()
             };
 
-            // Extraer información específica del tipo de componente
-            if (component is ResistorComponent resistor)
+            // Usar reflection para extraer propiedades
+            var valueProperty = component.GetType().GetProperty("Value");
+            if (valueProperty != null)
             {
-                item.Value = resistor.Value;
-                item.Description = $"Resistor {resistor.Value} {resistor.Power} {resistor.Tolerance}";
-                item.Package = "0805"; // Default, debería venir del componente
+                var value = valueProperty.GetValue(component);
+                item.Value = value?.ToString() ?? "";
             }
-            else if (component is CapacitorComponent capacitor)
+
+            var partNumberProperty = component.GetType().GetProperty("PartNumber");
+            if (partNumberProperty != null)
             {
-                item.Value = capacitor.Capacitance;
-                item.Description = $"Capacitor {capacitor.Capacitance} {capacitor.VoltageRating} {capacitor.CapacitorType}";
-                item.Package = "0805";
+                var partNumber = partNumberProperty.GetValue(component);
+                item.PartNumber = partNumber?.ToString() ?? "";
             }
-            else if (component is InductorComponent inductor)
+
+            var descriptionProperty = component.GetType().GetProperty("Description");
+            if (descriptionProperty != null)
             {
-                item.Value = inductor.Value;
-                item.Description = $"Inductor {inductor.Value} {inductor.Isat}";
-                item.PartNumber = "TBD";
+                var description = descriptionProperty.GetValue(component);
+                item.Description = description?.ToString() ?? "";
             }
-            else if (component is DiodeComponent diode)
+            else
             {
-                item.PartNumber = diode.PartNumber;
-                item.Description = $"Diode {diode.PartNumber}";
+                // Generar descripción básica
+                item.Description = $"{component.Type} {item.Value}";
             }
-            else if (component is MosfetComponent mosfet)
-            {
-                item.PartNumber = mosfet.PartNumber;
-                item.Description = $"MOSFET {mosfet.ChannelType} {mosfet.VDS}";
-            }
-            else if (component is ICComponent ic)
-            {
-                item.PartNumber = ic.PartNumber;
-                item.Description = $"IC {ic.PartNumber}";
-                // Analizar codigo para descripción más detallada
-                //item.Description = ic.Description;
-            }
+
+            item.Package = "TBD"; // Default
 
             return item;
         }
-
-        public void ExportToCSV(BillOfMaterials bom, string filename)
-        {
-            using (var writer = new StreamWriter(filename))
-            {
-                // Header
-                writer.WriteLine("Item,Quantity,Designators,Type,Value,Description,Manufacturer,Part Number,Package,Unit Price,Total Price,Supplier,Stock,Datasheet");
-
-                // Items
-                foreach (var item in bom.Items)
-                {
-                    writer.WriteLine($"{item.ItemNumber}," +
-                                   $"{item.Quantity}," +
-                                   $"\"{item.Designators}\"," +
-                                   $"{item.Type}," +
-                                   $"{item.Value}," +
-                                   $"\"{item.Description}\"," +
-                                   $"{item.Manufacturer}," +
-                                   $"{item.PartNumber}," +
-                                   $"{item.Package}," +
-                                   $"${item.UnitPrice:F2}," +
-                                   $"${item.TotalPrice:F2}," +
-                                   $"{item.Supplier}," +
-                                   $"{item.Stock}," +
-                                   $"{item.DatasheetURL}");
-                }
-
-                // Summary
-                writer.WriteLine();
-                writer.WriteLine($"Total Unique Components:,{bom.TotalUniqueComponents}");
-                writer.WriteLine($"Total Components:,{bom.TotalComponents}");
-                writer.WriteLine($"Total Cost:,${bom.TotalCost:F2}");
-                writer.WriteLine($"Generated:,{bom.GeneratedDate}");
-            }
-        }
-
-        public void ExportToExcel(BillOfMaterials bom, string filename)
-        {
-            // Requiere ClosedXML o EPPlus NuGet package
-            // Ejemplo con EPPlus:
-
-            using (var package = new OfficeOpenXml.ExcelPackage())
-            {
-                var worksheet = package.Workbook.Worksheets.Add("BOM");
-
-                // Headers
-                worksheet.Cells[1, 1].Value = "Item";
-                worksheet.Cells[1, 2].Value = "Quantity";
-                worksheet.Cells[1, 3].Value = "Designators";
-                worksheet.Cells[1, 4].Value = "Type";
-                worksheet.Cells[1, 5].Value = "Value";
-                worksheet.Cells[1, 6].Value = "Description";
-                worksheet.Cells[1, 7].Value = "Manufacturer";
-                worksheet.Cells[1, 8].Value = "Part Number";
-                worksheet.Cells[1, 9].Value = "Package";
-                worksheet.Cells[1, 10].Value = "Unit Price";
-                worksheet.Cells[1, 11].Value = "Total Price";
-                worksheet.Cells[1, 12].Value = "Supplier";
-
-                // Formato de headers
-                using (var range = worksheet.Cells[1, 1, 1, 12])
-                {
-                    range.Style.Font.Bold = true;
-                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    range.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
-                }
-
-                // Data
-                int row = 2;
-                foreach (var item in bom.Items)
-                {
-                    worksheet.Cells[row, 1].Value = item.ItemNumber;
-                    worksheet.Cells[row, 2].Value = item.Quantity;
-                    worksheet.Cells[row, 3].Value = item.Designators;
-                    worksheet.Cells[row, 4].Value = item.Type;
-                    worksheet.Cells[row, 5].Value = item.Value;
-                    worksheet.Cells[row, 6].Value = item.Description;
-                    worksheet.Cells[row, 7].Value = item.Manufacturer;
-                    worksheet.Cells[row, 8].Value = item.PartNumber;
-                    worksheet.Cells[row, 9].Value = item.Package;
-                    worksheet.Cells[row, 10].Value = item.UnitPrice;
-                    worksheet.Cells[row, 11].Value = item.TotalPrice;
-                    worksheet.Cells[row, 12].Value = item.Supplier;
-
-                    row++;
-                }
-
-                // Summary
-                row += 2;
-                worksheet.Cells[row, 1].Value = "Total Unique Components:";
-                worksheet.Cells[row, 2].Value = bom.TotalUniqueComponents;
-                worksheet.Cells[row + 1, 1].Value = "Total Components:";
-                worksheet.Cells[row + 1, 2].Value = bom.TotalComponents;
-                worksheet.Cells[row + 2, 1].Value = "Total Cost:";
-                worksheet.Cells[row + 2, 2].Value = bom.TotalCost;
-                worksheet.Cells[row + 2, 2].Style.Numberformat.Format = "$#,##0.00";
-
-                // Auto-fit columns
-                worksheet.Cells.AutoFitColumns();
-
-                // Save
-                package.SaveAs(new FileInfo(filename));
-            }
-        }
     }
 
+    /// <summary>
+    /// Clase principal de BOM - ÚNICA DEFINICIÓN
+    /// </summary>
+    [Serializable]
     public class BillOfMaterials
     {
         public string ProjectName { get; set; }
@@ -264,6 +163,10 @@ namespace BuckConverterCalculator.BOM
         public double TotalCost { get; set; }
     }
 
+    /// <summary>
+    /// Item individual del BOM - ÚNICA DEFINICIÓN
+    /// </summary>
+    [Serializable]
     public class BOMItem
     {
         public int ItemNumber { get; set; }
@@ -280,5 +183,6 @@ namespace BuckConverterCalculator.BOM
         public string Supplier { get; set; }
         public int Stock { get; set; }
         public string DatasheetURL { get; set; }
+        public string Notes { get; set; }
     }
 }

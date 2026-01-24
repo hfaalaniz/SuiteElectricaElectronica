@@ -42,10 +42,10 @@ namespace BuckConverterCalculator.Core
         private void CalculateFundamentals(DesignParameters param, CalculationResults results)
         {
             // Duty Cycle: D = Vout / Vin
-            results.DutyCycle = param.Vout / param.Vin;
+            results.CalculatedDutyCycle = param.OutputVoltage / param.InputVoltageMax;
 
             // Potencia de salida
-            results.PowerOutput = param.Vout * param.Iout;
+            results.PowerOutput = param.OutputVoltage * param.OutputCurrent;
 
             // Potencia de entrada (considerando eficiencia)
             double efficiency = param.EfficiencyPercent / 100.0;
@@ -62,14 +62,14 @@ namespace BuckConverterCalculator.Core
             results.RippleCurrent = param.Iout * ripplePercent;
 
             // Inductancia requerida: L = (Vin - Vout) * D / (ΔIL * f)
-            results.Inductance = (param.Vin - param.Vout) * results.DutyCycle /
+            results.Inductance = (param.InputVoltageMax - param.OutputVoltage) * results.DutyCycle /
                                 (results.RippleCurrent * param.Frequency);
 
             // Valor comercial (redondear hacia arriba a valores estándar)
             results.InductanceCommercial = RoundToCommercialInductance(results.Inductance);
 
             // Recalcular ripple real con inductancia comercial
-            results.RippleCurrent = (param.Vin - param.Vout) * results.DutyCycle /
+            results.RippleCurrent = (param.InputVoltageMax - param.OutputVoltage) * results.DutyCycle /
                                    (results.InductanceCommercial * param.Frequency);
 
             // Corriente pico: Ipk = Iout + ΔIL/2
@@ -109,7 +109,7 @@ namespace BuckConverterCalculator.Core
             // Vout = Vref * (1 + R1/R2)
             // Despejando: R1/R2 = (Vout/Vref) - 1
 
-            double ratio = (param.Vout / VREF_UC3843) - 1.0;
+            double ratio = (param.OutputVoltage / VREF_UC3843) - 1.0;
 
             // Seleccionar R2 = 10kΩ (valor típico)
             results.FeedbackR2 = 10000;
@@ -152,7 +152,7 @@ namespace BuckConverterCalculator.Core
             // Pérdidas en MOSFET - Switching
             // Psw = 0.5 * Vin * Iout * (tr + tf) * f
             double transitionTime = 45e-9; // 45ns típico (tr + tf)
-            results.MosfetSwitchingLoss = 0.5 * param.Vin * param.Iout * transitionTime * param.Frequency;
+            results.MosfetSwitchingLoss = 0.5 * param.InputVoltageMax * param.Iout * transitionTime * param.Frequency;
 
             // Pérdidas totales MOSFET
             results.MosfetTotalLoss = results.MosfetConductionLoss + results.MosfetSwitchingLoss;

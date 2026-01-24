@@ -45,6 +45,9 @@ namespace BuckConverterCalculator.SchematicEditor
         [Newtonsoft.Json.JsonIgnore]
         public string FilePath { get; set; }
 
+        // AGREGAR ESTA PROPIEDAD:
+        public string ProjectName { get; set; } = "Untitled";
+
         public SchematicDocument()
         {
             Name = "Untitled Schematic";
