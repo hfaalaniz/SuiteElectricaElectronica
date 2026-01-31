@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\demoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\demoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\temperatureprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\temperatureprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\demoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\demoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\demoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\demoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -26,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,57 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TemperatureProgressBar.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\TemperatureProgressBar.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\TemperatureProgressBar.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\TemperatureProgressBar.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\TemperatureProgressBar.cs",
-              "ViewState": "AgIAAG0CAAAAAAAAAAAgwI0CAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T01:40:20.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DemoForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\DemoForm.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.cs [Dise\u00F1o]",
-              "RelativeToolTip": "BuckConverterCalculator\\DemoForm.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T01:35:07.588Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DemoForm.Designer.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.Designer.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\DemoForm.Designer.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.Designer.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\DemoForm.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T01:33:54.621Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DemoForm.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\DemoForm.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\DemoForm.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAIwC4AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T01:33:50.487Z",
-              "EditorCaption": ""
             }
           ]
         },
