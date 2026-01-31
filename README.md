@@ -72,7 +72,7 @@ Aplicación de escritorio Windows Forms para diseño y análisis de convertidore
 BuckConverterCalculator/
 │
 ├── BuckConverterCalculator.csproj    # Archivo de proyecto
-├── MainForm.cs                        # Formulario principal de la aplicación
+├── MainForm.cs                       # Formulario principal de la aplicación
 │
 ├── Core/
 │   ├── BuckCalculator.cs             # Motor de cálculo del convertidor Buck
@@ -83,8 +83,8 @@ BuckConverterCalculator/
 │   ├── CalculoProteccionMotores.cs   # Cálculo de protecciones de motores
 │   ├── CalcularReactoresVFD.cs       # Diseño de reactores VFD
 │   ├── TransformerForm.cs            # Diseño de transformadores
-│   ├── VFD.cs                         # Análisis de variadores
-│   ├── PresetForm.cs                  # Gestión de presets de diseño
+│   ├── VFD.cs                        # Análisis de variadores
+│   ├── PresetForm.cs                 # Gestión de presets de diseño
 │   └── SchematicViewerForm.cs        # Visor de esquemáticos
 │
 ├── SchematicEditor/
@@ -107,8 +107,8 @@ BuckConverterCalculator/
 │       └── ConnectionManager.cs      # Gestión de conexiones
 │
 └── Resources/
-    ├── Icons/                         # Iconos de la aplicación
-    └── Templates/                     # Plantillas de circuitos
+    ├── Icons/                        # Iconos de la aplicación
+    └── Templates/                    # Plantillas de circuitos
 ```
 
 ---
