@@ -709,9 +709,25 @@ Este proyecto es parte de **SuiteElectricaElectronica**.
 
 ## Autor
 
-**Héctor Fabián Alaniz**
+**Hugo Fabián Alaniz**
 - GitHub: [@hfaalaniz](https://github.com/hfaalaniz)
 - Email: [hfaalaniz@gmail.com]
+
+---
+
+## ☕ Apoya este Proyecto
+
+Si este proyecto te ha sido útil y te ha ahorrado tiempo en tus diseños de electrónica de potencia, considera invitarme un café. Tu apoyo ayuda a mantener el proyecto activo y a desarrollar nuevas funcionalidades.
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/hfaalaniz)
+
+**Otras formas de apoyar:**
+- ⭐ Dale una estrella al repositorio en GitHub
+- 🐛 Reporta bugs y sugiere mejoras
+- 📖 Contribuye con código o documentación
+- 💬 Comparte el proyecto con otros ingenieros
+
+**Tu apoyo hace la diferencia** y permite seguir mejorando esta suite de herramientas para la comunidad de ingeniería electrónica.
 
 ---
 
