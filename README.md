@@ -1,4 +1,4 @@
-# Suite de Cálculos Eléctricos y Electronicos
+# Suite de Cálculos Eléctricos y Electrónicos
 Nota: Todas las ingenierías, además de la belleza del arte técnico, son complejas, este proyecto no pretende cubrir campos tan amplios, solo es algo que me ayudó mucho en la época del DOS y que ahora estoy reescribiendo. Inicia con un simple calculo de fuentes buck PWM y fui añadiendo usos diarios.
 
 Aplicación de escritorio Windows Forms para diseño y análisis de convertidores Buck DC-DC con editor de esquemáticos integrado. Suite completa de herramientas para electrónica de potencia con motor de cálculo avanzado y capacidades de diseño visual.
