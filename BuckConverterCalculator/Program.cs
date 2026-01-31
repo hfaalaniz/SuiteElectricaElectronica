@@ -20,7 +20,7 @@ namespace BuckConverterCalculator
             DebugLogger.Log("APP", "Log guardado en: {0}", DebugLogger.GetLogPath());
             DebugLogger.Log("APP", "═══════════════════════════════════════════════════");
 
-            Application.Run(new DemoForm());  // TransformadorCalculatorForm());
+            Application.Run(new MainMDIForm()); // TransformadorCalculatorForm()); // DemoForm());  // TransformadorCalculatorForm());
 
             DebugLogger.Log("APP", "Aplicación finalizada");
 
