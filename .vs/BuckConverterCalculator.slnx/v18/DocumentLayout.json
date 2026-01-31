@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\database\\icpinoutdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\database\\icpinoutdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\demoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\demoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\database\\ic_pinout_database.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\database\\ic_pinout_database.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\temperatureprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\temperatureprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\schematiceditor\\schematiceditorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\schematiceditor\\schematiceditorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\demoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\demoform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\schematiceditor\\schematiccomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\schematiceditor\\schematiccomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\schematiceditor\\schematicdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\schematiceditor\\schematicdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\schematiceditor\\componenttoolbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\schematiceditor\\componenttoolbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\ui\\dialogs\\componentsearchdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\ui\\dialogs\\componentsearchdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|c:\\hfa-dc-buck\\buckconvertercalculator\\buckconvertercalculator\\demoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7CC1F745-AF92-ECEE-37CE-04E2DF59AC08}|BuckConverterCalculator\\BuckConverterCalculator.csproj|solutionrelative:buckconvertercalculator\\demoform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,88 +39,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IC_Pinout_Database.json",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\Database\\IC_Pinout_Database.json",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\Database\\IC_Pinout_Database.json",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\Database\\IC_Pinout_Database.json",
-              "RelativeToolTip": "BuckConverterCalculator\\Database\\IC_Pinout_Database.json",
-              "ViewState": "AgIAAGUCAAAAAAAAAAAQwHwCAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-24T02:45:12.58Z",
+              "Title": "TemperatureProgressBar.cs",
+              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\TemperatureProgressBar.cs",
+              "RelativeDocumentMoniker": "BuckConverterCalculator\\TemperatureProgressBar.cs",
+              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\TemperatureProgressBar.cs",
+              "RelativeToolTip": "BuckConverterCalculator\\TemperatureProgressBar.cs",
+              "ViewState": "AgIAAG0CAAAAAAAAAAAgwI0CAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-31T01:40:20.676Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ICPinoutDatabase.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\Database\\ICPinoutDatabase.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\Database\\ICPinoutDatabase.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\Database\\ICPinoutDatabase.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\Database\\ICPinoutDatabase.cs",
-              "ViewState": "AgIAAPsAAAAAAAAAAAAQwBABAAAfAAAAAAAAAA==",
+              "Title": "DemoForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.cs",
+              "RelativeDocumentMoniker": "BuckConverterCalculator\\DemoForm.cs",
+              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "BuckConverterCalculator\\DemoForm.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T02:44:14.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SchematicDocument.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicDocument.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\SchematicEditor\\SchematicDocument.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicDocument.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\SchematicEditor\\SchematicDocument.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T01:20:42.575Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ComponentToolBox.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\ComponentToolBox.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\SchematicEditor\\ComponentToolBox.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\ComponentToolBox.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\SchematicEditor\\ComponentToolBox.cs",
-              "ViewState": "AgIAAMcAAAAAAAAAAAAUwOUAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T01:20:28.728Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ComponentSearchDialog.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\UI\\Dialogs\\ComponentSearchDialog.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\UI\\Dialogs\\ComponentSearchDialog.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\UI\\Dialogs\\ComponentSearchDialog.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\UI\\Dialogs\\ComponentSearchDialog.cs",
-              "ViewState": "AgIAALQCAAAAAAAAAAAAALQCAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T19:39:48.08Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SchematicEditorForm.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicEditorForm.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\SchematicEditor\\SchematicEditorForm.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicEditorForm.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\SchematicEditor\\SchematicEditorForm.cs",
-              "ViewState": "AgIAAFEBAAAAAAAAAAAAAFsBAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T18:14:16.409Z"
+              "WhenOpened": "2026-01-31T01:35:07.588Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SchematicComponent.cs",
-              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicComponent.cs",
-              "RelativeDocumentMoniker": "BuckConverterCalculator\\SchematicEditor\\SchematicComponent.cs",
-              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\SchematicEditor\\SchematicComponent.cs",
-              "RelativeToolTip": "BuckConverterCalculator\\SchematicEditor\\SchematicComponent.cs",
-              "ViewState": "AgIAAFQJAAAAAAAAAAAAAHQJAAAFAAAAAAAAAA==",
+              "Title": "DemoForm.Designer.cs",
+              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.Designer.cs",
+              "RelativeDocumentMoniker": "BuckConverterCalculator\\DemoForm.Designer.cs",
+              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.Designer.cs",
+              "RelativeToolTip": "BuckConverterCalculator\\DemoForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T18:12:43.511Z"
+              "WhenOpened": "2026-01-31T01:33:54.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DemoForm.cs",
+              "DocumentMoniker": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.cs",
+              "RelativeDocumentMoniker": "BuckConverterCalculator\\DemoForm.cs",
+              "ToolTip": "C:\\HFA-DC-BUCK\\BuckConverterCalculator\\BuckConverterCalculator\\DemoForm.cs",
+              "RelativeToolTip": "BuckConverterCalculator\\DemoForm.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAIwC4AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-31T01:33:50.487Z",
+              "EditorCaption": ""
             }
           ]
         },

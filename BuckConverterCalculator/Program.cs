@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace BuckConverterCalculator
@@ -6,14 +6,24 @@ namespace BuckConverterCalculator
     static class Program
     {
         /// <summary>
-        /// Punto de entrada principal para la aplicaci�n.
+        /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMDIForm());
+
+
+            DebugLogger.Log("APP", "═══════════════════════════════════════════════════");
+            DebugLogger.Log("APP", "Aplicación iniciada - Versión 2.0");
+            DebugLogger.Log("APP", "Log guardado en: {0}", DebugLogger.GetLogPath());
+            DebugLogger.Log("APP", "═══════════════════════════════════════════════════");
+
+            Application.Run(new DemoForm());  // TransformadorCalculatorForm());
+
+            DebugLogger.Log("APP", "Aplicación finalizada");
+
         }
     }
 }

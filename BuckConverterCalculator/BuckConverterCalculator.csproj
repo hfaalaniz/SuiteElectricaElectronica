@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CalculoTrafos.cs" />
     <Compile Remove="Database\ComponentScraper.cs" />
     <Compile Remove="SchematicEditor\DesignParameters.cs" />
   </ItemGroup>
@@ -23,6 +24,7 @@
 	  <PackageReference Include="ClosedXML" Version="0.102.0" />
 	  <!-- Para gráficas (opcional, si no usas custom) -->
 	  <PackageReference Include="OxyPlot.WindowsForms" Version="2.1.2" />
+	  <PackageReference Include="itext7" Version="8.0.2" />
 	  <!-- Para exportar a PDF (opcional) -->
   </ItemGroup>
 
